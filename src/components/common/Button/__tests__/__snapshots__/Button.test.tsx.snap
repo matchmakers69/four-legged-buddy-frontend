@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> sholud create a snapshot 1`] = `
+<button
+  className="Buttonstyled__Button-sc-13jglys-0 fQvjvz btn btn--danger"
+  data-testid="button"
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+  <div />
+</button>
+`;

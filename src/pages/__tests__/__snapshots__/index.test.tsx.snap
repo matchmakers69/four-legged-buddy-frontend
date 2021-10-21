@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> sholud create a snapshot 1`] = `
+<div
+  className="Layoutstyled__PageRoot-sc-la4vug-0 dLgykK"
+>
+  <header
+    data-testid="header"
+  />
+  <main>
+    <div
+      className="grid__Container-sc-kpoq17-1 kbkbZF"
+    >
+      <div
+        className="MuiGrid-root grid__Row-sc-kpoq17-2 hIHGDZ row MuiGrid-container"
+      >
+        <div
+          className="MuiGrid-root grid__Col-sc-kpoq17-3 gNKhpz MuiGrid-item MuiGrid-grid-xs-12"
+          data-testid="page-wrapper"
+        >
+          <h1>
+            common:greeting
+          </h1>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>
+      © Przemek Lewtak 
+      2021
+    </p>
+  </footer>
+</div>
+`;
