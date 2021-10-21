@@ -9,7 +9,7 @@ const Contact: FC = () => (
   <Layout pageTitle="About Us">
     <GridTemplate>
       <Col data-testid="page-wrapper" xs={12}>
-        <h1>Contact us</h1>
+        <h1>Contact 4 buddy</h1>
         <ContactForm />
       </Col>
     </GridTemplate>
