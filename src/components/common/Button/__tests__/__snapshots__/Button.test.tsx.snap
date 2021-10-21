@@ -2,7 +2,7 @@
 
 exports[`<Button /> sholud create a snapshot 1`] = `
 <button
-  className="Buttonstyled__Button-sc-13jglys-0 fQvjvz btn btn--danger"
+  className="Buttonstyled__Button-sc-tf9j08-0 bsfFKp btn btn--danger"
   data-testid="button"
   disabled={false}
   onClick={[Function]}

@@ -2,20 +2,20 @@
 
 exports[`<Home /> sholud create a snapshot 1`] = `
 <div
-  className="Layoutstyled__PageRoot-sc-la4vug-0 dLgykK"
+  className="Layoutstyled__PageRoot-sc-4y9azy-0 plKwn"
 >
   <header
     data-testid="header"
   />
   <main>
     <div
-      className="grid__Container-sc-kpoq17-1 kbkbZF"
+      className="grid__Container-sc-d4fn36-1 hKjNkF"
     >
       <div
-        className="MuiGrid-root grid__Row-sc-kpoq17-2 hIHGDZ row MuiGrid-container"
+        className="MuiGrid-root grid__Row-sc-d4fn36-2 iMfnKR row MuiGrid-container"
       >
         <div
-          className="MuiGrid-root grid__Col-sc-kpoq17-3 gNKhpz MuiGrid-item MuiGrid-grid-xs-12"
+          className="MuiGrid-root grid__Col-sc-d4fn36-3 cFWiln MuiGrid-item MuiGrid-grid-xs-12"
           data-testid="page-wrapper"
         >
           <h1>
