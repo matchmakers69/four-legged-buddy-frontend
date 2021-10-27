@@ -4,6 +4,8 @@ declare module "styled-components" {
   export interface DefaultTheme {
     title: string;
     colors: {
+      bodyYellow: string;
+      footerGreen: string;
       powderWhite: string;
       persianGreen: string;
       lightBlue: string;
@@ -14,7 +16,6 @@ declare module "styled-components" {
       grey100: string;
       lightBrown: string;
       red: string;
-      green: string;
       violet: string;
     };
     fontSizes: {
