@@ -17,6 +17,7 @@ export const theme: DefaultTheme = {
     mustard: "#bb8918",
     lightGreen: "#e5daac",
     titleGreen: "#2b331f",
+    lightBlue: "#2193a2",
   },
 
   fontSizes: {
