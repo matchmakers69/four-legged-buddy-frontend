@@ -23,12 +23,12 @@ export const Button = styled.button`
   }
 
   &.btn--danger {
-    background: ${({ theme }) => theme.colors.orange};
+    background: ${({ theme }) => theme.colors.red};
     color: ${({ theme }) => theme.colors.powderWhite};
   }
 
   &.btn--secondary {
-    background: ${({ theme }) => theme.colors.onyx};
+    background: ${({ theme }) => theme.colors.lightBrown};
     color: ${({ theme }) => theme.colors.powderWhite};
   }
 
