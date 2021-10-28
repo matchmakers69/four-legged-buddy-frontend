@@ -1,6 +1,6 @@
 import { Typography } from "@material-ui/core";
 import styled from "styled-components";
-import { device } from "styles/breakpoints";
+import { device } from "./breakpoints";
 
 const H1 = styled(({ ...rest }) => <Typography variant="h1" component="h1" {...rest} />)`
   &.h1 {

@@ -2,34 +2,48 @@
 
 exports[`<Home /> sholud create a snapshot 1`] = `
 <div
-  className="Layoutstyled__PageRoot-sc-4y9azy-0 plKwn"
+  className="Layoutstyled__PageRoot-sc-4y9azy-0 lbPmvq"
 >
   <header
     data-testid="header"
   />
   <main>
-    <div
-      className="grid__Container-sc-d4fn36-1 hKjNkF"
+    <header
+      className="stage stage-home"
     >
       <div
-        className="MuiGrid-root grid__Row-sc-d4fn36-2 iMfnKR row MuiGrid-container"
+        className="HomeIntrostyled__SectionHomeIntro-sc-1qf9m4w-0 kPLBLU stage-top"
       >
         <div
-          className="MuiGrid-root grid__Col-sc-d4fn36-3 cFWiln MuiGrid-item MuiGrid-grid-xs-12"
-          data-testid="page-wrapper"
+          className="grid__Container-sc-d4fn36-1 AfdPi container-1"
         >
-          <h1>
-            common:greeting
-          </h1>
+          <div
+            className="HomeIntrostyled__IntroTextWrapper-sc-1qf9m4w-1 fsNfeC"
+          >
+            <p
+              className="SubtitlePageDecoratorstyled__PageTopline-sc-pehwjn-0 cEcZuC"
+            >
+              Welcome!
+            </p>
+            <div
+              data-testid="page-wrapper"
+            >
+              <h1
+                className="MuiTypography-root typography__H1-sc-xr9g5q-0 lkSwNJ h1 bold MuiTypography-h1"
+              >
+                common:greeting
+              </h1>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </header>
   </main>
   <footer
-    className="Footerstyled__Footer-sc-1bb7f11-0 kHeZtj contacts"
+    className="Footerstyled__Footer-sc-1bb7f11-0 euYWaz contacts"
   >
     <div
-      className="Footerstyled__FooterContent-sc-1bb7f11-1 eNjjwU"
+      className="Footerstyled__FooterContent-sc-1bb7f11-1 hXWcCQ"
     >
       <div
         className="grid__ContainerNarrow-sc-d4fn36-0 eUFLBH"
