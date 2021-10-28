@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const Logo = styled.a`
-  font-size: ${({ theme }) => theme.fontSizes.large};
-  font-weight: ${({ theme }) => theme.weight.semiBold};
-  color: ${({ theme }) => theme.colors.lightBlue};
-  display: block;
+  line-height: 0;
+  display: inline-block;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 `;

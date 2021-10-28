@@ -25,11 +25,29 @@ exports[`<Home /> sholud create a snapshot 1`] = `
       </div>
     </div>
   </main>
-  <footer>
-    <p>
-      © Przemek Lewtak 
-      2021
-    </p>
+  <footer
+    className="Footerstyled__Footer-sc-1bb7f11-0 kHeZtj contacts"
+  >
+    <div
+      className="Footerstyled__FooterContent-sc-1bb7f11-1 eNjjwU"
+    >
+      <div
+        className="grid__ContainerNarrow-sc-d4fn36-0 eUFLBH"
+      >
+        <div
+          className="MuiGrid-root grid__Row-sc-d4fn36-2 iMfnKR row MuiGrid-container"
+        >
+          <div
+            className="MuiGrid-root grid__Col-sc-d4fn36-3 cFWiln MuiGrid-item MuiGrid-grid-xs-12"
+          >
+            <p>
+              © Przemek Lewtak 
+              2021
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 </div>
 `;

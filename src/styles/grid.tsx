@@ -27,12 +27,17 @@ export const ContainerNarrow = styled.div`
 `;
 
 export const Container = styled.div`
+  margin: 0 auto;
+  padding: 3rem 5vw;
   width: 100%;
-  max-width: 100%;
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
-  margin-right: auto;
-  margin-left: auto;
+
+  @media ${device.tabletS} {
+    padding: 5rem;
+  }
+
+  &.container-1 {
+    max-width: 1380px;
+  }
 `;
 
 export const Row = styled(({ ...rest }) => <Grid container {...rest} />)`

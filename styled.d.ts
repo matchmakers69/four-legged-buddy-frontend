@@ -8,21 +8,27 @@ declare module "styled-components" {
       footerGreen: string;
       powderWhite: string;
       persianGreen: string;
-      lightBlue: string;
-      onyx: string;
       text: string;
       yellow: string;
-      orange: string;
       grey100: string;
       lightBrown: string;
       red: string;
-      violet: string;
+      logoLightGreen: string;
+      logoDarkGreen: string;
+      mustard: string;
+      lightGreen: string;
+      titleGreen: string;
     };
     fontSizes: {
       xs: string;
       sm: string;
       md: string;
       large: string;
+    };
+
+    fontFamily: {
+      primary: string;
+      secondary: string;
     };
     weight: {
       thin: number;

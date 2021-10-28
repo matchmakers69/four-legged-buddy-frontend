@@ -3,19 +3,20 @@ import baseStyled, { ThemedStyledInterface, DefaultTheme } from "styled-componen
 export const theme: DefaultTheme = {
   title: "theme",
   colors: {
-    bodyYellow: "#ebedd5",
+    bodyYellow: "#eae2c1",
     footerGreen: "#18280b",
     powderWhite: "#ffffff",
     persianGreen: "#daee73",
-    lightBlue: "#7bbfcc",
-    onyx: "#040809",
     text: "#010000",
     yellow: "#ead96d",
-    orange: "#db613a",
     grey100: "#e8e8e0",
     lightBrown: "#ecdcc2",
     red: "#c0362b",
-    violet: "#e8a7fb",
+    logoLightGreen: "#739c3e",
+    logoDarkGreen: "#1c2e0d",
+    mustard: "#bb8918",
+    lightGreen: "#e5daac",
+    titleGreen: "#2b331f",
   },
 
   fontSizes: {
@@ -23,6 +24,10 @@ export const theme: DefaultTheme = {
     sm: "1.6rem",
     md: "2rem",
     large: "3rem",
+  },
+  fontFamily: {
+    primary: "Cabin",
+    secondary: "Roboto Slab",
   },
   weight: {
     thin: 300,

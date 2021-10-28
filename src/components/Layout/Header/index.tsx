@@ -2,7 +2,6 @@ import { FC } from "react";
 import LanguageSwitcherMenu from "src/components/LanguageSwitcherMenu";
 import Nav from "src/components/Layout/Nav";
 import LogoLink from "src/components/LogoLink";
-import { Col, Container, Row } from "src/styles/grid";
 import * as S from "./Header.styled";
 
 interface IHeaderProps {
@@ -12,7 +11,11 @@ interface IHeaderProps {
 const Header: FC<IHeaderProps> = ({ locales }) => {
   return (
     <S.Header data-testid="header">
-      <Container>
+      <S.HeaderPage className="bcg-transparent header-navbar">
+        <LogoLink />
+        <Nav />
+      </S.HeaderPage>
+      {/* <Container>
         <Row className="row">
           <Col xs={4} sm={5}>
             <LogoLink />
@@ -24,7 +27,7 @@ const Header: FC<IHeaderProps> = ({ locales }) => {
             </S.HeaderMenu>
           </Col>
         </Row>
-      </Container>
+      </Container> */}
     </S.Header>
   );
 };

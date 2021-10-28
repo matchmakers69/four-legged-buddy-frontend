@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { device } from "src/styles/breakpoints";
 
 export const PageRoot = styled.div`
   width: 100%;
@@ -9,7 +8,4 @@ export const PageRoot = styled.div`
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  @media ${device.tabletS} {
-    padding-top: 7rem;
-  }
 `;
