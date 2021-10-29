@@ -2,6 +2,7 @@ import { FC } from "react";
 import useTranslation from "next-translate/useTranslation";
 import Layout from "src/components/Layout";
 import { Col } from "src/styles/grid";
+import { H1, Paragraph } from "src/styles/typography";
 import GridTemplate from "src/templatetes/GridTemplate";
 
 const About: FC = () => {
@@ -10,8 +11,8 @@ const About: FC = () => {
     <Layout pageTitle="About Us">
       <GridTemplate>
         <Col data-testid="page-wrapper" xs={12}>
-          <h1>{t("about:title")}</h1>
-          <p>{t("about:intro")}</p>
+          <H1 className="h1">{t("about:title")}</H1>
+          <Paragraph className="p">{t("about:intro")}</Paragraph>
         </Col>
       </GridTemplate>
     </Layout>

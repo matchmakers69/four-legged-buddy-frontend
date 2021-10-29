@@ -1,5 +1,5 @@
 import { FC } from "react";
-import SubtitlePageDecorator from "src/components/common/SubtitlePageDecorator";
+import PageTitleDecorator from "src/components/common/PageTitleDecorator";
 import { Container } from "src/styles/grid";
 import * as S from "./HomeIntro.styled";
 
@@ -9,7 +9,7 @@ const HomeIntro: FC = ({ children }) => {
       <S.SectionHomeIntro className="stage-top">
         <Container className="container-1">
           <S.IntroTextWrapper>
-            <SubtitlePageDecorator subTitle="Welcome!" />
+            <PageTitleDecorator subTitle="Welcome!" />
             {children}
           </S.IntroTextWrapper>
         </Container>

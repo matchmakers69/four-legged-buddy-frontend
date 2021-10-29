@@ -22,7 +22,7 @@ export const GlobalStyle = createGlobalStyle<IGlobalProps>`
     font: 400 1.6rem 'Cabin', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: ${({ theme }) => theme.colors.bodyYellow};
+    background: ${({ theme }) => theme.colors.bodyColor};
     color: ${({ theme }) => theme.colors.text};
   }
   a {

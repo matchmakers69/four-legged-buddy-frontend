@@ -12,7 +12,7 @@ exports[`<Home /> sholud create a snapshot 1`] = `
       className="stage stage-home"
     >
       <div
-        className="HomeIntrostyled__SectionHomeIntro-sc-1qf9m4w-0 kPLBLU stage-top"
+        className="HomeIntrostyled__SectionHomeIntro-sc-1qf9m4w-0 dqgUro stage-top"
       >
         <div
           className="grid__Container-sc-d4fn36-1 AfdPi container-1"
@@ -21,7 +21,7 @@ exports[`<Home /> sholud create a snapshot 1`] = `
             className="HomeIntrostyled__IntroTextWrapper-sc-1qf9m4w-1 fsNfeC"
           >
             <p
-              className="SubtitlePageDecoratorstyled__PageTopline-sc-pehwjn-0 cEcZuC"
+              className="PageTitleDecoratorstyled__PageTopline-sc-89778e-0 kZYBTx"
             >
               Welcome!
             </p>
@@ -40,7 +40,7 @@ exports[`<Home /> sholud create a snapshot 1`] = `
     </header>
   </main>
   <footer
-    className="Footerstyled__Footer-sc-1bb7f11-0 euYWaz contacts"
+    className="Footerstyled__Footer-sc-1bb7f11-0 biyaKu contacts"
   >
     <div
       className="Footerstyled__FooterContent-sc-1bb7f11-1 hXWcCQ"

@@ -9,11 +9,11 @@ export const PageTopline = styled.p`
     margin: 1.885rem 0;
     background-color: #ba8d0f;
     background: ${({ theme }) => theme.colors.mustard};
-    border-radius: 0.7rem;
+    border-radius: 0;
     content: "";
     display: block;
     width: 5rem;
-    height: 0.7rem;
+    height: 0.5rem;
   }
   @media ${device.tabletS} {
     font-size: 2.6rem;

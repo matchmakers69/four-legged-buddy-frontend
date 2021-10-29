@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Footer = styled.footer`
-  background-color: ${({ theme }) => theme.colors.footerGreen};
+  background-color: ${({ theme }) => theme.colors.footerColor};
 
   &.contacts {
     position: relative;

@@ -7,7 +7,7 @@ export const SectionHomeIntro = styled.div`
   position: relative;
 
   &:before {
-    background-color: ${({ theme }) => theme.colors.lightGreen};
+    background-color: ${({ theme }) => theme.colors.shapeColor};
     width: 100%;
     content: "";
     display: block;

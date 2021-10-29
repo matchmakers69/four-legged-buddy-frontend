@@ -3,8 +3,9 @@ import baseStyled, { ThemedStyledInterface, DefaultTheme } from "styled-componen
 export const theme: DefaultTheme = {
   title: "theme",
   colors: {
-    bodyYellow: "#eae2c1",
-    footerGreen: "#18280b",
+    bodyColor: "#f9f1e4",
+    footerColor: "#ebc68f",
+    shapeColor: "#f6e1c0",
     powderWhite: "#ffffff",
     persianGreen: "#daee73",
     text: "#010000",
@@ -15,7 +16,6 @@ export const theme: DefaultTheme = {
     logoLightGreen: "#739c3e",
     logoDarkGreen: "#1c2e0d",
     mustard: "#bb8918",
-    lightGreen: "#e5daac",
     titleGreen: "#2b331f",
     lightBlue: "#2193a2",
   },
