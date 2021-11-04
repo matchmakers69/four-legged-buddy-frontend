@@ -6,7 +6,8 @@
     "outDir": "dist",
     "paths": {
       "src/*": ["src/*"],
-      "styles/*": ["src/styles/*"]
+      "styles/*": ["src/styles/*"],
+      "config/*": ["src/config/*"]
     },
 
     /* Project */
@@ -16,8 +17,6 @@
     "sourceMap": true,
 
     /* Imports */
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -25,11 +24,19 @@
 
     /* Additional */
     "strict": true,
+    "useUnknownInCatchVariables": false,
     "noEmit": true,
     "esModuleInterop": true,
     "jsx": "preserve",
-    "typeRoots": ["./src/types", "./node_modules/@types"]
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "noImplicitAny": false, // read more
+    "noImplicitReturns": false, // read more
+
+    /* Advanced Options */
+    "skipLibCheck": true /* Skip type checking of declaration files. */,
+    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next-i18next.config.js"],
-  "exclude": ["node_modules", "dist", "coverage", ".next"]
+  "exclude": ["node_modules", "dist", "coverage", ".next"],
+  "files": ["src/styles/styled.d.ts"]
 }

@@ -3,7 +3,7 @@ import { AppProps } from "next/app";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 import ReduxProvider from "src/store/ReduxProvider";
-import { GlobalStyle } from "src/theme/Global";
+import { GlobalStyle } from "src/styles/Global";
 import { theme } from "src/theme/theme";
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
@@ -18,13 +18,8 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
-        <title>My App</title>
+        <title>4leggedbuddy</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=PT+Sans+Narrow:wght@700&display=swap"
-          rel="stylesheet"
-        />
-
         <link
           href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=PT+Sans+Narrow:wght@700&family=Roboto+Slab:wght@400;600&display=swap"
           rel="stylesheet"

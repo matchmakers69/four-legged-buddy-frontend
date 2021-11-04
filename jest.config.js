@@ -7,7 +7,7 @@ module.exports = {
     },
   },
 
-  setupFilesAfterEnv: ["./src/jest.setup.ts"],
+  setupFilesAfterEnv: ["./jest.setup.ts"],
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
   },

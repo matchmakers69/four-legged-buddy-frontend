@@ -5,7 +5,8 @@ import Button from "src/components/common/Button";
 import FormGroup from "src/components/common/Form/FormGroup";
 import InputText from "src/components/common/Form/InputText";
 import TextArea from "src/components/common/Form/TextArea";
-import { contactFormValidationSchema } from "src/libs/validation/contactFormValidation";
+import { contactFormValidationSchema } from "src/lib/validation/contactFormValidation";
+import * as S from "styles/components/Form";
 
 type ContactFormSubmit = {
   fullName: string;
@@ -29,8 +30,8 @@ const ContactForm: FC = () => {
   };
 
   return (
-    <div className="register-form">
-      <form onSubmit={handleSubmit(onContactFormSubmit)}>
+    <div className="contact-form">
+      <S.Form onSubmit={handleSubmit(onContactFormSubmit)}>
         <FormGroup>
           <InputText
             id="fullName"
@@ -75,7 +76,7 @@ const ContactForm: FC = () => {
             Reset
           </Button>
         </FormGroup>
-      </form>
+      </S.Form>
     </div>
   );
 };

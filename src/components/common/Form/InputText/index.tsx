@@ -7,7 +7,7 @@ interface InputProps {
   name: string;
   placeholder: string;
   label?: string;
-  type: "text" | "email" | "number";
+  type: "text" | "email" | "number" | "password";
   register: ReturnType<typeof useForm>["register"];
   errors?: any;
 }

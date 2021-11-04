@@ -4,7 +4,7 @@ type navigationLinks = {
 
 export const linksMapper: navigationLinks = {
   "/": "/",
-  "/about": "/about",
+  "/members": "/members",
   "/contact": "/contact",
   "/register": "/register",
   "/login": "/login",

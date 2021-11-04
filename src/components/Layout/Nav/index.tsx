@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useRouter } from "next/router";
-import AppLink from "src/components/AppLink";
+import AppLink from "src/components/common/AppLink";
 import { routes } from "src/routes";
 import * as S from "./Nav.styled";
 import { linksMapper } from "./service/navLinksMapper";
