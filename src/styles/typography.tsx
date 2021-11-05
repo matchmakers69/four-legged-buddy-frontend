@@ -16,6 +16,11 @@ const H1 = styled(({ ...rest }) => <Typography variant="h1" component="h1" {...r
     }
   }
 
+  .title-paragraph {
+    display: block;
+    line-height: 1;
+  }
+
   &.bold {
     font-weight: ${({ theme }) => theme.weight.bold};
   }
@@ -24,7 +29,17 @@ const H1 = styled(({ ...rest }) => <Typography variant="h1" component="h1" {...r
 const Paragraph = styled(({ ...rest }) => <Typography component="p" {...rest} />)`
   &.p {
     font: 400 1.6rem "Roboto Slab", sans-serif;
-    line-height: 1.5;
+    line-height: 1.8;
+  }
+  &.bold {
+    font-weight: ${({ theme }) => theme.weight.bold};
+  }
+
+  &.m-15-top {
+    margin-top: 1.5rem;
+  }
+  &.m-15-bottom {
+    margin-bottom: 1.5rem;
   }
 `;
 

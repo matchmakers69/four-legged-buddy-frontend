@@ -42,11 +42,8 @@ export const IntroTextWrapper = styled.div`
   position: relative;
   z-index: 1;
   @media ${device.tabletS} {
-    max-width: 30rem;
+    max-width: 40rem;
     margin-bottom: 10vh;
-  }
-  @media ${device.laptop} {
-    max-width: 60rem;
   }
 
   @media ${device.laptopM} {

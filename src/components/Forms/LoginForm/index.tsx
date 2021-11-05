@@ -4,8 +4,8 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import Button from "src/components/common/Button";
-import FormGroup from "src/components/common/Form/FormGroup";
-import InputText from "src/components/common/Form/InputText";
+import FormGroup from "src/components/common/FormElement/FormGroup";
+import InputText from "src/components/common/FormElement/InputText";
 import { loginSchema } from "src/lib/validation/loginFormValidation";
 import * as S from "styles/components/Form";
 

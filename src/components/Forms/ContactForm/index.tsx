@@ -2,9 +2,9 @@ import { FC } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import Button from "src/components/common/Button";
-import FormGroup from "src/components/common/Form/FormGroup";
-import InputText from "src/components/common/Form/InputText";
-import TextArea from "src/components/common/Form/TextArea";
+import FormGroup from "src/components/common/FormElement/FormGroup";
+import InputText from "src/components/common/FormElement/InputText";
+import TextArea from "src/components/common/FormElement/TextArea";
 import { contactFormValidationSchema } from "src/lib/validation/contactFormValidation";
 import * as S from "styles/components/Form";
 
@@ -68,11 +68,11 @@ const ContactForm: FC = () => {
         </FormGroup>
 
         <FormGroup>
-          <Button className="btn--submit" type="submit" variant="danger">
+          <Button type="submit" variant="submit">
             Send
           </Button>
 
-          <Button type="button" onClick={() => reset()} variant="secondary" className="btn--reset">
+          <Button type="button" onClick={() => reset()} variant="primary">
             Reset
           </Button>
         </FormGroup>

@@ -1,8 +1,8 @@
 import { FC } from "react";
 
 const Icon: FC = ({ ...props }) => (
-  <svg {...props} width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd">
-    <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z" />
   </svg>
 );
 

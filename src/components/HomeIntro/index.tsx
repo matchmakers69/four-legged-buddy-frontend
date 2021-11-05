@@ -9,7 +9,7 @@ const HomeIntro: FC = ({ children }) => {
       <S.SectionHomeIntro className="stage-top">
         <Container className="container-1">
           <S.IntroTextWrapper>
-            <PageTitleDecorator subTitle="Welcome!" />
+            <PageTitleDecorator subTitle="About the app" />
             {children}
           </S.IntroTextWrapper>
         </Container>

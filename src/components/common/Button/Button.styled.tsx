@@ -4,9 +4,9 @@ export const Button = styled.button`
   cursor: pointer;
   box-shadow: none;
   text-shadow: none;
-  border-radius: 4px;
+  border-radius: 0;
   height: 40px;
-  padding: 1.5rem 2.2rem;
+  padding: 1.5rem 1.6rem;
   margin: 0;
   display: inline-flex;
   min-width: 12rem;
@@ -15,21 +15,32 @@ export const Button = styled.button`
   justify-content: center;
   transition: all 0.3s ease;
   outline: transparent;
-  font-size: ${({ theme }) => theme.fontSizes.sm};
+  font-size: ${({ theme }) => theme.fontSizes.xs};
+  font-weight: ${({ theme }) => theme.weight.semiBold};
+  letter-spacing: 0.5px;
   border: none;
 
   &:not(:last-child) {
     margin-right: 16px;
   }
 
-  &.btn--danger {
-    background: ${({ theme }) => theme.colors.red};
+  &.btn--submit {
+    background-color: ${({ theme }) => theme.colors.titleGreen};
     color: ${({ theme }) => theme.colors.powderWhite};
+    border: 4px solid ${({ theme }) => theme.colors.titleGreen};
   }
 
-  &.btn--secondary {
-    background: ${({ theme }) => theme.colors.lightBrown};
-    color: ${({ theme }) => theme.colors.powderWhite};
+  &.btn--link {
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.titleGreen};
+    padding: 0;
+    border: 4px solid ${({ theme }) => theme.colors.titleGreen};
+  }
+
+  &.btn--primary {
+    background-color: transparent;
+    color: ${({ theme }) => theme.colors.titleGreen};
+    border: 4px solid ${({ theme }) => theme.colors.titleGreen};
   }
 
   &:disabled {

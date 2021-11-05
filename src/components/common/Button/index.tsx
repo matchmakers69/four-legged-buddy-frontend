@@ -6,7 +6,7 @@ import * as S from "./Button.styled";
 interface IButtonProps {
   disable?: boolean;
   fullWidth?: boolean;
-  variant: string;
+  variant?: string;
   className?: string;
   onClick?: () => void;
   type: "button" | "submit" | "reset";
@@ -21,7 +21,7 @@ const Button: FC<IButtonProps> = ({
   type,
   fullWidth = false,
   loading = false,
-  variant,
+  variant = "",
   className = "",
   children,
   btnIcon: btnIconProp,
@@ -33,7 +33,7 @@ const Button: FC<IButtonProps> = ({
   const btnIcon = btnIconProp && <span className="btn-icon-wrapper">{btnIconProp}</span>;
   return (
     <S.Button className={buttonClasses} type={type} disabled={disable} onClick={onClick} data-testid="button">
-      {loading && <SpinnerIcon className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" />}
+      {/* {loading && <SpinnerIcon className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" />} */}
       {btnIcon}
       {children}
     </S.Button>
