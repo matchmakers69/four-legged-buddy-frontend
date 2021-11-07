@@ -33,7 +33,7 @@ const Button: FC<IButtonProps> = ({
   const btnIcon = btnIconProp && <span className="btn-icon-wrapper">{btnIconProp}</span>;
   return (
     <S.Button className={buttonClasses} type={type} disabled={disable} onClick={onClick} data-testid="button">
-      {/* {loading && <SpinnerIcon className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" />} */}
+      {loading && <SpinnerIcon className="animate-spin" />}
       {btnIcon}
       {children}
     </S.Button>

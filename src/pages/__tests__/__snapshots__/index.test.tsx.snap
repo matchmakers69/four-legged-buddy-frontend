@@ -18,21 +18,36 @@ exports[`<Home /> sholud create a snapshot 1`] = `
           className="grid__Container-sc-d4fn36-1 AfdPi container-1"
         >
           <div
-            className="HomeIntrostyled__IntroTextWrapper-sc-1qf9m4w-1 fsNfeC"
+            className="HomeIntrostyled__IntroTextWrapper-sc-1qf9m4w-1 fARcDO"
           >
             <p
               className="PageTitleDecoratorstyled__PageTopline-sc-89778e-0 kZYBTx"
             >
-              Welcome!
+              About the app
             </p>
             <div
               data-testid="page-wrapper"
             >
               <h1
-                className="MuiTypography-root typography__H1-sc-xr9g5q-0 lkSwNJ h1 bold MuiTypography-h1"
+                className="MuiTypography-root typography__H1-sc-xr9g5q-0 hlcNGQ h1 bold MuiTypography-h1"
               >
-                common:greeting
+                <span
+                  className="title-paragraph"
+                >
+                  Welcome to
+                </span>
+                 
+                <span
+                  className="title-paragraph"
+                >
+                  4leggedbuddy
+                </span>
               </h1>
+              <p
+                className="MuiTypography-root typography__Paragraph-sc-xr9g5q-1 eHmLRQ p m-15-top bold MuiTypography-body1"
+              >
+                We try to connect dog owners with trusted local people who would love to look after their dog. We make it easy to arrange walks, playtime, overnight stays or holidays. Our aim is to help dog owners when they need it, give dogs more exercise and playtime and to allow people without a dog to spend quality time with one. We call it a win-win (or a woof-­woof) situation for everyone involved.
+              </p>
             </div>
           </div>
         </div>

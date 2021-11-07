@@ -5,7 +5,7 @@ import { API_URL } from "src/config";
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   if (req.method === "POST") {
     const { password, identifier } = req.body;
-    const loginInfo = {
+    const loginData = {
       password,
       identifier,
     };
@@ -16,7 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(loginInfo),
+        body: JSON.stringify(loginData),
       });
       const loginResponse = await login.json();
 
@@ -29,7 +29,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
 
       res.status(200).end();
     } catch (err) {
-      console.log(err);
+      res.status(500).end();
     }
   } else {
     res.setHeader("Allow", ["POST"]);

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { VFC } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import nookies from "nookies";
@@ -13,11 +13,14 @@ interface IUser {
   username: string;
 }
 
-const Profile: FC<IUser | null> = (props) => {
+type Props = {
+  user: IUser;
+};
+
+const Profile: VFC<Props> = ({ user }) => {
   const router = useRouter();
-  const {
-    user: { email, username },
-  } = props;
+  const { email, username } = user;
+
   return (
     <Layout pageTitle="Profile">
       <GridTemplate>
@@ -57,7 +60,7 @@ export const getServerSideProps = async (ctx) => {
     };
   }
   return {
-    user,
+    props: { user },
   };
 };
 

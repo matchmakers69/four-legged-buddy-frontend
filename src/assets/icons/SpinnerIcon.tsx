@@ -1,7 +1,11 @@
-import { FC } from "react";
+import { VFC } from "react";
 
-const Icon: FC = ({ ...props }) => (
-  <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+type Props = {
+  className: string;
+};
+
+const Icon: VFC<Props> = ({ className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" className={className}>
     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
     <path
       className="opacity-75"
