@@ -3,15 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { Logo } from "./LogoLink.styled";
 
-const LogoLink: FC = () => {
+type LogoLinkProps = {
+  width: number;
+  height: number;
+};
+
+const LogoLink: FC<LogoLinkProps> = ({ width, height }) => {
   return (
-    <div>
+    <>
       <Link passHref href="/">
         <Logo>
-          <Image src="/media/svg/logo-main.svg" height={90} width={80} alt="4leggedbuddy-logo" />
+          <Image src="/media/svg/logo-main.svg" height={height} width={width} alt="4leggedbuddy-logo" />
         </Logo>
       </Link>
-    </div>
+    </>
   );
 };
 

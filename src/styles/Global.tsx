@@ -19,11 +19,18 @@ export const GlobalStyle = createGlobalStyle<IGlobalProps>`
     box-sizing: border-box;
     overflow-x: hidden;
     line-height: 1.6;
-    font: 400 1.6rem 'Cabin', sans-serif;
+    font: 400 1.6rem 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: ${({ theme }) => theme.colors.bodyColor};
     color: ${({ theme }) => theme.colors.text};
+    
+    &.body-with-background {
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      background-image: url("/media/svg/paws-shape.svg");
+      background-position: 100% center;
+    }
   }
   a {
     text-decoration: none;

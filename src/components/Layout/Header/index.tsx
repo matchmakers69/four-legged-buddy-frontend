@@ -1,34 +1,30 @@
 import { FC } from "react";
-import LanguageSwitcherMenu from "src/components/LanguageSwitcherMenu";
 import Nav from "src/components/Layout/Nav";
 import LogoLink from "src/components/LogoLink";
-import * as S from "./Header.styled";
+import * as S from "./common.styled";
+import HeaderPage from "./HeaderPage";
 
-interface IHeaderProps {
-  locales: string[];
-}
+type IHeaderProps = {
+  isHeaderSkew: boolean;
+};
 
-const Header: FC<IHeaderProps> = ({ locales }) => {
+const Header: FC<IHeaderProps> = ({ isHeaderSkew }) => {
   return (
-    <S.Header data-testid="header">
-      <S.HeaderPage className="bcg-transparent header-navbar">
-        <LogoLink />
-        <Nav />
-      </S.HeaderPage>
-      {/* <Container>
-        <Row className="row">
-          <Col xs={4} sm={5}>
-            <LogoLink />
-          </Col>
-          <Col xs={8} sm={7}>
-            <S.HeaderMenu>
-              <Nav />
-              <LanguageSwitcherMenu locales={locales} />
-            </S.HeaderMenu>
-          </Col>
-        </Row>
-      </Container> */}
-    </S.Header>
+    <>
+      {isHeaderSkew ? (
+        <HeaderPage />
+      ) : (
+        <S.Header data-testid="header" isHeaderSkew={isHeaderSkew}>
+          <S.HeaderNav className="bcg-transparent header-navbar">
+            <S.LogoHeaderwrapper>
+              <LogoLink width={110} height={60} />
+            </S.LogoHeaderwrapper>
+
+            <Nav />
+          </S.HeaderNav>
+        </S.Header>
+      )}
+    </>
   );
 };
 

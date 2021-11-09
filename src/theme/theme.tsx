@@ -16,8 +16,10 @@ export const theme: DefaultTheme = {
     logoLightGreen: "#739c3e",
     logoDarkGreen: "#1c2e0d",
     mustard: "#bb8918",
+    darkMustard: "#ba8d0f",
     titleGreen: "#2b331f",
     lightBlue: "#2193a2",
+    transparent: "transparent",
   },
 
   fontSizes: {
@@ -27,7 +29,7 @@ export const theme: DefaultTheme = {
     large: "3rem",
   },
   fontFamily: {
-    primary: "Cabin",
+    primary: "Poppins",
     secondary: "Roboto Slab",
   },
   weight: {

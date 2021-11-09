@@ -4,37 +4,35 @@ import { device } from "src/styles/breakpoints";
 export const SectionHomeIntro = styled.div`
   overflow: hidden;
   padding: 6rem 0 8rem;
+  min-height: 100vh;
+  height: auto;
   position: relative;
-
-  &:before {
-    background-color: ${({ theme }) => theme.colors.shapeColor};
-    width: 100%;
-    content: "";
-    display: block;
-    bottom: 40%;
-    height: 130%;
-    left: 0;
-    position: absolute;
-    top: 100%;
-    transform-origin: right center;
-    transform: skewY(30deg);
-
-    @media ${device.mobileM} {
-      bottom: 0;
-    }
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
   @media ${device.mobileM} {
     padding-top: 12rem;
   }
 
   @media ${device.tabletS} {
-    display: flex;
+    min-height: auto;
     height: 100vh;
-    max-height: 135vmin;
-    min-height: 650px;
-    text-align: left;
-    align-items: center;
+  }
+
+  &:before {
+    width: 100%;
+    content: "";
+    display: block;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("/media/svg/triangle-new.svg");
   }
 `;
 
@@ -43,7 +41,7 @@ export const IntroTextWrapper = styled.div`
   z-index: 1;
   @media ${device.tabletS} {
     max-width: 40rem;
-    margin-bottom: 10vh;
+    margin-bottom: 0;
   }
 
   @media ${device.laptopM} {

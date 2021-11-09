@@ -19,6 +19,8 @@ declare module "styled-components" {
       shapeColor: string;
       titleGreen: string;
       lightBlue: string;
+      transparent: string;
+      darkMustard: string;
     };
     fontSizes: {
       xs: string;

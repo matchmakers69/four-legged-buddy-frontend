@@ -15,7 +15,7 @@ const AppLink: FC<AppLinkProps> = ({ href, variant, children, endIcon: endIconPr
   return (
     <Link passHref href={href}>
       <S.StyledLink className={appLinkClasses}>
-        {children} {endIcon}
+        <span className="text-button">{children}</span> {endIcon}
       </S.StyledLink>
     </Link>
   );

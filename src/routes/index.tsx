@@ -1,6 +1,6 @@
 import constants from "src/constants";
 
-const { HOME, MEMBERS, CONTACT } = constants.routes;
+const { HOME, MEMBERS } = constants.routes;
 
 interface IRoute {
   path: string;
@@ -15,9 +15,5 @@ export const routes: IRoute[] = [
   {
     path: MEMBERS,
     label: "Members",
-  },
-  {
-    path: CONTACT,
-    label: "Contact",
   },
 ];

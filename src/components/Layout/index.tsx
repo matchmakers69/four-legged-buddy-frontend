@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Footer from "src/components/Layout/Footer";
@@ -11,14 +11,28 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ pageTitle, children }) => {
   const router = useRouter();
-  const locals = router?.locales ?? [];
+  const isHeaderSkew = router.pathname !== "/";
+
+  useEffect(() => {
+    /**
+     * @isHeaderSkew flag checks if body tag has background image
+     * @isHeaderSkew set true, class to body tag will be added
+     */
+    if (isHeaderSkew) {
+      document.body.classList.add("body-with-background");
+    }
+    return () => {
+      document.body.classList.remove("body-with-background");
+    };
+  }, [isHeaderSkew]);
+
   return (
     <>
       <Head>
         <title>{pageTitle}</title>
       </Head>
       <S.PageRoot>
-        <Header locales={locals} />
+        <Header isHeaderSkew={isHeaderSkew} />
         <main>{children}</main>
         <Footer />
       </S.PageRoot>

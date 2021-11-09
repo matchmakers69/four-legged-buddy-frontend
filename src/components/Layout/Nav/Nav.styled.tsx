@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const NavContainer = styled.nav`
-  flex: 1 1 auto;
   text-align: right;
   padding-left: 4rem;
   display: block;
@@ -36,6 +35,7 @@ export const NavListItem = styled.li`
         transform: scaleX(1);
         background: ${({ theme }) => theme.colors.titleGreen};
         transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        z-index: 10;
       }
     }
   }

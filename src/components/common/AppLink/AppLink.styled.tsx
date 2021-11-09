@@ -12,6 +12,13 @@ export const StyledLink = styled.a`
   justify-content: center;
   padding: 1rem;
   position: relative;
+
+  .text-button {
+    display: inline-flex;
+    color: inherit;
+    position: relative;
+    z-index: 5;
+  }
   &.appLink-link {
     &:after {
       content: "";
@@ -36,6 +43,7 @@ export const StyledLink = styled.a`
     overflow: hidden;
     transition: color 0.3s cubic-bezier(1, 0, 0, 1);
     transition-delay: 100ms;
+    z-index: 12;
     &:before {
       background: ${({ theme }) => theme.colors.titleGreen};
       z-index: -1;
@@ -52,6 +60,7 @@ export const StyledLink = styled.a`
       left: 0;
       content: "";
       width: 105%;
+      z-index: 4;
     }
     .icon-link {
       width: 14px;
@@ -61,6 +70,8 @@ export const StyledLink = styled.a`
       align-items: center;
       justify-content: center;
       margin-left: 0.8rem;
+      z-index: 12;
+      position: relative;
       svg {
         path {
           transition: fill 0.3s cubic-bezier(1, 0, 0, 1);

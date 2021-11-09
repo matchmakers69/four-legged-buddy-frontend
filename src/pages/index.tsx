@@ -1,14 +1,14 @@
-import { FC } from "react";
+import { VFC } from "react";
 import HomeIntro from "src/components/HomeIntro";
 import Layout from "src/components/Layout";
 import { H1, Paragraph } from "src/styles/typography";
 
-const Home: FC = () => {
+const Home: VFC = () => {
   return (
     <Layout pageTitle="Home page">
       <HomeIntro>
         <div data-testid="page-wrapper">
-          <H1 className="h1 bold">
+          <H1 className="h1 bold m-30-bottom">
             <span className="title-paragraph">Welcome to</span> <span className="title-paragraph">4leggedbuddy</span>
           </H1>
           <Paragraph className="p m-15-top bold">

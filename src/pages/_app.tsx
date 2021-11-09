@@ -21,7 +21,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
         <title>4leggedbuddy</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&family=PT+Sans+Narrow:wght@700&family=Roboto+Slab:wght@400;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&family=Roboto+Slab:wght@400;600&display=swap"
           rel="stylesheet"
         />
       </Head>
