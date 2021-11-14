@@ -106,3 +106,7 @@ export const GridItemListItemTitle = styled.span`
   display: inline-block;
   font-size: inherit;
 `;
+
+export const GridItemFooter = styled.footer`
+  margin-bottom: 10px;
+`;

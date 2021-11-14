@@ -7,9 +7,11 @@ import * as S from "./Layout.styled";
 
 interface LayoutProps {
   pageTitle: string;
+  description?: string;
+  keywords?: string;
 }
 
-const Layout: FC<LayoutProps> = ({ pageTitle, children }) => {
+const Layout: FC<LayoutProps> = ({ pageTitle, children, description, keywords }) => {
   const router = useRouter();
   const isHeaderSkew = router.pathname !== "/";
 
@@ -30,6 +32,8 @@ const Layout: FC<LayoutProps> = ({ pageTitle, children }) => {
     <>
       <Head>
         <title>{pageTitle}</title>
+        <meta name={description} />
+        <meta name="keywords" content={keywords} />
       </Head>
       <S.PageRoot>
         <Header isHeaderSkew={isHeaderSkew} />

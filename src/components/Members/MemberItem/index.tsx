@@ -1,5 +1,8 @@
 import { VFC } from "react";
 import Image from "next/image";
+import { ArrowRightIcon } from "src/assets/icons";
+import AppLink from "src/components/common/AppLink";
+import Button from "src/components/common/Button";
 import { IMember } from "src/interfaces/members";
 import * as S from "src/styles/components/GridItem/GridItem.styled";
 import { Col } from "src/styles/grid";
@@ -48,6 +51,13 @@ const MemberItem: VFC<IMemberItemProps> = ({ member }) => {
               <S.GridItemListItemTitle>{member?.location}</S.GridItemListItemTitle>
             </S.GridItemListItem>
           </S.GridItemList>
+          <S.GridItemFooter>
+            <Button type="button" variant="link">
+              <AppLink endIcon={<ArrowRightIcon />} variant="button" href={`members/${member?.slug}`}>
+                Read more
+              </AppLink>
+            </Button>
+          </S.GridItemFooter>
         </S.GridItemWrapper>
       </S.GridItem>
     </Col>

@@ -1,5 +1,6 @@
 import { VFC } from "react";
 import axios, { AxiosResponse } from "axios";
+import { GetServerSideProps } from "next";
 import PageTitle from "src/components/common/PageTitleDecorator/PageTitle";
 import Layout from "src/components/Layout";
 import MemberItem from "src/components/Members/MemberItem";
@@ -16,7 +17,7 @@ const Members: VFC<IMembers> = ({ members }) => {
       <GridTemplate>
         <div>
           <Row className="row">
-            {!members.length && <H4 className="h4">Sorry no members yet</H4>}
+            {!members.length || (!members && <H4 className="h4">Sorry no members yet</H4>)}
             {members.map((member) => {
               return <MemberItem key={member.id} member={member} />;
             })}
@@ -27,16 +28,24 @@ const Members: VFC<IMembers> = ({ members }) => {
   );
 };
 
-export async function getStaticProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const res = await axios.get<AxiosResponse<IMember[]>>(`${API_URL}/members`);
   const members = res.data;
+
+  if (!members) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
       members,
     },
-    revalidate: 1,
   };
-}
+};
 
 export default Members;
