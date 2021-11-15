@@ -45,7 +45,7 @@ const LoginForm: FC = () => {
       });
       setLoading(false);
       if (res) {
-        // router.replace("/profile");
+        router.replace("/profile");
       }
     } catch (err) {
       console.log(err);

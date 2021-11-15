@@ -1,12 +1,20 @@
 import { FC, useEffect } from "react";
 import { AppProps } from "next/app";
+import dynamic from "next/dynamic";
 import Head from "next/head";
+import "nprogress/nprogress.css";
 import { ThemeProvider } from "styled-components";
 import ReduxProvider from "src/store/ReduxProvider";
 import { GlobalStyle } from "src/styles/Global";
 import { theme } from "src/theme/theme";
 
-const MyApp: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
+const TopProgressBar = dynamic(
+  () => {
+    return import("src/components/common/NextProgressBar");
+  },
+  { ssr: false }
+);
+const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -28,10 +36,11 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
       <ReduxProvider>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
+          <TopProgressBar />
           <Component {...pageProps} />
         </ThemeProvider>
       </ReduxProvider>
     </>
   );
 };
-export default MyApp;
+export default App;

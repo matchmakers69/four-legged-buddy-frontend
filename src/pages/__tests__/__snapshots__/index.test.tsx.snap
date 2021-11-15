@@ -2,80 +2,59 @@
 
 exports[`<Home /> sholud create a snapshot 1`] = `
 <div
-  className="Layoutstyled__PageRoot-sc-4y9azy-0 lbPmvq"
+  className="Layoutstyled__PageRoot-sc-4y9azy-0 hPkiKL"
 >
   <header
     data-testid="header"
   />
   <main>
-    <header
-      className="stage stage-home"
+    <div
+      className="HomeIntrostyled__SectionHomeIntro-sc-1qf9m4w-0 fUQVv stage-top"
     >
       <div
-        className="HomeIntrostyled__SectionHomeIntro-sc-1qf9m4w-0 dqgUro stage-top"
+        className="grid__Container-sc-d4fn36-1 fRjlRx container-1"
       >
         <div
-          className="grid__Container-sc-d4fn36-1 AfdPi container-1"
+          className="HomeIntrostyled__IntroTextWrapper-sc-1qf9m4w-1 cOAiQK"
         >
           <div
-            className="HomeIntrostyled__IntroTextWrapper-sc-1qf9m4w-1 fARcDO"
+            data-testid="page-wrapper"
           >
+            <h1
+              className="MuiTypography-root typography__H1-sc-xr9g5q-0 jAuTlg h1 bold m-30-bottom MuiTypography-h1"
+            >
+              <span
+                className="title-paragraph"
+              >
+                Welcome to
+              </span>
+               
+              <span
+                className="title-paragraph"
+              >
+                4leggedbuddy
+              </span>
+            </h1>
             <p
-              className="PageTitleDecoratorstyled__PageTopline-sc-89778e-0 kZYBTx"
+              className="MuiTypography-root typography__Paragraph-sc-xr9g5q-3 klqAOk p m-15-top bold MuiTypography-body1"
             >
-              About the app
+              We try to connect dog owners with trusted local people who would love to look after their dog. We make it easy to arrange walks, playtime, overnight stays or holidays. Our aim is to help dog owners when they need it, give dogs more exercise and playtime and to allow people without a dog to spend quality time with one. We call it a win-win (or a woof-­woof) situation for everyone involved.
             </p>
-            <div
-              data-testid="page-wrapper"
-            >
-              <h1
-                className="MuiTypography-root typography__H1-sc-xr9g5q-0 hlcNGQ h1 bold MuiTypography-h1"
-              >
-                <span
-                  className="title-paragraph"
-                >
-                  Welcome to
-                </span>
-                 
-                <span
-                  className="title-paragraph"
-                >
-                  4leggedbuddy
-                </span>
-              </h1>
-              <p
-                className="MuiTypography-root typography__Paragraph-sc-xr9g5q-1 eHmLRQ p m-15-top bold MuiTypography-body1"
-              >
-                We try to connect dog owners with trusted local people who would love to look after their dog. We make it easy to arrange walks, playtime, overnight stays or holidays. Our aim is to help dog owners when they need it, give dogs more exercise and playtime and to allow people without a dog to spend quality time with one. We call it a win-win (or a woof-­woof) situation for everyone involved.
-              </p>
-            </div>
           </div>
         </div>
       </div>
-    </header>
+    </div>
   </main>
   <footer
-    className="Footerstyled__Footer-sc-1bb7f11-0 biyaKu contacts"
+    className="Footerstyled__Footer-sc-1bb7f11-0 dhrBbg contacts"
   >
     <div
-      className="Footerstyled__FooterContent-sc-1bb7f11-1 hXWcCQ"
+      className="Footerstyled__FooterContent-sc-1bb7f11-1 kCFVeW"
     >
-      <div
-        className="grid__ContainerNarrow-sc-d4fn36-0 eUFLBH"
-      >
-        <div
-          className="MuiGrid-root grid__Row-sc-d4fn36-2 iMfnKR row MuiGrid-container"
-        >
-          <div
-            className="MuiGrid-root grid__Col-sc-d4fn36-3 cFWiln MuiGrid-item MuiGrid-grid-xs-12"
-          >
-            <p>
-              © Przemek Lewtak 
-              2021
-            </p>
-          </div>
-        </div>
-      </div>
+      <p>
+        © Przemek Lewtak 
+        2021
+      </p>
     </div>
   </footer>
 </div>

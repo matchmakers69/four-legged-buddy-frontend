@@ -1,7 +1,6 @@
 import { VFC } from "react";
 import axios, { AxiosResponse } from "axios";
 import { GetServerSideProps } from "next";
-import PageTitle from "src/components/common/PageTitleDecorator/PageTitle";
 import Layout from "src/components/Layout";
 import MemberItem from "src/components/Members/MemberItem";
 import { API_URL } from "src/config";
