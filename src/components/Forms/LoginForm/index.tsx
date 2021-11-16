@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import Button from "src/components/common/Button";
 import FormGroup from "src/components/common/FormElement/FormGroup";
 import InputText from "src/components/common/FormElement/InputText";
+import ErrorSubmissionMessage from "src/components/common/InputErrorMessage";
 import { useAppSelector } from "src/HOOKS/useCustomReduxSelector";
 import { loginSchema } from "src/lib/validation/loginFormValidation";
 import { getUser } from "src/store/auth/slice";
@@ -88,7 +89,7 @@ const LoginForm: FC = function () {
           </Button>
         </FormGroup>
       </S.Form>
-      {error && <p>{error}</p>}
+      {error && <ErrorSubmissionMessage>{error}</ErrorSubmissionMessage>}
     </div>
   );
 };

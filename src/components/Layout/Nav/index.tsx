@@ -27,14 +27,14 @@ const Nav: FC = function () {
         })}
         <S.NavListItem>
           <Button type="button" variant="link">
-            <AppLink endIcon={<ArrowRightIcon />} variant="button" href={REGISTER}>
+            <AppLink endIcon={<ArrowRightIcon className="icon-link" />} variant="button" href={REGISTER}>
               Register
             </AppLink>
           </Button>
         </S.NavListItem>
         <S.NavListItem>
           <Button type="button" variant="link">
-            <AppLink endIcon={<ArrowRightIcon />} variant="button" href={LOGIN}>
+            <AppLink endIcon={<ArrowRightIcon className="icon-link" />} variant="button" href={LOGIN}>
               Login
             </AppLink>
           </Button>
