@@ -1,6 +1,10 @@
-import { FC } from "react";
+import { VFC, ReactNode } from "react";
 
-const HeroHeaderIcon: FC = ({ children }) => {
+interface IProps {
+  children: ReactNode;
+}
+
+const HeroHeaderIcon: VFC<IProps> = function ({ children }) {
   return <>{children}</>;
 };
 

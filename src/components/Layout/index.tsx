@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { VFC, useEffect, ReactNode } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Footer from "src/components/Layout/Footer";
@@ -9,9 +9,10 @@ interface LayoutProps {
   pageTitle: string;
   description?: string;
   keywords?: string;
+  children: ReactNode;
 }
 
-const Layout: FC<LayoutProps> = ({ pageTitle, children, description, keywords }) => {
+const Layout: VFC<LayoutProps> = function ({ pageTitle, children, description, keywords }) {
   const router = useRouter();
   const isHeaderSkew = router.pathname !== "/";
 

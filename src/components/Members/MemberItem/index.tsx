@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ArrowRightIcon } from "src/assets/icons";
 import AppLink from "src/components/common/AppLink";
 import Button from "src/components/common/Button";
-import { IMember } from "src/interfaces/members";
+import { IMember } from "src/interface/members";
 import * as S from "src/styles/components/GridItem/GridItem.styled";
 import { Col } from "src/styles/grid";
 import { H2 } from "src/styles/typography";
@@ -12,7 +12,7 @@ type IMemberItemProps = {
   member: IMember;
 };
 
-const MemberItem: VFC<IMemberItemProps> = ({ member }) => {
+const MemberItem: VFC<IMemberItemProps> = function ({ member }) {
   console.log(member);
   return (
     <Col data-testid="page-wrapper" xs={4}>

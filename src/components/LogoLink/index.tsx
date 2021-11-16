@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { VFC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Logo } from "./LogoLink.styled";
@@ -8,7 +8,7 @@ type LogoLinkProps = {
   height: number;
 };
 
-const LogoLink: FC<LogoLinkProps> = ({ width, height }) => {
+const LogoLink: VFC<LogoLinkProps> = function ({ width, height }) {
   return (
     <>
       <Link passHref href="/">

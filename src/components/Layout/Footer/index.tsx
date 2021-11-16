@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { VFC } from "react";
 import * as S from "./Footer.styled";
 
-const Footer: FC = () => {
+const Footer: VFC = function () {
   return (
     <S.Footer className="contacts">
       <S.FooterContent>

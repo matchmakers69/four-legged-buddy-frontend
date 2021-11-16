@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { VFC } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import Button from "src/components/common/Button";
@@ -14,7 +14,7 @@ type ContactFormSubmit = {
   message: string;
 };
 
-const ContactForm: FC = () => {
+const ContactForm: VFC = function () {
   const {
     register,
     handleSubmit,

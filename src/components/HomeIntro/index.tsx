@@ -1,8 +1,12 @@
-import { FC } from "react";
+import { VFC, ReactNode } from "react";
 import { Container } from "src/styles/grid";
 import * as S from "./HomeIntro.styled";
 
-const HomeIntro: FC = ({ children }) => {
+interface IProps {
+  children: ReactNode;
+}
+
+const HomeIntro: VFC<IProps> = function ({ children }) {
   return (
     <S.SectionHomeIntro className="stage-top">
       <Container className="container-1">
