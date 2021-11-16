@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { NEXT_URL } from "src/config";
 import { IUser } from "../interface/user";
 
@@ -52,5 +52,20 @@ export const getUser =
       dispatch(hasError(data.message));
     }
   };
+
+export const checkUserLoggedIn = createAsyncThunk("user/checkUserLoggedIn", async () => {
+  try {
+    const res = await fetch(`${NEXT_URL}/api/user`);
+
+    console.log(res);
+    const data = await res.json();
+  } catch (err) {
+    if (!err.response) {
+      throw err;
+    }
+
+    // return rejectWithValue(err.response.data)
+  }
+});
 
 export default userSlice.reducer;

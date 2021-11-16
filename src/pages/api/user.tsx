@@ -6,16 +6,16 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
   if (req.method === "GET") {
     // Check if cookie exist
     if (!req.headers.cookie) {
-      res.status(403).json({ message: "Not Authorized" });
+      res.status(403).json({ message: "User is not Authorized" });
       return;
     }
 
     // Else parse cookie here
-    const { token } = parseCookies();
+    const parsedCookies = parseCookies({ req });
     const strapiRes = await fetch(`${API_URL}/users/me`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${parsedCookies?.jwt}`,
       },
     });
 
