@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import Button from "src/components/common/Button";
+import ErrorSubmissionMessage from "src/components/common/ErrorSubmissionMessage";
 import FormGroup from "src/components/common/FormElement/FormGroup";
 import InputText from "src/components/common/FormElement/InputText";
-import ErrorSubmissionMessage from "src/components/common/InputErrorMessage";
 import { useAppSelector } from "src/HOOKS/useCustomReduxSelector";
 import { loginSchema } from "src/lib/validation/loginFormValidation";
 import { getUser } from "src/store/auth/slice";
@@ -49,7 +49,7 @@ const LoginForm: FC = function () {
         password,
       })
     );
-    router.push("/profile");
+    router.push("/dashboard");
   };
 
   if (loading) {

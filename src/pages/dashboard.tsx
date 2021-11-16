@@ -17,15 +17,15 @@ type Props = {
   user: IUser;
 };
 
-const Profile: VFC<Props> = function ({ user }) {
+const Dashboard: VFC<Props> = function ({ user }) {
   const router = useRouter();
   const { email, username } = user;
 
   return (
-    <Layout pageTitle="Profile">
+    <Layout pageTitle="Dashboard">
       <GridTemplate>
         <Col data-testid="page-wrapper" xs={12}>
-          <H1 className="h1">Profile</H1>
+          <H1 className="h1">Dashboard</H1>
           <div>Username: {username}</div>
           <div>Email: {email}</div>
         </Col>
@@ -63,4 +63,4 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-export default Profile;
+export default Dashboard;

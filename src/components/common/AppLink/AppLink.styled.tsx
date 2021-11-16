@@ -63,7 +63,7 @@ export const StyledLink = styled.a`
       z-index: 4;
     }
     .icon-link {
-      width: 14px;
+      width: 20px;
       height: 14px;
       display: flex;
       justify-content: column;
