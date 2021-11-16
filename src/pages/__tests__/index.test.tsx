@@ -8,7 +8,9 @@ import Home from "..";
 jest.mock("next/router", () => require("next-router-mock"));
 
 jest.mock("src/components/Layout/Header", () => {
-  return () => <header data-testid="header" />;
+  return function () {
+    return <header data-testid="header" />;
+  };
 });
 
 describe("<Home />", () => {

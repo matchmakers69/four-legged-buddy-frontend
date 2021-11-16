@@ -1,19 +1,19 @@
 import { VFC, useEffect } from "react";
 import { AppProps } from "next/app";
-import dynamic from "next/dynamic";
 import Head from "next/head";
-import "nprogress/nprogress.css";
+import Router from "next/router";
+import NProgress from "nprogress"; // nprogress module
 import { ThemeProvider } from "styled-components";
 import ReduxProvider from "src/store/ReduxProvider";
 import { GlobalStyle } from "src/styles/Global";
 import { theme } from "src/theme/theme";
+import "nprogress/nprogress.css"; // styles of nprogress
 
-const TopProgressBar = dynamic(
-  () => {
-    return import("src/components/common/NextProgressBar");
-  },
-  { ssr: false }
-);
+// Binding events.
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
+
 const App: VFC<AppProps> = function ({ Component, pageProps }: AppProps) {
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -36,7 +36,7 @@ const App: VFC<AppProps> = function ({ Component, pageProps }: AppProps) {
       <ReduxProvider>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <TopProgressBar />
+          {/* <TopProgressBar /> */}
           <Component {...pageProps} />
         </ThemeProvider>
       </ReduxProvider>
