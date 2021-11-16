@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { ArrowRightIcon } from "src/assets/icons";
 import AppLink from "src/components/common/AppLink";
 import Button from "src/components/common/Button";
+import DropDownAccountMenu from "src/components/DropDownAccountMenu";
 import constants from "src/constants";
 import { routes } from "src/routes";
 import * as S from "./Nav.styled";
@@ -10,7 +11,7 @@ import { linksMapper } from "./service/navLinksMapper";
 
 const { REGISTER, LOGIN } = constants.routes;
 
-const Nav: FC = () => {
+const Nav: FC = function () {
   const router = useRouter();
   return (
     <S.NavContainer>
@@ -39,6 +40,7 @@ const Nav: FC = () => {
           </Button>
         </S.NavListItem>
       </S.NavList>
+      <DropDownAccountMenu />
     </S.NavContainer>
   );
 };

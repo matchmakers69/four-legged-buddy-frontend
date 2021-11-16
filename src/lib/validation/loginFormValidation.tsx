@@ -6,7 +6,7 @@ const MIN_USERNAME_LENGTH = 5;
 const USERNAME_NO_SPACES_PATTERN = /^\S{2,}$/;
 
 export const loginSchema = yup.object().shape({
-  identifier: yup
+  email: yup
     .string()
     .required(errorMessages.username.required)
     .min(MIN_USERNAME_LENGTH, errorMessages.username.pattern)

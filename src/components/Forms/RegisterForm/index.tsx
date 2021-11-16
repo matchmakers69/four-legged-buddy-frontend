@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -15,7 +15,7 @@ type RegisterFormSubmit = {
   password: string;
 };
 
-const RegisterForm: FC = () => {
+const RegisterForm: FC = function () {
   const [loading, setLoading] = useState(false);
   const {
     register,

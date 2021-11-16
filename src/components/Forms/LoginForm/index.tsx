@@ -1,28 +1,32 @@
-import { FC, useState } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import axios from "axios";
+import { FC, useEffect } from "react";
+import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import Button from "src/components/common/Button";
 import FormGroup from "src/components/common/FormElement/FormGroup";
 import InputText from "src/components/common/FormElement/InputText";
+import { useAppSelector } from "src/HOOKS/useCustomReduxSelector";
 import { loginSchema } from "src/lib/validation/loginFormValidation";
+import { getUser } from "src/store/auth/slice";
 import * as S from "styles/components/Form";
 
 type LoginFormSubmit = {
-  identifier: string;
+  email: string;
   password: string;
 };
 
-const LoginForm: FC = () => {
-  const [loading, setLoading] = useState(false);
+const LoginForm: FC = function () {
+  const { loading, error } = useAppSelector((state) => state.users);
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<LoginFormSubmit>({
-    mode: "onSubmit",
+    mode: "onChange",
     resolver: yupResolver(loginSchema),
   });
 
@@ -31,42 +35,37 @@ const LoginForm: FC = () => {
   const onLoginSubmit = async (data: LoginFormSubmit): Promise<void> => {
     setTimeout(() => {
       reset({
-        identifier: "",
+        email: "",
         password: "",
       });
     }, 300);
-    setLoading(true);
-    const { identifier, password } = data;
 
-    try {
-      const res = await axios.post("/api/login", {
-        identifier,
+    const { email, password } = data;
+    // Toolkit action here
+    await dispatch(
+      getUser({
+        email,
         password,
-      });
-      setLoading(false);
-      if (res) {
-        router.replace("/profile");
-      }
-    } catch (err) {
-      console.log(err);
-      setLoading(false);
-    }
+      })
+    );
+    router.push("/profile");
   };
 
   if (loading) {
     return <span>Loading...</span>;
   }
+
   return (
     <div className="contact-form">
       <S.Form onSubmit={handleSubmit(onLoginSubmit)}>
         <FormGroup>
           <InputText
-            id="identifier"
+            id="email"
             type="text"
             label="What's your username"
             register={register}
             placeholder="Type your username"
-            name="identifier"
+            name="email"
             errors={errors}
           />
         </FormGroup>
@@ -84,11 +83,12 @@ const LoginForm: FC = () => {
         </FormGroup>
 
         <FormGroup>
-          <Button className="btn--submit" type="submit" variant="danger">
+          <Button disable={!isValid} className="btn--submit" type="submit" variant="danger">
             Send
           </Button>
         </FormGroup>
       </S.Form>
+      {error && <p>{error}</p>}
     </div>
   );
 };

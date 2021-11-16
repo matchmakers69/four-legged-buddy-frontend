@@ -17,7 +17,7 @@ type Props = {
   user: IUser;
 };
 
-const Profile: VFC<Props> = ({ user }) => {
+const Profile: VFC<Props> = function ({ user }) {
   const router = useRouter();
   const { email, username } = user;
 
@@ -44,7 +44,6 @@ export const getServerSideProps = async (ctx) => {
           Authorization: `Bearer ${cookies.jwt}`,
         },
       });
-      console.log(data);
       user = data;
     } catch (e) {
       console.log(e);
@@ -55,7 +54,7 @@ export const getServerSideProps = async (ctx) => {
     return {
       redirect: {
         permanent: false,
-        destination: "/",
+        destination: "/login",
       },
     };
   }

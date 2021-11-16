@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const uiSlice = createSlice({
-  name: "profile",
+  name: "dropdown",
   initialState,
   reducers: {
     toggleIsVisible: (state) => {

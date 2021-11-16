@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const NavContainer = styled.nav`
-  text-align: right;
+  align-items: center;
+  justify-content: flex-end;
   padding-left: 4rem;
-  display: block;
+  display: flex;
   transition: all 0.3s 0.1s;
 `;
 

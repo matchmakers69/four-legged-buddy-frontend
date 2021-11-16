@@ -5,7 +5,7 @@ export const MenuSwitcherWrapper = styled.div`
   margin-left: 10px;
 `;
 
-export const LanguageList = styled.ul`
+export const DropDownList = styled.ul`
   top: 100%;
   position: absolute;
   z-index: 10;

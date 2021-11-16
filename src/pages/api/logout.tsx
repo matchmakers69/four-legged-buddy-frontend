@@ -3,7 +3,7 @@ import { destroyCookie } from "nookies";
 
 const logout = async (req: unknown, res: NextApiResponse) => {
   destroyCookie({ res }, "jwt", {
-    path: "/",
+    path: "/login",
   });
 
   res.status(200).end();

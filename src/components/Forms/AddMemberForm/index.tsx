@@ -1,10 +1,13 @@
 import { VFC, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Button from "src/components/common/Button";
 import FormGroup from "src/components/common/FormElement/FormGroup";
 import InputText from "src/components/common/FormElement/InputText";
 import TextArea from "src/components/common/FormElement/TextArea";
+import { API_URL } from "src/config";
 import { addMemberValidationSchema } from "src/lib/validation/addMemberValidation";
 import * as S from "styles/components/Form";
 import { AddMemberFormContainer } from "./AddMemberForm.styled";
@@ -15,7 +18,7 @@ type AddMemberFormType = {
   intro: string;
 };
 
-const AddMemberForm: VFC = () => {
+const AddMemberForm: VFC = function () {
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -36,20 +39,23 @@ const AddMemberForm: VFC = () => {
       });
     }, 300);
     setLoading(true);
-
-    // try {
-    //   const res = await axios.post("/api/login", {
-    //     identifier,
-    //     password,
-    //   });
-    //   setLoading(false);
-    //   if (res) {
-    //     router.replace("/profile");
-    //   }
-    // } catch (err) {
-    //   console.log(err);
-    //   setLoading(false);
-    // }
+    try {
+      const res = await fetch(`${API_URL}/members`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        toast.error("Something went wrong");
+      }
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+    }
   };
 
   return (
@@ -88,8 +94,8 @@ const AddMemberForm: VFC = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Button className="btn--submit" type="submit" variant="danger">
-            Submit member
+          <Button disable={!isValid} className="btn--submit" type="submit" variant="danger">
+            Create member
           </Button>
         </FormGroup>
       </S.Form>

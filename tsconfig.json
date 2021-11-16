@@ -9,19 +9,16 @@
       "styles/*": ["src/styles/*"],
       "config/*": ["src/config/*"]
     },
-
     /* Project */
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "sourceMap": true,
-
     /* Imports */
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-
     /* Additional */
     "strict": true,
     "useUnknownInCatchVariables": false,
@@ -31,10 +28,10 @@
     "typeRoots": ["./src/types", "./node_modules/@types"],
     "noImplicitAny": false, // read more
     "noImplicitReturns": false, // read more
-
     /* Advanced Options */
     "skipLibCheck": true /* Skip type checking of declaration files. */,
-    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
+    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
+    "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next-i18next.config.js", "next.config.js"],
   "exclude": ["node_modules", "dist", "coverage", ".next"],

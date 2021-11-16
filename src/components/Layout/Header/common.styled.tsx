@@ -22,6 +22,31 @@ export const Header = styled.header<HeaderProps>`
   width: 100%;
   z-index: 100;
   pointer-events: none;
+
+  &.header-page {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5rem;
+    margin-bottom: 8rem;
+    min-height: 7rem;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: ${({ theme }) => theme.colors.shapeColor};
+    &:after {
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-image: url("/media/svg/skew-shape.svg");
+      background-position: center center;
+      height: 5vw;
+      bottom: -5vw;
+      ${SharedStyles};
+      z-index: 2;
+      left: 0;
+    }
+  }
 `;
 
 export const HeaderNav = styled.div`
@@ -43,6 +68,16 @@ export const HeaderNav = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
   }
+
+  &.header-navbar-skew {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 2.5rem 0 2rem 0;
+    margin-left: auto;
+  }
 `;
 
 export const HeaderTitle = styled.div`
@@ -56,31 +91,6 @@ export const HeaderMenu = styled.div`
   width: 100%;
   height: 100%;
   justify-content: flex-end;
-`;
-
-export const SkewHeader = styled.header`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 5rem;
-  margin-bottom: 8rem;
-  min-height: 7rem;
-  width: 100%;
-  left: 0;
-  top: 0;
-  background-color: ${({ theme }) => theme.colors.shapeColor};
-  &:after {
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-image: url("/media/svg/skew-shape.svg");
-    background-position: center center;
-    height: 5vw;
-    bottom: -5vw;
-    ${SharedStyles};
-    z-index: 2;
-    left: 0;
-  }
 `;
 
 export const LogoSkewHeaderwrapper = styled.div`
@@ -101,14 +111,4 @@ export const LogoSkewHeaderwrapperInner = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-`;
-
-export const SkewHeaderNavbar = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  padding: 2.5rem 0 2rem 0;
-  margin-left: auto;
 `;
