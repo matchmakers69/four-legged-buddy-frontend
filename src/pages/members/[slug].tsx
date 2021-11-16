@@ -6,7 +6,7 @@ import Button from "src/components/common/Button";
 import AddMemberForm from "src/components/Forms/AddMemberForm";
 import Layout from "src/components/Layout";
 import { API_URL } from "src/config";
-import { IMember } from "src/interfaces/members";
+import { IMember } from "src/interface/members";
 import { Col } from "src/styles/grid";
 import { H1 } from "src/styles/typography";
 import GridTemplate from "src/templatetes/GridTemplate";
@@ -19,7 +19,7 @@ interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
-const Member: VFC<IMemberProps> = ({ member }) => {
+const Member: VFC<IMemberProps> = function ({ member }) {
   const [isInView, setIsInView] = useState(false);
 
   const toggleAddMemberForm = (): void => {

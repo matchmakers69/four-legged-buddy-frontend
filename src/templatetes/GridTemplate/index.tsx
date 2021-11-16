@@ -1,11 +1,11 @@
-import { FC, ReactNode } from "react";
+import { VFC, ReactNode } from "react";
 import { Container } from "src/styles/grid";
 
 interface IProps {
   children: ReactNode;
 }
 
-const GridTemplate: FC<IProps> = ({ children }) => {
+const GridTemplate: VFC<IProps> = function ({ children }) {
   return <Container>{children}</Container>;
 };
 

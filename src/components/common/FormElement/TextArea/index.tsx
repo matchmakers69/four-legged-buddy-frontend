@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { VFC } from "react";
 import cx from "classnames";
 import { useForm } from "react-hook-form";
 import InputErrorMessage from "src/components/common/InputErrorMessage";
@@ -13,7 +13,7 @@ interface TextAreaProps {
   errors?: any;
 }
 
-const TextArea: FC<TextAreaProps> = ({ label = "", name, register, placeholder, id, errors = {} }) => {
+const TextArea: VFC<TextAreaProps> = function ({ label = "", name, register, placeholder, id, errors = {} }) {
   return (
     <>
       {label && <S.Label htmlFor={name}>{label}</S.Label>}

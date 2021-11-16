@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { VFC } from "react";
 import RegisterForm from "src/components/Forms/RegisterForm";
 import Layout from "src/components/Layout";
 import { Col } from "src/styles/grid";
 import { H1 } from "src/styles/typography";
 import GridTemplate from "src/templatetes/GridTemplate";
 
-const Register: FC = () => {
+const Register: VFC = function () {
   return (
     <Layout pageTitle="Register">
       <GridTemplate>

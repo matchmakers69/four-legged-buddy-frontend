@@ -1,11 +1,11 @@
-import { VFC, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import { ErrorMessage } from "./InputErrorMessage.styled";
 
 interface IProps {
   children: ReactNode;
 }
 
-const InputErrorMessage: VFC<IProps> = ({ children }) => {
+const InputErrorMessage: FC<IProps> = function ({ children }) {
   return (
     <>
       <ErrorMessage className="invalid-feedback" role="alert">

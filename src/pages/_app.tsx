@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { VFC, useEffect } from "react";
 import { AppProps } from "next/app";
 import dynamic from "next/dynamic";
 import Head from "next/head";
@@ -14,7 +14,7 @@ const TopProgressBar = dynamic(
   },
   { ssr: false }
 );
-const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
+const App: VFC<AppProps> = function ({ Component, pageProps }: AppProps) {
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");

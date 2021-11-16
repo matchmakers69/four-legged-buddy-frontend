@@ -1,9 +1,9 @@
-import { VFC } from "react";
+import { FC } from "react";
 import HomeIntro from "src/components/HomeIntro";
 import Layout from "src/components/Layout";
 import { H1, Paragraph } from "src/styles/typography";
 
-const Home: VFC = () => {
+const Home: FC = function () {
   return (
     <Layout pageTitle="Home page">
       <HomeIntro>
