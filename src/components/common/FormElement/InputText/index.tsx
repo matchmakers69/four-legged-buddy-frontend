@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { VFC } from "react";
 import cx from "classnames";
 import { useForm } from "react-hook-form";
 import InputErrorMessage from "src/components/common/InputErrorMessage";
@@ -14,7 +14,7 @@ interface InputProps {
   errors?: any;
 }
 
-const InputText: FC<InputProps> = ({ type, label = "", name, register, placeholder, id, errors = {} }) => {
+const InputText: VFC<InputProps> = function ({ type, label = "", name, register, placeholder, id, errors = {} }) {
   return (
     <>
       {label && <S.Label htmlFor={name}>{label}</S.Label>}

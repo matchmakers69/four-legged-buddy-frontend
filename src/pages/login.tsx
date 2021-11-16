@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { VFC } from "react";
 import LoginForm from "src/components/Forms/LoginForm";
 import Layout from "src/components/Layout";
 import { Col } from "src/styles/grid";
 import { H1 } from "src/styles/typography";
 import GridTemplate from "src/templatetes/GridTemplate";
 
-const Login: FC = () => {
+const Login: VFC = function () {
   return (
     <Layout pageTitle="Login">
       <GridTemplate>

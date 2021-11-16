@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { VFC, ReactNode } from "react";
 import cx from "classnames";
 import { SpinnerIcon } from "src/assets/icons";
 import * as S from "./Button.styled";
@@ -15,7 +15,7 @@ interface IButtonProps {
   btnIcon?: ReactNode;
 }
 
-const Button: FC<IButtonProps> = ({
+const Button: VFC<IButtonProps> = function ({
   disable = false,
   onClick = () => null,
   type,
@@ -25,7 +25,7 @@ const Button: FC<IButtonProps> = ({
   className = "",
   children,
   btnIcon: btnIconProp,
-}) => {
+}) {
   const buttonClasses = cx("btn", `btn--${variant}`, className, {
     "w-full justify-center": fullWidth,
   });
