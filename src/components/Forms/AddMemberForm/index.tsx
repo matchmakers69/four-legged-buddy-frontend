@@ -94,7 +94,7 @@ const AddMemberForm: VFC = function () {
           />
         </FormGroup>
         <FormGroup>
-          <Button disable={!isValid} className="btn--submit" type="submit" variant="danger">
+          <Button disable={!isValid} className="btn--submit" type="submit" variant="filled">
             Create member
           </Button>
         </FormGroup>

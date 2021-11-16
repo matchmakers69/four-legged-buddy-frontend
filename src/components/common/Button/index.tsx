@@ -27,7 +27,7 @@ const Button: VFC<IButtonProps> = function ({
   btnIcon: btnIconProp,
 }) {
   const buttonClasses = cx("btn", `btn--${variant}`, className, {
-    "w-full justify-center": fullWidth,
+    "w-full": fullWidth,
   });
 
   const btnIcon = btnIconProp && <span className="btn-icon-wrapper">{btnIconProp}</span>;

@@ -3,9 +3,9 @@ import styled, { css } from "styled-components";
 const commonInputStyles = css`
   background-color: ${({ theme }) => theme.colors.powderWhite};
   border-radius: 0;
-  height: 4.5rem;
+  height: 6rem;
   border: 4px solid ${({ theme }) => theme.colors.titleGreen};
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   color: ${({ theme }) => theme.colors.titleGreen};
   font-size: ${({ theme }) => theme.fontSizes.xs};
 `;

@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { ArrowRightIcon } from "src/assets/icons";
 import AppLink from "src/components/common/AppLink";
 import Button from "src/components/common/Button";
-import DropDownAccountMenu from "src/components/DropDownAccountMenu";
 import constants from "src/constants";
 import { routes } from "src/routes";
 import * as S from "./Nav.styled";
@@ -40,7 +39,6 @@ const Nav: FC = function () {
           </Button>
         </S.NavListItem>
       </S.NavList>
-      <DropDownAccountMenu />
     </S.NavContainer>
   );
 };

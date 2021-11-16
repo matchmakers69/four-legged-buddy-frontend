@@ -6,7 +6,7 @@ export const Button = styled.button`
   box-shadow: none;
   text-shadow: none;
   border-radius: 0;
-  height: 40px;
+  height: 4.5rem;
   padding: 1.5rem 1.6rem;
   margin: 0;
   display: inline-flex;
@@ -30,6 +30,23 @@ export const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.titleGreen};
     color: ${({ theme }) => theme.colors.powderWhite};
     border: 4px solid ${({ theme }) => theme.colors.titleGreen};
+  }
+
+  &.btn--logout {
+    background-color: ${({ theme }) => theme.colors.titleGreen};
+    color: ${({ theme }) => theme.colors.powderWhite};
+    border: 4px solid ${({ theme }) => theme.colors.titleGreen};
+  }
+
+  &.btn--login {
+    background-color: ${({ theme }) => theme.colors.powderWhite};
+    color: ${({ theme }) => theme.colors.titleGreen};
+    border: 4px solid ${({ theme }) => theme.colors.titleGreen};
+  }
+
+  &.w-full {
+    min-width: 100%;
+    width: 100%;
   }
 
   &.btn--link {

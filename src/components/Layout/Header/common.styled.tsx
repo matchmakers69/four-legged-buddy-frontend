@@ -64,6 +64,7 @@ export const HeaderNav = styled.div`
     padding: 0 5rem;
     position: relative;
     align-items: center;
+    width: 100%;
     height: 10rem;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -71,13 +72,19 @@ export const HeaderNav = styled.div`
 
   &.header-navbar-skew {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    width: 100%;
     height: 100%;
     padding: 2.5rem 0 2rem 0;
-    margin-left: auto;
+    justify-content: space-between;
   }
+`;
+
+export const HeaderRight = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: auto;
 `;
 
 export const HeaderTitle = styled.div`

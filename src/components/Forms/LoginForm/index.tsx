@@ -84,7 +84,7 @@ const LoginForm: FC = function () {
         </FormGroup>
 
         <FormGroup>
-          <Button disable={!isValid} className="btn--submit" type="submit" variant="danger">
+          <Button disable={!isValid} className="btn--submit" type="submit" variant="filled">
             Send
           </Button>
         </FormGroup>

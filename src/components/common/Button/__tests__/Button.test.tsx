@@ -16,7 +16,7 @@ describe("<Button />", () => {
       renderer
         .create(
           <StyledThemeProvider theme={theme}>
-            <Button variant="danger" onClick={() => undefined} type="button">
+            <Button variant="filled" onClick={() => undefined} type="button">
               {children}
             </Button>
           </StyledThemeProvider>
@@ -27,7 +27,7 @@ describe("<Button />", () => {
   it("should render Button component", () => {
     const { getByTestId } = render(
       <StyledThemeProvider theme={theme}>
-        <Button variant="danger" onClick={() => undefined} type="button">
+        <Button variant="filled" onClick={() => undefined} type="button">
           {children}
         </Button>
       </StyledThemeProvider>

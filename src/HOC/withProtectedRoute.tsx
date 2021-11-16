@@ -7,7 +7,6 @@ const withProtectedRoute = (gssp) => {
   return (context) => {
     const { req } = context;
     const parsedCookies = parseCookies({ req });
-    console.log(context, "parsedCookies");
     const { jwt } = parsedCookies;
 
     if (!jwt) {

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import cx from "classnames";
+import DropDownAccountMenu from "src/components/DropDownAccountMenu";
 import Nav from "src/components/Layout/Nav";
 import LogoLink from "src/components/LogoLink";
 import * as S from "./common.styled";
@@ -24,7 +25,10 @@ const Header: FC<IHeaderProps> = function ({ isHeaderSkew }) {
           </S.LogoHeaderwrapper>
         )}
 
-        <Nav />
+        <S.HeaderRight className={`header-right ${isHeaderSkew ? "header-right-skew" : "header-right-navbar"}`}>
+          <Nav />
+          <DropDownAccountMenu />
+        </S.HeaderRight>
       </S.HeaderNav>
     </S.Header>
   );

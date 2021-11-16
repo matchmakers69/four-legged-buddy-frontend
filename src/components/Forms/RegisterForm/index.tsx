@@ -97,7 +97,7 @@ const RegisterForm: FC = function () {
         </FormGroup>
 
         <FormGroup>
-          <Button disable={isDisabled} className="btn--submit" type="submit" variant="danger">
+          <Button disable={isDisabled} className="btn--submit" type="submit" variant="filled">
             Send
           </Button>
         </FormGroup>
