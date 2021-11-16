@@ -53,7 +53,11 @@ const MemberItem: VFC<IMemberItemProps> = function ({ member }) {
           </S.GridItemList>
           <S.GridItemFooter>
             <Button type="button" variant="link">
-              <AppLink endIcon={<ArrowRightIcon />} variant="button" href={`members/${member?.slug}`}>
+              <AppLink
+                endIcon={<ArrowRightIcon className="icon-link" />}
+                variant="button"
+                href={`members/${member?.slug}`}
+              >
                 Read more
               </AppLink>
             </Button>
