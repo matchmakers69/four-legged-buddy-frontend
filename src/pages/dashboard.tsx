@@ -1,6 +1,5 @@
 import { VFC } from "react";
 import axios from "axios";
-import { useRouter } from "next/router";
 import nookies from "nookies";
 import Layout from "src/components/Layout";
 import { API_URL } from "src/config";
@@ -18,7 +17,6 @@ type Props = {
 };
 
 const Dashboard: VFC<Props> = function ({ user }) {
-  const router = useRouter();
   const { email, username } = user;
 
   return (

@@ -4,6 +4,7 @@ import Head from "next/head";
 import Router from "next/router";
 import NProgress from "nprogress"; // nprogress module
 import { ThemeProvider } from "styled-components";
+import AppLoader from "src/components/AppLoader";
 import ReduxProvider from "src/store/ReduxProvider";
 import { GlobalStyle } from "src/styles/Global";
 import { theme } from "src/theme/theme";
@@ -36,8 +37,9 @@ const App: VFC<AppProps> = function ({ Component, pageProps }: AppProps) {
       <ReduxProvider>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          {/* <TopProgressBar /> */}
-          <Component {...pageProps} />
+          <AppLoader>
+            <Component {...pageProps} />
+          </AppLoader>
         </ThemeProvider>
       </ReduxProvider>
     </>
