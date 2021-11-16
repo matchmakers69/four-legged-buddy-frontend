@@ -4,13 +4,12 @@ import { GetServerSideProps } from "next";
 import Layout from "src/components/Layout";
 import MemberItem from "src/components/Members/MemberItem";
 import { API_URL } from "src/config";
-import { IMember } from "src/interfaces/members";
-import { IMembers } from "src/interfaces/members";
+import { IMember, IMembers } from "src/interface/members";
 import { Row } from "src/styles/grid";
 import { H4 } from "src/styles/typography";
 import GridTemplate from "src/templatetes/GridTemplate";
 
-const Members: VFC<IMembers> = ({ members }) => {
+const Members: VFC<IMembers> = function ({ members }) {
   return (
     <Layout pageTitle="Members">
       <GridTemplate>
