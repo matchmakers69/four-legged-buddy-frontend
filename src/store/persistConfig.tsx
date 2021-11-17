@@ -15,7 +15,7 @@ const rootPersistConfig = {
 const userPersistConfig = {
   key: "user",
   storage,
-  whitelist: ["user"],
+  whitelist: ["user", "isAuthenticated"],
 };
 
 const rootReducer = combineReducers({

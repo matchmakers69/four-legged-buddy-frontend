@@ -23,6 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
           httpOnly: true,
           secure: process.env.NODE_ENV !== "development",
           maxAge: 30 * 24 * 60 * 60,
+          sameSite: "strict",
           path: "/",
         });
 

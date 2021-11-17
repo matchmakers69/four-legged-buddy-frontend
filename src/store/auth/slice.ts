@@ -1,6 +1,8 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+/* eslint-disable @typescript-eslint/no-empty-function */
+import { createSlice } from "@reduxjs/toolkit";
 import { NEXT_URL } from "src/config";
 import { IUser } from "../interface/user";
+import { logout } from "./actions";
 
 const initialState: IUser = {
   user: null,
@@ -27,6 +29,21 @@ export const userSlice = createSlice({
       state.isAuthenticated = true;
     },
   },
+  extraReducers: (builder) =>
+    builder
+      .addCase(logout.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.user = null;
+        state.isAuthenticated = false;
+        state.loading = false;
+      })
+      .addCase(logout.rejected, (state) => {
+        state.loading = false;
+      })
+
+      .addDefaultCase(() => {}),
 });
 
 const { usersSuccess, startLoading, hasError } = userSlice.actions;
@@ -54,20 +71,5 @@ export const getUser =
       dispatch(hasError(data.message));
     }
   };
-
-export const checkUserLoggedIn = createAsyncThunk("user/checkUserLoggedIn", async () => {
-  try {
-    const res = await fetch(`${NEXT_URL}/api/user`);
-
-    console.log(res);
-    const data = await res.json();
-  } catch (err) {
-    if (!err.response) {
-      throw err;
-    }
-
-    // return rejectWithValue(err.response.data)
-  }
-});
 
 export default userSlice.reducer;

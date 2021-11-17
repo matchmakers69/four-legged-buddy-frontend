@@ -1,20 +1,33 @@
 import { FC, useState } from "react";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 import { UserIcon, CarretDown, CarretUp } from "src/assets/icons";
 import Button from "src/components/common/Button";
 import constants from "src/constants";
+import { useAppSelector } from "src/HOOKS/useCustomReduxSelector";
+import { logout } from "src/store/auth/actions";
 import * as S from "./DropDownAccountMenu.styled";
 
 const { LOGIN } = constants.routes;
 
 const DropDownAccountMenu: FC = function () {
   const [isVisible, setIsVisible] = useState(false);
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useAppSelector((state) => state.users);
   const router = useRouter();
   const handleRedirectToLoginPage = () => {
     router.push(LOGIN);
   };
   const toggleDropDownAccountList = () => {
     setIsVisible(!isVisible);
+  };
+
+  const logoutUser = async () => {
+    try {
+      await dispatch(logout());
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -33,22 +46,25 @@ const DropDownAccountMenu: FC = function () {
           <S.AccountDetailsTitle>User&apos;s Account</S.AccountDetailsTitle>
           <S.DropDownList>ff</S.DropDownList>
           <S.DropDownButtonList>
-            <li className="list-button-item">
-              <Button
-                onClick={handleRedirectToLoginPage}
-                fullWidth
-                className="btn--login"
-                type="button"
-                variant="filled"
-              >
-                Login
-              </Button>
-            </li>
-            <li className="list-button-item">
-              <Button fullWidth className="btn--logout" type="button" variant="filled">
-                Logout
-              </Button>
-            </li>
+            {isAuthenticated ? (
+              <li className="list-button-item">
+                <Button onClick={logoutUser} fullWidth className="btn--logout" type="button" variant="filled">
+                  Logout
+                </Button>
+              </li>
+            ) : (
+              <li className="list-button-item">
+                <Button
+                  onClick={handleRedirectToLoginPage}
+                  fullWidth
+                  className="btn--login"
+                  type="button"
+                  variant="filled"
+                >
+                  Login
+                </Button>
+              </li>
+            )}
           </S.DropDownButtonList>
         </S.DropDownNavInner>
       </S.DrowDownNav>
