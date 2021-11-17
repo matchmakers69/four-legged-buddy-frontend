@@ -1,9 +1,20 @@
+import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 
 const sharedIconStyles = css`
   width: 100%;
   height: 100%;
 `;
+
+const variants = {
+  visible: { opacity: 1, y: 0, visibility: "visible", transition: { duration: 0.4 } },
+  hidden: {
+    opacity: 0,
+    y: -500,
+    visibility: "hidden",
+    transition: { duration: 0.25 },
+  },
+};
 
 export const MenuSwitcherWrapper = styled.div`
   position: relative;
@@ -48,17 +59,21 @@ export const ArrowDownWrapper = styled.span`
   display: block;
   width: 1.2rem;
   height: 1.2rem;
-  .arrow-down {
+  .arrow-icon {
     ${sharedIconStyles}
   }
 `;
 
-export const DrowDownNav = styled.nav`
+export const DrowDownNav = styled(motion.nav).attrs(() => ({
+  initial: "hidden",
+  variants,
+}))`
   position: absolute;
   top: calc(100% + 20px);
   right: 0;
   z-index: 10;
   padding: 2.5rem 2.5rem 2.5rem;
+
   &:before {
     display: block;
     position: absolute;

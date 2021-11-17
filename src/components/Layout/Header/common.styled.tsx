@@ -85,6 +85,8 @@ export const HeaderRight = styled.div`
   justify-content: flex-end;
   align-items: center;
   margin-left: auto;
+  position: relative;
+  z-index: 15;
 `;
 
 export const HeaderTitle = styled.div`

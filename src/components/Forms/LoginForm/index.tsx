@@ -7,10 +7,13 @@ import Button from "src/components/common/Button";
 import ErrorSubmissionMessage from "src/components/common/ErrorSubmissionMessage";
 import FormGroup from "src/components/common/FormElement/FormGroup";
 import InputText from "src/components/common/FormElement/InputText";
+import constants from "src/constants";
 import { useAppSelector } from "src/HOOKS/useCustomReduxSelector";
 import { loginSchema } from "src/lib/validation/loginFormValidation";
 import { getUser } from "src/store/auth/slice";
 import * as S from "styles/components/Form";
+
+const { DASHBOARD } = constants.routes;
 
 type LoginFormSubmit = {
   email: string;
@@ -49,7 +52,7 @@ const LoginForm: FC = function () {
         password,
       })
     );
-    router.push("/dashboard");
+    router.push(DASHBOARD);
   };
 
   if (loading) {
