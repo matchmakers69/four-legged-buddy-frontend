@@ -1,25 +1,22 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
 import { UserIcon, CarretDown, CarretUp } from "src/assets/icons";
 import Button from "src/components/common/Button";
 import constants from "src/constants";
-import { useAppSelector } from "src/HOOKS/useCustomReduxSelector";
-import { toggleIsVisible } from "src/store/ui/ui.reducer";
 import * as S from "./DropDownAccountMenu.styled";
 
 const { LOGIN } = constants.routes;
 
 const DropDownAccountMenu: FC = function () {
-  const { isVisible } = useAppSelector((state) => state.ui);
-  const dispatch = useDispatch();
+  const [isVisible, setIsVisible] = useState(false);
   const router = useRouter();
   const handleRedirectToLoginPage = () => {
     router.push(LOGIN);
   };
   const toggleDropDownAccountList = () => {
-    dispatch(toggleIsVisible());
+    setIsVisible(!isVisible);
   };
+
   return (
     <S.MenuSwitcherWrapper>
       <S.BtnAccountDropDown title="User Account" onClick={toggleDropDownAccountList}>

@@ -42,6 +42,7 @@ export const GlobalStyle = createGlobalStyle<IGlobalProps>`
     margin:0;
   }
 
+
   figure {
     display: block;
     padding: 0;
@@ -57,4 +58,17 @@ export const GlobalStyle = createGlobalStyle<IGlobalProps>`
   .bold {
     font-weight: ${({ theme }) => theme.weight.bold};
   }
+
+  #nprogress .bar {
+  height:3px;
+}
+
+#nprogress .bar {
+  background: ${({ theme }) => theme.colors.titleGreen};
+}
+
+#nprogress .spinner-icon {
+  border-top-color: blue;
+  border-left-color: blue;
+}
 `;

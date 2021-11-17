@@ -6,6 +6,7 @@ const initialState: IUser = {
   user: null,
   loading: false,
   error: null,
+  isAuthenticated: false,
 };
 
 export const userSlice = createSlice({
@@ -23,6 +24,7 @@ export const userSlice = createSlice({
       state.user = action.payload;
       state.error = null;
       state.loading = false;
+      state.isAuthenticated = true;
     },
   },
 });

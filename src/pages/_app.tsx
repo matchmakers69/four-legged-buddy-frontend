@@ -10,11 +10,6 @@ import { GlobalStyle } from "src/styles/Global";
 import { theme } from "src/theme/theme";
 import "nprogress/nprogress.css"; // styles of nprogress
 
-// Binding events.
-Router.events.on("routeChangeStart", () => NProgress.start());
-Router.events.on("routeChangeComplete", () => NProgress.done());
-Router.events.on("routeChangeError", () => NProgress.done());
-
 const App: VFC<AppProps> = function ({ Component, pageProps }: AppProps) {
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -22,6 +17,19 @@ const App: VFC<AppProps> = function ({ Component, pageProps }: AppProps) {
     if (jssStyles) {
       jssStyles?.parentElement?.removeChild(jssStyles);
     }
+
+    Router.events.on("routeChangeStart", () => {
+      // dispatch here to switch of visible to close pop-up
+      NProgress.start();
+    });
+
+    Router.events.on("routeChangeComplete", () => {
+      NProgress.done();
+    });
+
+    Router.events.on("routeChangeError", () => {
+      NProgress.done();
+    });
   }, []);
 
   return (
