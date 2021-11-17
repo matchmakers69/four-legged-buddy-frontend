@@ -14,7 +14,12 @@ import GridTemplate from "src/templatetes/GridTemplate";
 
 const { HOME } = constants.routes;
 
-const Members: VFC<IMembers> = function ({ members, errorCode }) {
+type IMembersProps = {
+  members: IMember[];
+  errorCode: number;
+};
+
+const Members: VFC<IMembersProps> = function ({ members, errorCode }) {
   if (errorCode) {
     return <Error statusCode={errorCode} />;
   }
