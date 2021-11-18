@@ -28,7 +28,12 @@ module.exports = {
   },
   rules: {
     "@typescript-eslint/no-unused-vars": ["off", { args: "all", argsIgnorePattern: "^_" }],
-    "react-hooks/exhaustive-deps": 1,
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        additionalHooks: "(useApi)",
+      },
+    ],
     "func-names": "off",
     "react/jsx-no-useless-fragment": "off",
     "@typescript-eslint/ban-types": [
