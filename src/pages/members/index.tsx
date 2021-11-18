@@ -7,7 +7,7 @@ import MemberItem from "src/components/Members/MemberItem";
 import { API_URL } from "src/config";
 import constants from "src/constants";
 import withProtectedRoute from "src/HOC/withProtectedRoute";
-import { IMember, IMembers } from "src/interface/members";
+import { IMember } from "src/interface/members";
 import { Row } from "src/styles/grid";
 import { H4 } from "src/styles/typography";
 import GridTemplate from "src/templatetes/GridTemplate";
