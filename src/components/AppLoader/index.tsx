@@ -22,7 +22,7 @@ const AppLoader: VFC<IAppLoader> = function ({ children }) {
     if (!cookies.jwt) {
       logoutUser();
     }
-  }, []);
+  }, [cookies.jwt, dispatch]);
   return <>{children}</>;
 };
 
