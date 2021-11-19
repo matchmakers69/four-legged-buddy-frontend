@@ -58,9 +58,9 @@ const LoginForm: FC = function () {
       });
   };
 
-  if (loading) {
-    return <span>Loading...</span>;
-  }
+  // if (loading) {
+  //   return <span>Loading...</span>;
+  // }
 
   return (
     <div className="contact-form">
@@ -90,7 +90,7 @@ const LoginForm: FC = function () {
         </FormGroup>
 
         <FormGroup>
-          <Button disable={!isValid} className="btn--submit" type="submit" variant="filled">
+          <Button loading={loading} disable={!isValid} className="btn--submit" type="submit" variant="filled">
             Send
           </Button>
         </FormGroup>

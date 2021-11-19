@@ -59,16 +59,37 @@ export const GlobalStyle = createGlobalStyle<IGlobalProps>`
     font-weight: ${({ theme }) => theme.weight.bold};
   }
 
+  @keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+}
+
+  .animate-spin {
+    width: 14px;
+    height: 14px;
+    animation: spin 1s linear infinite;
+  }
+
   #nprogress .bar {
-  height:3px;
-}
+    height:3px;
+  }
 
-#nprogress .bar {
-  background: ${({ theme }) => theme.colors.titleGreen};
-}
+  #nprogress .bar {
+    background: ${({ theme }) => theme.colors.titleGreen};
+  }
 
-#nprogress .spinner-icon {
-  border-top-color: blue;
-  border-left-color: blue;
-}
+  #nprogress .spinner-icon {
+    border-top-color: ${({ theme }) => theme.colors.titleGreen};
+    border-left-color: ${({ theme }) => theme.colors.titleGreen};
+  }
 `;

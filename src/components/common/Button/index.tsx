@@ -33,7 +33,11 @@ const Button: VFC<IButtonProps> = function ({
   const btnIcon = btnIconProp && <span className="btn-icon-wrapper">{btnIconProp}</span>;
   return (
     <S.Button className={buttonClasses} type={type} disabled={disable} onClick={onClick} data-testid="button">
-      {loading && <SpinnerIcon className="animate-spin" />}
+      {loading && (
+        <span className="spinner-icon-wrapper">
+          <SpinnerIcon className="animate-spin" />
+        </span>
+      )}
       {btnIcon}
       {children}
     </S.Button>
