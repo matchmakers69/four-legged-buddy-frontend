@@ -1,19 +1,19 @@
 import { FC, useState } from "react";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
 import { UserIcon, CarretDown, CarretUp } from "src/assets/icons";
 import Button from "src/components/common/Button";
 import constants from "src/constants";
 import { useAppSelector } from "src/HOOKS/useCustomReduxSelector";
 import { logout } from "src/store/auth/actions";
+import { useAppThunkDispatch } from "src/store/store";
 import * as S from "./DropDownAccountMenu.styled";
 
 const { LOGIN } = constants.routes;
 
 const DropDownAccountMenu: FC = function () {
   const [isVisible, setIsVisible] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useAppThunkDispatch();
   const { isAuthenticated } = useAppSelector((state) => state.users);
   const router = useRouter();
   const handleRedirectToLoginPage = () => {
@@ -23,13 +23,14 @@ const DropDownAccountMenu: FC = function () {
     setIsVisible(!isVisible);
   };
 
-  const logoutUser = async () => {
+  const logoutUser = () => {
     dispatch(logout())
       .then(unwrapResult)
       .then(() => {
         router.push("/login");
       })
       .catch((error) => {
+        // toastify here
         console.log(error);
       });
   };
