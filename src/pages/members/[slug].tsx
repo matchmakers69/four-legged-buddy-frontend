@@ -1,6 +1,9 @@
 import { ParsedUrlQuery } from "querystring";
 import { VFC, useState } from "react";
-import { GetStaticProps, GetServerSideProps } from "next";
+import axios from "axios";
+import { GetServerSideProps } from "next";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Button from "src/components/common/Button";
 import AddMemberForm from "src/components/Forms/AddMemberForm";
 import Layout from "src/components/Layout";
@@ -25,7 +28,7 @@ const Member: VFC<IMemberProps> = function ({ member }) {
   const toggleAddMemberForm = (): void => {
     setIsInView(true);
   };
-  console.log(member);
+
   return (
     <Layout pageTitle="Member">
       <GridTemplate>
@@ -35,27 +38,12 @@ const Member: VFC<IMemberProps> = function ({ member }) {
             <span className="button-text">Add new member</span>
           </Button>
           {isInView && <AddMemberForm />}
+          <ToastContainer />
         </Col>
       </GridTemplate>
     </Layout>
   );
 };
-
-// export const getStaticPaths = async () => {
-//   try {
-//     const res = await axios.get<IMember[]>(`${API_URL}/members`);
-//     const paths = res.data.map(({ slug }) => ({
-//       params: { slug },
-//     }));
-
-//     return {
-//       paths,
-//       fallback: true,
-//     };
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
 
 export const getServerSideProps: GetServerSideProps = withProtectedRoute(async (context) => {
   const { slug } = context.params as IParams;

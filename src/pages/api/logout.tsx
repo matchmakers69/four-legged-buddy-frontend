@@ -7,7 +7,7 @@ const { LOGIN } = constants.routes;
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   if (req.method === "POST") {
     // Destroy cookies
-    setCookie({ res }, "jwt", "", {
+    setCookie({ res }, "token", "", {
       httpOnly: true,
       secure: process.env.NODE_ENV !== "development",
       expires: new Date(0),

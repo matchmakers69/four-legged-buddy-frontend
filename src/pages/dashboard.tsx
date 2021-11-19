@@ -35,11 +35,11 @@ const Dashboard: VFC<Props> = function ({ user }) {
 export const getServerSideProps = async (ctx) => {
   const cookies = nookies.get(ctx);
   let user = null;
-  if (cookies?.jwt) {
+  if (cookies?.token) {
     try {
       const { data } = await axios.get(`${API_URL}/users/me`, {
         headers: {
-          Authorization: `Bearer ${cookies.jwt}`,
+          Authorization: `Bearer ${cookies.token}`,
         },
       });
       user = data;

@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import { createSlice } from "@reduxjs/toolkit";
-import { NEXT_URL } from "src/config";
 import { IUser } from "../interface/user";
-import { logout } from "./actions";
+import { logout, login } from "./actions";
 
 const initialState: IUser = {
   user: null,
@@ -11,26 +9,26 @@ const initialState: IUser = {
   isAuthenticated: false,
 };
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {
-    startLoading: (state) => {
-      state.loading = true;
-    },
-    hasError: (state, action) => {
-      state.error = action.payload;
-      state.loading = false;
-    },
-    usersSuccess: (state, action) => {
-      state.user = action.payload;
-      state.error = null;
-      state.loading = false;
-      state.isAuthenticated = true;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) =>
     builder
+      .addCase(login.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.error = null;
+        state.loading = false;
+        state.isAuthenticated = true;
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+
       .addCase(logout.pending, (state) => {
         state.loading = true;
       })
@@ -41,35 +39,7 @@ export const userSlice = createSlice({
       })
       .addCase(logout.rejected, (state) => {
         state.loading = false;
-      })
-
-      .addDefaultCase(() => {}),
-});
-
-const { usersSuccess, startLoading, hasError } = userSlice.actions;
-
-export const getUser =
-  ({ email: identifier, password }) =>
-  async (dispatch) => {
-    dispatch(startLoading());
-
-    const res = await fetch(`${NEXT_URL}/api/login`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        identifier,
-        password,
       }),
-    });
-    const data = await res.json();
-    if (res.ok) {
-      dispatch(usersSuccess(data.user));
-    } else {
-      dispatch(hasError(data.message));
-    }
-  };
+});
 
 export default userSlice.reducer;

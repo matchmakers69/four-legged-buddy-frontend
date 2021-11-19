@@ -19,7 +19,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       });
       const data = await strapiRes.json();
       if (strapiRes.ok) {
-        setCookie({ res }, "jwt", data.jwt, {
+        setCookie({ res }, "token", data.jwt, {
           httpOnly: true,
           secure: process.env.NODE_ENV !== "development",
           maxAge: 30 * 24 * 60 * 60,

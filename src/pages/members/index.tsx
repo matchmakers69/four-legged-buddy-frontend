@@ -1,4 +1,4 @@
-import { VFC } from "react";
+import { VFC, useState } from "react";
 import axios, { AxiosResponse } from "axios";
 import { GetServerSideProps } from "next";
 import Error from "next/error";
@@ -20,6 +20,8 @@ type IMembersProps = {
 };
 
 const Members: VFC<IMembersProps> = function ({ members, errorCode }) {
+  const [newMembers] = useState(members);
+  console.log(newMembers);
   if (errorCode) {
     return <Error statusCode={errorCode} />;
   }

@@ -7,9 +7,9 @@ const withProtectedRoute = (gssp) => {
   return (context) => {
     const { req } = context;
     const parsedCookies = parseCookies({ req });
-    const { jwt } = parsedCookies;
+    const { token } = parsedCookies;
 
-    if (!jwt) {
+    if (!token) {
       return {
         redirect: {
           destination: LOGIN,

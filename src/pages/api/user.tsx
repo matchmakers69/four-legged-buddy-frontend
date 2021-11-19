@@ -15,7 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
     const strapiRes = await fetch(`${API_URL}/users/me`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${parsedCookies?.jwt}`,
+        Authorization: `Bearer ${parsedCookies?.token}`,
       },
     });
 

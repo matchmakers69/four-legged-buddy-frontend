@@ -13,7 +13,6 @@ type IMemberItemProps = {
 };
 
 const MemberItem: VFC<IMemberItemProps> = function ({ member }) {
-  console.log(member);
   return (
     <Col data-testid="page-wrapper" xs={4}>
       <S.GridItem>

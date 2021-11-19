@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { unwrapResult } from "@reduxjs/toolkit";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { UserIcon, CarretDown, CarretUp } from "src/assets/icons";
@@ -23,11 +24,14 @@ const DropDownAccountMenu: FC = function () {
   };
 
   const logoutUser = async () => {
-    try {
-      await dispatch(logout());
-    } catch (err) {
-      console.log(err);
-    }
+    dispatch(logout())
+      .then(unwrapResult)
+      .then(() => {
+        router.push("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

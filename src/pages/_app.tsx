@@ -2,6 +2,7 @@ import { VFC, useEffect } from "react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import Router from "next/router";
+import nookies from "nookies";
 import NProgress from "nprogress"; // nprogress module
 import { ThemeProvider } from "styled-components";
 import AppLoader from "src/components/AppLoader";
@@ -53,4 +54,5 @@ const App: VFC<AppProps> = function ({ Component, pageProps }: AppProps) {
     </>
   );
 };
+
 export default App;

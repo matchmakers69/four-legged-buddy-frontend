@@ -1,4 +1,5 @@
 import { VFC, useEffect, ReactNode } from "react";
+import Cookies from "js-cookie";
 import { parseCookies } from "nookies";
 import { useDispatch } from "react-redux";
 import { logout } from "src/store/auth/actions";
@@ -8,21 +9,13 @@ interface IAppLoader {
 }
 
 const AppLoader: VFC<IAppLoader> = function ({ children }) {
-  const dispatch = useDispatch();
-
-  const cookies = parseCookies();
   useEffect(() => {
-    const logoutUser = async () => {
-      try {
-        await dispatch(logout());
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    if (!cookies.jwt) {
-      logoutUser();
+    async function loadUserFromCookies() {
+      const token = Cookies.get("token");
+      console.log(token);
     }
-  }, [cookies.jwt, dispatch]);
+    loadUserFromCookies();
+  }, []);
   return <>{children}</>;
 };
 

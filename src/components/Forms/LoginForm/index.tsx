@@ -1,8 +1,8 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+import { unwrapResult } from "@reduxjs/toolkit";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
 import Button from "src/components/common/Button";
 import ErrorSubmissionMessage from "src/components/common/ErrorSubmissionMessage";
 import FormGroup from "src/components/common/FormElement/FormGroup";
@@ -10,7 +10,8 @@ import InputText from "src/components/common/FormElement/InputText";
 import constants from "src/constants";
 import { useAppSelector } from "src/HOOKS/useCustomReduxSelector";
 import { loginSchema } from "src/lib/validation/loginFormValidation";
-import { getUser } from "src/store/auth/slice";
+import { login } from "src/store/auth/actions";
+import { useAppThunkDispatch } from "src/store/store";
 import * as S from "styles/components/Form";
 
 const { DASHBOARD } = constants.routes;
@@ -22,7 +23,7 @@ type LoginFormSubmit = {
 
 const LoginForm: FC = function () {
   const { loading, error } = useAppSelector((state) => state.users);
-  const dispatch = useDispatch();
+  const dispatch = useAppThunkDispatch();
 
   const {
     register,
@@ -36,7 +37,7 @@ const LoginForm: FC = function () {
 
   const router = useRouter();
 
-  const onLoginSubmit = async (data: LoginFormSubmit): Promise<void> => {
+  const onLoginSubmit = (data: LoginFormSubmit) => {
     setTimeout(() => {
       reset({
         email: "",
@@ -45,14 +46,16 @@ const LoginForm: FC = function () {
     }, 300);
 
     const { email, password } = data;
-    // Toolkit action here
-    await dispatch(
-      getUser({
-        email,
-        password,
+    const loginData = { email, password };
+
+    dispatch(login(loginData))
+      .then(unwrapResult)
+      .then(() => {
+        return router.push(DASHBOARD);
       })
-    );
-    router.push(DASHBOARD);
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   if (loading) {

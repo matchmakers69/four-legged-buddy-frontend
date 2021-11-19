@@ -22,7 +22,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       });
       const registerResponse = await login.json();
 
-      setCookie({ res }, "jwt", registerResponse.jwt, {
+      setCookie({ res }, "token", registerResponse.token, {
         httpOnly: true,
         secure: process.env.NODE_ENV !== "development",
         maxAge: 30 * 24 * 60 * 60,
