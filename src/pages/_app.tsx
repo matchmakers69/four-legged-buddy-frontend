@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import App from "next/app";
-import type { AppProps as NextAppProps, AppContext } from "next/app";
+import type { AppProps, AppContext } from "next/app";
 import Head from "next/head";
 import Router from "next/router";
 import NProgress from "nprogress"; // nprogress module
@@ -10,10 +10,6 @@ import ReduxProvider from "src/store/ReduxProvider";
 import { GlobalStyle } from "src/styles/Global";
 import { theme } from "src/theme/theme";
 import "nprogress/nprogress.css"; // styles of nprogress
-
-type AppProps<P = any> = {
-  pageProps: P;
-} & Omit<NextAppProps<P>, "pageProps">;
 
 const MyApp = function ({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -66,7 +62,6 @@ const MyApp = function ({ Component, pageProps }: AppProps) {
 MyApp.getInitialProps = async (appContext: AppContext) => {
   // calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext);
-  console.log(appProps);
 
   return { ...appProps };
 };
