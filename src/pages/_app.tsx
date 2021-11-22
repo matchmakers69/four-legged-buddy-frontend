@@ -9,6 +9,7 @@ import AppLoader from "src/components/AppLoader";
 import ReduxProvider from "src/store/ReduxProvider";
 import { GlobalStyle } from "src/styles/Global";
 import { theme } from "src/theme/theme";
+import { parseCookies } from "src/utils/helpers";
 import "nprogress/nprogress.css"; // styles of nprogress
 
 const MyApp = function ({ Component, pageProps }: AppProps) {
@@ -53,17 +54,13 @@ const MyApp = function ({ Component, pageProps }: AppProps) {
   );
 };
 
-// Only uncomment this method if you have blocking data requirements for
-// every single page in your application. This disables the ability to
-// perform automatic static optimization, causing every page in your app to
-// be server-side rendered.
-//
-
 MyApp.getInitialProps = async (appContext: AppContext) => {
-  // calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext);
   const { ctx } = appContext;
-  console.log(ctx);
+  const { token } = parseCookies(ctx.req);
+  if (token) {
+    // fire here dispatch to clear store if possible
+  }
 
   return { ...appProps };
 };
