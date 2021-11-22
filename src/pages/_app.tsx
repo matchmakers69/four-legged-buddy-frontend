@@ -58,8 +58,8 @@ MyApp.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext);
   const { ctx } = appContext;
   const { token } = parseCookies(ctx.req);
-  if (token) {
-    // fire here dispatch to clear store if possible
+  if (token !== undefined) {
+    console.log(token, "token");
   }
 
   return { ...appProps };
