@@ -1,0 +1,23 @@
+// export const getUser =
+//   ({ email: identifier, password }) =>
+//   async (dispatch) => {
+//     dispatch(startLoading());
+
+//     const res = await fetch(`${NEXT_URL}/api/login`, {
+//       method: "POST",
+//       headers: {
+//         Accept: "application/json",
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         identifier,
+//         password,
+//       }),
+//     });
+//     const data = await res.json();
+//     if (res.ok) {
+//       dispatch(usersSuccess(data.user));
+//     } else {
+//       dispatch(hasError(data.message));
+//     }
+//   };

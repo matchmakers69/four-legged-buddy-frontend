@@ -1,5 +1,5 @@
+import cookie from "cookie";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { setCookie } from "nookies";
 import { API_URL } from "src/config";
 
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
@@ -19,13 +19,18 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       });
       const data = await strapiRes.json();
       if (strapiRes.ok) {
-        setCookie({ res }, "token", data.jwt, {
-          httpOnly: true,
-          secure: process.env.NODE_ENV !== "development",
-          maxAge: 30 * 24 * 60 * 60,
-          sameSite: "strict",
-          path: "/",
-        });
+        // Set cookie on server side
+        // data.jwt is coming from strapi
+        res.setHeader(
+          "Set-Cookie",
+          cookie.serialize("token", data.jwt, {
+            httpOnly: true, // for now
+            secure: process.env.NODE_ENV !== "development",
+            maxAge: 60 * 60 * 24 * 7, // 1 week
+            sameSite: "strict",
+            path: "/",
+          })
+        );
 
         res.status(200).json({
           user: data.user,

@@ -1,11 +1,11 @@
 import { VFC } from "react";
 import axios from "axios";
-import nookies from "nookies";
 import Layout from "src/components/Layout";
 import { API_URL } from "src/config";
 import { Col } from "src/styles/grid";
 import { H1 } from "src/styles/typography";
 import GridTemplate from "src/templatetes/GridTemplate";
+import { parseCookies } from "src/utils/helpers";
 
 interface IUser {
   email: string;
@@ -32,19 +32,20 @@ const Dashboard: VFC<Props> = function ({ user }) {
   );
 };
 
-export const getServerSideProps = async (ctx) => {
-  const cookies = nookies.get(ctx);
+export const getServerSideProps = async (context) => {
+  const { req } = context;
+  const { token } = parseCookies(req);
   let user = null;
-  if (cookies?.token) {
+  if (token) {
     try {
       const { data } = await axios.get(`${API_URL}/users/me`, {
         headers: {
-          Authorization: `Bearer ${cookies.token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       user = data;
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.log(err);
     }
   }
 

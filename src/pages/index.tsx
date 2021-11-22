@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { GetServerSideProps } from "next";
 import HomeIntro from "src/components/HomeIntro";
 import Layout from "src/components/Layout";
 import { H1, Paragraph } from "src/styles/typography";
@@ -21,6 +22,12 @@ const Home: FC = function () {
       </HomeIntro>
     </Layout>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  return {
+    props: {},
+  };
 };
 
 export default Home;

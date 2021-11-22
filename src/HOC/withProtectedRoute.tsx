@@ -1,13 +1,12 @@
-import { parseCookies } from "nookies";
 import constants from "src/constants";
+import { parseCookies } from "src/utils/helpers";
 
 const { LOGIN } = constants.routes;
 
-const withProtectedRoute = (gssp) => {
+const WithProtectedRoute = (gssp) => {
   return (context) => {
     const { req } = context;
-    const parsedCookies = parseCookies({ req });
-    const { token } = parsedCookies;
+    const { token } = parseCookies(req);
 
     if (!token) {
       return {
@@ -21,6 +20,4 @@ const withProtectedRoute = (gssp) => {
   };
 };
 
-withProtectedRoute.displayName = "withProtectedRoute";
-
-export default withProtectedRoute;
+export default WithProtectedRoute;

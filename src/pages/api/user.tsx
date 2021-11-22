@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { parseCookies } from "nookies";
 import { API_URL } from "src/config";
+import { parseCookies } from "src/utils/helpers";
 
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   if (req.method === "GET") {
@@ -11,11 +11,11 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
     }
 
     // Else parse cookie here
-    const parsedCookies = parseCookies({ req });
+    const { token } = parseCookies(req);
     const strapiRes = await fetch(`${API_URL}/users/me`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${parsedCookies?.token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -26,7 +26,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
       });
     } else {
       res.status(403).json({
-        message: "User forbidden",
+        message: "Sorry, user is forbidden",
       });
     }
   } else {

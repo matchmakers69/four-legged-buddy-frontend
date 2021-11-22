@@ -17,30 +17,6 @@ export const login = createAsyncThunk("user/login", async (payload: ILogin, { re
   }
 });
 
-// export const getUser =
-//   ({ email: identifier, password }) =>
-//   async (dispatch) => {
-//     dispatch(startLoading());
-
-//     const res = await fetch(`${NEXT_URL}/api/login`, {
-//       method: "POST",
-//       headers: {
-//         Accept: "application/json",
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({
-//         identifier,
-//         password,
-//       }),
-//     });
-//     const data = await res.json();
-//     if (res.ok) {
-//       dispatch(usersSuccess(data.user));
-//     } else {
-//       dispatch(hasError(data.message));
-//     }
-//   };
-
 export const logout = createAsyncThunk("user/logout", async (_, { rejectWithValue }) => {
   try {
     // Could be const res = await axios.post(`${NEXT_URL}/api/logout`);
@@ -49,5 +25,41 @@ export const logout = createAsyncThunk("user/logout", async (_, { rejectWithValu
     return null;
   } catch (error) {
     return rejectWithValue(error?.response?.data);
+  }
+});
+
+// export const isLoggedIn = () => async (dispatch) => {
+//   try {
+//     const res = await fetch(`${NEXT_URL}/api/user`);
+//     console.log(res);
+//     const data = await res.json();
+//     if (res.ok) {
+//       console.log("jest user");
+//     } else {
+//       console.log("brak users");
+//     }
+//     // const res = await axios.get(`${NEXT_URL}/api/user`);
+//     // return res.data.user;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+export const isLoggedIn = createAsyncThunk("user/isLoggedIn", async (thunkAPI, { rejectWithValue }) => {
+  try {
+    // const res = await fetch(`${NEXT_URL}/api/user`);
+    const res = await fetch(`${NEXT_URL}/api/user`);
+    const data = await res.json();
+    console.log(data, "data");
+    if (res.ok) {
+      console.log("jest user");
+    } else {
+      console.log("brak user");
+      console.log(thunkAPI.dispatch);
+    }
+
+    // const res = await axios.get(`${NEXT_URL}/api/user`);
+  } catch (err) {
+    return rejectWithValue(err?.response?.data);
   }
 });

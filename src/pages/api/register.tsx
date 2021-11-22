@@ -1,5 +1,5 @@
+import cookie from "cookie";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { setCookie } from "nookies";
 import { API_URL } from "src/config";
 
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
@@ -12,7 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
     };
 
     try {
-      const login = await fetch(`${API_URL}/auth/local/register`, {
+      const strapiRes = await fetch(`${API_URL}/auth/local/register`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -20,14 +20,18 @@ export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> 
         },
         body: JSON.stringify(registerData),
       });
-      const registerResponse = await login.json();
+      const data = await strapiRes.json();
 
-      setCookie({ res }, "token", registerResponse.token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV !== "development",
-        maxAge: 30 * 24 * 60 * 60,
-        path: "/",
-      });
+      res.setHeader(
+        "Set-Cookie",
+        cookie.serialize("token", data.jwt, {
+          httpOnly: true, // for now
+          secure: process.env.NODE_ENV !== "development",
+          maxAge: 60 * 60 * 24 * 7, // 1 week
+          sameSite: "strict",
+          path: "/",
+        })
+      );
 
       res.status(200).end();
     } catch (err) {
