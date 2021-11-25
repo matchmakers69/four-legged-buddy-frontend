@@ -21,7 +21,7 @@ const Home: FC = function () {
           </Paragraph>
         </div>
       </HomeIntro>
-      <Quiz />
+      {/* <Quiz /> */}
     </Layout>
   );
 };
