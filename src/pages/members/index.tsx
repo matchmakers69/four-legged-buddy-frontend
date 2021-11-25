@@ -17,6 +17,7 @@ const { HOME } = constants.routes;
 type IMembersProps = {
   members: IMember[];
   errorCode: number;
+  isCookieToken: boolean;
 };
 
 const Members: VFC<IMembersProps> = function ({ members, errorCode, isCookieToken }) {
