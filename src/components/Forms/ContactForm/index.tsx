@@ -40,7 +40,7 @@ const ContactForm: VFC = function () {
             register={register}
             placeholder="Full name"
             name="fullName"
-            errors={errors}
+            error={errors?.fullName}
           />
         </FormGroup>
 
@@ -52,7 +52,7 @@ const ContactForm: VFC = function () {
             register={register}
             placeholder="Your email"
             name="email"
-            errors={errors}
+            error={errors?.email}
           />
         </FormGroup>
 
@@ -63,7 +63,7 @@ const ContactForm: VFC = function () {
             register={register}
             placeholder="Your message"
             name="message"
-            errors={errors}
+            error={errors?.message}
           />
         </FormGroup>
 
