@@ -11,23 +11,23 @@ interface InputProps {
   label?: string;
   type: "text" | "email" | "number" | "password";
   register: ReturnType<typeof useForm>["register"];
-  errors?: any;
+  error: any;
 }
 
-const InputText: VFC<InputProps> = function ({ type, label = "", name, register, placeholder, id, errors = {} }) {
+const InputText: VFC<InputProps> = function ({ type, label = "", name, register, placeholder, id, error }) {
   return (
     <>
       {label && <S.Label htmlFor={name}>{label}</S.Label>}
 
       <S.Input
         id={id}
-        className={cx("form-control", errors[name] && "is-invalid")}
+        className={cx("form-control", error?.message && "is-invalid")}
         type={type}
         placeholder={placeholder}
         {...register(name)}
       />
-
-      {errors[name] && <InputErrorMessage>{errors[name]?.message}</InputErrorMessage>}
+      {error && <InputErrorMessage>{error?.message}</InputErrorMessage>}
+      {/* {error && <InputErrorMessage>{error?.[name]?.message}</InputErrorMessage>} */}
     </>
   );
 };

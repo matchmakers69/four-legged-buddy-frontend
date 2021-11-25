@@ -3,7 +3,11 @@ import cx from "classnames";
 import { SpinnerIcon } from "src/assets/icons";
 import * as S from "./Button.styled";
 
-interface IButtonProps {
+const defaultProps = {
+  variant: "",
+};
+
+type IButtonProps = {
   disable?: boolean;
   fullWidth?: boolean;
   variant?: string;
@@ -13,7 +17,7 @@ interface IButtonProps {
   children: ReactNode;
   loading?: boolean;
   btnIcon?: ReactNode;
-}
+} & typeof defaultProps; // intersekcja typu
 
 const Button: VFC<IButtonProps> = function ({
   disable = false,

@@ -1,20 +1,21 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useRouter } from "next/router";
 import { UserIcon, CarretDown, CarretUp } from "src/assets/icons";
 import Button from "src/components/common/Button";
 import constants from "src/constants";
+import { logout } from "src/features/auth/actions";
+import { useAppThunkDispatch } from "src/features/store";
 import { useAppSelector } from "src/HOOKS/useCustomReduxSelector";
-import { logout } from "src/store/auth/actions";
-import { useAppThunkDispatch } from "src/store/store";
 import * as S from "./DropDownAccountMenu.styled";
 
 const { LOGIN } = constants.routes;
 
 const DropDownAccountMenu: FC = function () {
   const [isVisible, setIsVisible] = useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(null);
   const dispatch = useAppThunkDispatch();
-  const { isAuthenticated } = useAppSelector((state) => state.users);
+  const { user } = useAppSelector((state) => state.auth);
   const router = useRouter();
   const handleRedirectToLoginPage = () => {
     router.push(LOGIN);
@@ -22,6 +23,10 @@ const DropDownAccountMenu: FC = function () {
   const toggleDropDownAccountList = () => {
     setIsVisible(!isVisible);
   };
+
+  useEffect(() => {
+    setIsUserLoggedIn(user);
+  }, [user]);
 
   const logoutUser = () => {
     dispatch(logout())
@@ -51,7 +56,7 @@ const DropDownAccountMenu: FC = function () {
           <S.AccountDetailsTitle>User&apos;s Account</S.AccountDetailsTitle>
           <S.DropDownList>ff</S.DropDownList>
           <S.DropDownButtonList>
-            {isAuthenticated ? (
+            {isUserLoggedIn ? (
               <li className="list-button-item">
                 <Button onClick={logoutUser} fullWidth className="btn--logout" type="button" variant="filled">
                   Logout

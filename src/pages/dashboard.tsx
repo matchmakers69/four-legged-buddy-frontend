@@ -23,7 +23,9 @@ const Dashboard: VFC<Props> = function ({ user }) {
     <Layout pageTitle="Dashboard">
       <GridTemplate>
         <Col data-testid="page-wrapper" xs={12}>
-          <H1 className="h1">Dashboard</H1>
+          <H1 className="h1 bold m-30-bottom">
+            <span className="title-paragraph">Dashboard</span>
+          </H1>
           <div>Username: {username}</div>
           <div>Email: {email}</div>
         </Col>

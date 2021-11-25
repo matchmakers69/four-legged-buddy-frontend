@@ -15,8 +15,7 @@ const WithProtectedRoute = (gssp) => {
         },
       };
     }
-
-    return gssp(context); // Continue on to call `getServerSideProps` logic
+    return gssp({ ...context, isCookieToken: token !== undefined }); // Continue on to call `getServerSideProps` logic
   };
 };
 

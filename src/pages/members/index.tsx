@@ -19,9 +19,9 @@ type IMembersProps = {
   errorCode: number;
 };
 
-const Members: VFC<IMembersProps> = function ({ members, errorCode }) {
+const Members: VFC<IMembersProps> = function ({ members, errorCode, isCookieToken }) {
   const [newMembers] = useState(members);
-  console.log(newMembers);
+
   if (errorCode) {
     return <Error statusCode={errorCode} />;
   }
@@ -41,7 +41,7 @@ const Members: VFC<IMembersProps> = function ({ members, errorCode }) {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = withProtectedRoute(async () => {
+export const getServerSideProps: GetServerSideProps = withProtectedRoute(async ({ isCookieToken }) => {
   try {
     const res = await axios.get<AxiosResponse<IMember[]>>(`${API_URL}/members`);
     const members = res.data;
@@ -58,6 +58,7 @@ export const getServerSideProps: GetServerSideProps = withProtectedRoute(async (
     return {
       props: {
         members,
+        isCookieToken,
       },
     };
   } catch (error) {

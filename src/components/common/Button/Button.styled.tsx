@@ -56,6 +56,12 @@ export const Button = styled.button`
     border: 4px solid ${({ theme }) => theme.colors.titleGreen};
   }
 
+  &.btn--danger {
+    background-color: ${({ theme }) => theme.colors.red};
+    color: ${({ theme }) => theme.colors.powderWhite};
+    border: 4px solid ${({ theme }) => theme.colors.red};
+  }
+
   &.btn--button {
     background-color: transparent;
     color: ${({ theme }) => theme.colors.titleGreen};

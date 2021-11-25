@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 const commonInputStyles = css`
   background-color: ${({ theme }) => theme.colors.powderWhite};
   border-radius: 0;
-  height: 6rem;
+  height: 5rem;
   border: 4px solid ${({ theme }) => theme.colors.titleGreen};
   padding: 1rem;
   color: ${({ theme }) => theme.colors.titleGreen};
@@ -28,11 +28,11 @@ export const Input = styled.input`
 
   ::placeholder,
   ::-webkit-input-placeholder {
-    color: ${({ theme }) => theme.colors.titleGreen};
+    color: rgba(69, 43, 120, 0.3);
     font-size: ${({ theme }) => theme.fontSizes.xs};
   }
   :-ms-input-placeholder {
-    color: ${({ theme }) => theme.colors.titleGreen};
+    color: rgba(69, 43, 120, 0.3);
     font-size: ${({ theme }) => theme.fontSizes.xs};
   }
 `;
@@ -51,11 +51,11 @@ export const TextArea = styled.textarea`
 
   ::placeholder,
   ::-webkit-input-placeholder {
-    color: ${({ theme }) => theme.colors.titleGreen};
+    color: rgba(69, 43, 120, 0.3);
     font-size: ${({ theme }) => theme.fontSizes.xs};
   }
   :-ms-input-placeholder {
-    color: ${({ theme }) => theme.colors.titleGreen};
+    color: rgba(69, 43, 120, 0.3);
     font-size: ${({ theme }) => theme.fontSizes.xs};
   }
 `;

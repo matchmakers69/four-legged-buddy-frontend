@@ -28,12 +28,8 @@ module.exports = {
   },
   rules: {
     "@typescript-eslint/no-unused-vars": ["off", { args: "all", argsIgnorePattern: "^_" }],
-    "react-hooks/exhaustive-deps": [
-      "warn",
-      {
-        additionalHooks: "(useApi)",
-      },
-    ],
+    "react-hooks/exhaustive-deps": 2,
+    "react-hooks/rules-of-hooks": 2,
     "func-names": "off",
     "react/jsx-no-useless-fragment": "off",
     "@typescript-eslint/ban-types": [
@@ -97,6 +93,12 @@ module.exports = {
     "import/extensions": "off",
     "import/no-named-as-default": 0,
     "import/no-duplicates": "off",
+    "import/no-import-module-exports": [
+      "warn",
+      {
+        exceptions: ["**/*/some-file.js"],
+      },
+    ],
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": [
       "warn",
@@ -148,7 +150,9 @@ module.exports = {
       version: "detect", // Tells eslint-plugin-react to automatically detect the version of React to use
     },
     "import/resolver": {
-      // use <root>/tsconfig.json
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      },
       typescript: {
         project: ".",
       },

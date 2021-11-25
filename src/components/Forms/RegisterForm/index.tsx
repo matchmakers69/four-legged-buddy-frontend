@@ -68,7 +68,7 @@ const RegisterForm: FC = function () {
             register={register}
             placeholder="Type your username"
             name="username"
-            errors={errors}
+            error={errors?.username}
           />
         </FormGroup>
 
@@ -80,7 +80,7 @@ const RegisterForm: FC = function () {
             register={register}
             placeholder="Type your email"
             name="email"
-            errors={errors}
+            error={errors?.email}
           />
         </FormGroup>
 
@@ -92,7 +92,7 @@ const RegisterForm: FC = function () {
             register={register}
             placeholder="Type your password"
             name="password"
-            errors={errors}
+            error={errors?.password}
           />
         </FormGroup>
 

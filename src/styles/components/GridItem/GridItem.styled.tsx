@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const GridItem = styled.div`
   height: 100%;
   position: relative;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  flex: 1;
 `;
 
 export const ImageOuterWrapper = styled.div`

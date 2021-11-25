@@ -8,10 +8,10 @@ import ErrorSubmissionMessage from "src/components/common/ErrorSubmissionMessage
 import FormGroup from "src/components/common/FormElement/FormGroup";
 import InputText from "src/components/common/FormElement/InputText";
 import constants from "src/constants";
+import { login } from "src/features/auth/actions";
+import { useAppThunkDispatch } from "src/features/store";
 import { useAppSelector } from "src/HOOKS/useCustomReduxSelector";
 import { loginSchema } from "src/lib/validation/loginFormValidation";
-import { login } from "src/store/auth/actions";
-import { useAppThunkDispatch } from "src/store/store";
 import * as S from "styles/components/Form";
 
 const { DASHBOARD } = constants.routes;
@@ -22,7 +22,7 @@ type LoginFormSubmit = {
 };
 
 const LoginForm: FC = function () {
-  const { loading, error } = useAppSelector((state) => state.users);
+  const { userLoading, userError } = useAppSelector((state) => state.auth);
   const dispatch = useAppThunkDispatch();
 
   const {
@@ -58,10 +58,6 @@ const LoginForm: FC = function () {
       });
   };
 
-  // if (loading) {
-  //   return <span>Loading...</span>;
-  // }
-
   return (
     <div className="contact-form">
       <S.Form onSubmit={handleSubmit(onLoginSubmit)}>
@@ -73,7 +69,7 @@ const LoginForm: FC = function () {
             register={register}
             placeholder="Type your username"
             name="email"
-            errors={errors}
+            error={errors?.email}
           />
         </FormGroup>
 
@@ -85,17 +81,17 @@ const LoginForm: FC = function () {
             register={register}
             placeholder="Type your password"
             name="password"
-            errors={errors}
+            error={errors?.password}
           />
         </FormGroup>
 
         <FormGroup>
-          <Button loading={loading} disable={!isValid} className="btn--submit" type="submit" variant="filled">
+          <Button loading={userLoading} disable={!isValid} className="btn--submit" type="submit" variant="filled">
             Send
           </Button>
         </FormGroup>
       </S.Form>
-      {error && <ErrorSubmissionMessage>{error}</ErrorSubmissionMessage>}
+      {userError && <ErrorSubmissionMessage>{userError}</ErrorSubmissionMessage>}
     </div>
   );
 };

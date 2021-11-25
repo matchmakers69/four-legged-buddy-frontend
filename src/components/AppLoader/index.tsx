@@ -1,7 +1,7 @@
 import { VFC, useEffect, ReactNode } from "react";
 import { useRouter } from "next/router";
-import { isLoggedIn } from "src/store/auth/actions";
-import { useAppThunkDispatch } from "src/store/store";
+import { isLoggedIn } from "src/features/auth/actions";
+import { useAppThunkDispatch } from "src/features/store";
 
 interface IAppLoader {
   children: ReactNode;
@@ -22,8 +22,7 @@ const AppLoader: VFC<IAppLoader> = function ({ children }) {
   return <>{children}</>;
 };
 
-export async function getServerSideProps(context) {
-  console.log(context);
+export async function getServerSideProps() {
   return {
     props: {}, // will be passed to the page component as props
   };

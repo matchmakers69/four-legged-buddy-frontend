@@ -50,18 +50,18 @@ const MemberItem: VFC<IMemberItemProps> = function ({ member }) {
               <S.GridItemListItemTitle>{member?.location}</S.GridItemListItemTitle>
             </S.GridItemListItem>
           </S.GridItemList>
-          <S.GridItemFooter>
-            <Button type="button" variant="link">
-              <AppLink
-                endIcon={<ArrowRightIcon className="icon-link" />}
-                variant="button"
-                href={`members/${member?.slug}`}
-              >
-                Read more
-              </AppLink>
-            </Button>
-          </S.GridItemFooter>
         </S.GridItemWrapper>
+        <S.GridItemFooter>
+          <Button type="button" variant="link">
+            <AppLink
+              endIcon={<ArrowRightIcon className="icon-link" />}
+              variant="button"
+              href={`/members/${member?.slug}`}
+            >
+              Read more
+            </AppLink>
+          </Button>
+        </S.GridItemFooter>
       </S.GridItem>
     </Col>
   );

@@ -1,4 +1,4 @@
-import { VFC, useState } from "react";
+import { VFC, useState, useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -9,50 +9,67 @@ import FormGroup from "src/components/common/FormElement/FormGroup";
 import InputText from "src/components/common/FormElement/InputText";
 import TextArea from "src/components/common/FormElement/TextArea";
 import { API_URL } from "src/config";
-import { addMemberValidationSchema } from "src/lib/validation/addMemberValidation";
-import * as S from "styles/components/Form";
-import { AddMemberFormContainer } from "./AddMemberForm.styled";
+import { IMember } from "src/interface/members";
+import { editMemberValidationSchema } from "src/lib/validation/editMemberValidation";
+import * as S from "./EditMemberForm.styled";
 
-type AddMemberFormType = {
+type IMemberProps = {
+  member: IMember;
+};
+
+interface IEditFormInputProps {
   name: string;
   age: string;
   breed: string;
   location: string;
   intro: string;
-};
+}
 
-const AddMemberForm: VFC = function () {
+interface IEditFormProps {
+  name: string;
+  age: string;
+  breed: string;
+  location: string;
+  intro: string;
+  details: IEditFormInputProps;
+}
+
+const EditMemberForm: VFC<IMemberProps> = function ({ member }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors, isValid },
-  } = useForm<AddMemberFormType>({
+    setValue,
+  } = useForm<IEditFormProps>({
     mode: "onChange",
-    resolver: yupResolver(addMemberValidationSchema),
+    resolver: yupResolver(editMemberValidationSchema),
   });
 
-  const onAddMemberSubmit = async (data: AddMemberFormType): Promise<void> => {
-    setTimeout(() => {
-      reset({
-        name: "",
-        breed: "",
-        age: "",
-        location: "",
-        intro: "",
+  useEffect(() => {
+    if (member) {
+      setValue("details", {
+        name: member?.name,
+        age: member?.age,
+        breed: member?.breed,
+        location: member?.location,
+        intro: member?.intro,
       });
-    }, 300);
+    }
+  }, [member, setValue]);
+
+  const onEditMemberFormSubmit = async (data: IEditFormProps): Promise<void> => {
+    const edidFormValues = data.details;
     setLoading(true);
     try {
-      const res = await fetch(`${API_URL}/members`, {
-        method: "POST",
+      const res = await fetch(`${API_URL}/members/${member.id}`, {
+        method: "PUT",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(edidFormValues),
       });
       if (!res.ok) {
         toast.error("Something went wrong");
@@ -67,9 +84,9 @@ const AddMemberForm: VFC = function () {
     }
   };
 
-  return (
-    <AddMemberFormContainer>
-      <S.Form onSubmit={handleSubmit(onAddMemberSubmit)}>
+  if (member) {
+    return (
+      <S.EditMemberFormContainer>
         <FormGroup>
           <InputText
             id="name"
@@ -77,10 +94,11 @@ const AddMemberForm: VFC = function () {
             label="What's your pet's name"
             register={register}
             placeholder="Pet's name"
-            name="name"
-            error={errors?.name}
+            name="details.name"
+            error={errors?.details?.name}
           />
         </FormGroup>
+
         <FormGroup>
           <InputText
             id="breed"
@@ -88,10 +106,11 @@ const AddMemberForm: VFC = function () {
             label="What's your pet's breed"
             register={register}
             placeholder="Pet's breed"
-            name="breed"
-            error={errors?.breed}
+            name="details.breed"
+            error={errors?.details?.breed}
           />
         </FormGroup>
+
         <FormGroup>
           <InputText
             id="age"
@@ -99,8 +118,8 @@ const AddMemberForm: VFC = function () {
             label="What's your pet's age"
             register={register}
             placeholder="Pet's age"
-            name="age"
-            error={errors?.age}
+            name="details.age"
+            error={errors?.details?.age}
           />
         </FormGroup>
         <FormGroup>
@@ -110,29 +129,39 @@ const AddMemberForm: VFC = function () {
             label="What's your location"
             register={register}
             placeholder="e.g Cheshire"
-            name="location"
-            error={errors?.location}
+            name="details.location"
+            error={errors?.details?.location}
           />
         </FormGroup>
+
         <FormGroup>
           <TextArea
             id="intro"
             label="Short about your pet"
             register={register}
             placeholder="Pet's description"
-            name="intro"
-            error={errors?.intro}
+            name="details.intro"
+            error={errors?.details?.intro}
           />
         </FormGroup>
+
         <FormGroup>
-          <Button loading={loading} disable={!isValid} className="btn--submit" type="submit" variant="filled">
-            Add member
+          <Button
+            onClick={handleSubmit(onEditMemberFormSubmit)}
+            loading={loading}
+            disable={!isValid}
+            className="btn--submit"
+            type="submit"
+            variant="filled"
+          >
+            Update details
           </Button>
         </FormGroup>
-      </S.Form>
-      <ToastContainer />
-    </AddMemberFormContainer>
-  );
+        <ToastContainer />
+      </S.EditMemberFormContainer>
+    );
+  }
+  return <span>Sorry no member</span>;
 };
 
-export default AddMemberForm;
+export default EditMemberForm;

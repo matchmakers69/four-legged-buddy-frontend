@@ -1,11 +1,12 @@
+/* eslint-disable no-restricted-globals */
 import { ParsedUrlQuery } from "querystring";
-import { VFC, useState } from "react";
+import { VFC } from "react";
 import axios from "axios";
 import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Button from "src/components/common/Button";
-import AddMemberForm from "src/components/Forms/AddMemberForm";
+import { Button } from "src/components/common/Button/Button.styled";
 import Layout from "src/components/Layout";
 import { API_URL } from "src/config";
 import withProtectedRoute from "src/HOC/withProtectedRoute";
@@ -23,24 +24,34 @@ interface IParams extends ParsedUrlQuery {
 }
 
 const Member: VFC<IMemberProps> = function ({ member }) {
-  const [isInView, setIsInView] = useState(false);
-
-  const toggleAddMemberForm = (): void => {
-    setIsInView(true);
+  const router = useRouter();
+  const onDeleteMember = async () => {
+    try {
+      const res = await axios.delete(`${API_URL}/members/${member.id}`);
+      if (res.status === 200) {
+        router.push("/members");
+      } else {
+        toast.error("Something went wrong!");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Something went wrong!");
+    }
   };
-
   return (
     <Layout pageTitle="Member">
       <GridTemplate>
         <Col data-testid="page-wrapper" xs={12}>
-          <H1 className="h1">{member ? member?.name : "Member does not exists"}</H1>
-          <Button onClick={toggleAddMemberForm} type="button" variant="button">
-            <span className="button-text">Add new member</span>
+          <H1 className="h1 bold m-30-bottom">
+            <span className="title-paragraph">{member ? member?.name : "Member does not exists"}</span>
+          </H1>
+
+          <Button onClick={onDeleteMember} className="btn--danger" type="button">
+            Remove member
           </Button>
-          {isInView && <AddMemberForm />}
-          <ToastContainer />
         </Col>
       </GridTemplate>
+      <ToastContainer />
     </Layout>
   );
 };

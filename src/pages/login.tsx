@@ -10,7 +10,9 @@ const Login: VFC = function () {
     <Layout pageTitle="Login">
       <GridTemplate>
         <Col data-testid="page-wrapper" xs={12}>
-          <H1 className="h1">Login</H1>
+          <H1 className="h1 bold m-30-bottom">
+            <span className="title-paragraph">Login</span>
+          </H1>
           <LoginForm />
         </Col>
       </GridTemplate>

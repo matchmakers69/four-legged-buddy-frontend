@@ -10,22 +10,22 @@ interface TextAreaProps {
   placeholder: string;
   label?: string;
   register: ReturnType<typeof useForm>["register"];
-  errors?: any;
+  error: any;
 }
 
-const TextArea: VFC<TextAreaProps> = function ({ label = "", name, register, placeholder, id, errors = {} }) {
+const TextArea: VFC<TextAreaProps> = function ({ label = "", name, register, placeholder, id, error = {} }) {
   return (
     <>
       {label && <S.Label htmlFor={name}>{label}</S.Label>}
 
       <S.TextArea
         id={id}
-        className={cx("form-control", errors[name] && "is-invalid")}
+        className={cx("form-control", error?.message && "is-invalid")}
         placeholder={placeholder}
         {...register(name)}
       />
 
-      {errors[name] && <InputErrorMessage>{errors[name]?.message}</InputErrorMessage>}
+      {error && <InputErrorMessage>{error?.message}</InputErrorMessage>}
     </>
   );
 };

@@ -10,7 +10,9 @@ const Register: VFC = function () {
     <Layout pageTitle="Register">
       <GridTemplate>
         <Col data-testid="page-wrapper" xs={12}>
-          <H1 className="h1">Register</H1>
+          <H1 className="h1 bold m-30-bottom">
+            <span className="title-paragraph">Register</span>
+          </H1>
           <RegisterForm />
         </Col>
       </GridTemplate>

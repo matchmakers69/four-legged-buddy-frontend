@@ -4,9 +4,8 @@ import { logout, login } from "./actions";
 
 const initialState: IUser = {
   user: null,
-  loading: false,
-  error: null,
-  isAuthenticated: false,
+  userLoading: false,
+  userError: null,
 };
 
 const userSlice = createSlice({
@@ -15,36 +14,33 @@ const userSlice = createSlice({
   reducers: {
     clearUser: (state) => {
       state.user = null;
-      state.isAuthenticated = false;
-      state.loading = false;
+      state.userLoading = false;
     },
   },
   extraReducers: (builder) =>
     builder
       .addCase(login.pending, (state) => {
-        state.loading = true;
+        state.userLoading = true;
       })
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload;
-        state.error = null;
-        state.loading = false;
-        state.isAuthenticated = true;
+        state.userError = null;
+        state.userLoading = false;
       })
       .addCase(login.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
+        state.userLoading = false;
+        state.userError = action.payload;
       })
 
       .addCase(logout.pending, (state) => {
-        state.loading = true;
+        state.userLoading = true;
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
-        state.isAuthenticated = false;
-        state.loading = false;
+        state.userLoading = false;
       })
       .addCase(logout.rejected, (state) => {
-        state.loading = false;
+        state.userLoading = false;
       }),
 });
 export const { clearUser } = userSlice.actions;
