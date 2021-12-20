@@ -1,42 +1,53 @@
 /* eslint-disable react/no-array-index-key */
 import { FC, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import FormGroup from "src/components/common/FormElement/FormGroup";
+import { getMaxIdByKey } from "src/services/getMaxId";
 import { TextField } from "src/styles/components/MuiTextField.styled";
 import * as S from "styles/components/Form";
 import * as Styled from "./Quiz.styled";
 
 interface FormValues {
   title: string;
-  question: string;
   answer: string;
+  question: Record<number, string>;
 }
 
 interface IQuestion {
+  id: number;
   content: string;
   points: number;
 }
 
-interface IQuestions {
+type Questions = {
+  id: number;
   content: string;
   answers: IQuestion[];
-}
+};
 
-const initialQuestion = {
-  content: "What is KC?",
+const initialQuestion: Questions = {
+  id: 1,
+  content: "",
   answers: [
-    { content: "Dont know", points: 0 },
-    { content: "Something nice", points: 4 },
-    { content: "", points: 0 },
-    { content: "", points: 0 },
+    { id: 1, content: "", points: 0 },
+    { id: 2, content: "", points: 4 },
+    { id: 3, content: "", points: 0 },
+    { id: 4, content: "", points: 0 },
   ],
 };
 
 const Quiz: FC = function () {
-  const [questions, setQuestions] = useState<IQuestions[]>([initialQuestion]);
+  const [questions, setQuestions] = useState<Questions[]>([initialQuestion]);
 
   const addQuestion = () => {
-    setQuestions([...questions, initialQuestion]);
+    const maxId = getMaxIdByKey("id", questions);
+    setQuestions([
+      ...questions,
+      {
+        ...initialQuestion,
+        id: maxId + 1,
+      },
+    ]);
   };
 
   const removeQuestion = () => {
@@ -58,6 +69,8 @@ const Quiz: FC = function () {
     console.log(data);
   };
 
+  // const { fields: questions, append, remove } = useFieldArray<FormValues>
+
   return (
     <Styled.FormContainer>
       <S.Form onSubmit={handleSubmit(onQuizFormSubmit)}>
@@ -74,20 +87,21 @@ const Quiz: FC = function () {
           return (
             <Styled.Question key={`question${q}`}>
               <input
-                {...register("question")}
-                defaultValue={question.content}
+                {...register(`${question.id}`)}
                 placeholder={`Question ${q + 1}`}
                 type="text"
-                name={`question[${q}].content`}
+                // name={`question[${q}].content`}
               />
               {question.answers.map((answer, a) => {
                 return (
                   <Styled.Answer key={`answer${a}`}>
                     <input
-                      defaultValue={answer.content}
                       type="text"
                       placeholder={`Answer ${a + 1}`}
-                      name={`question[${q}].answer[${a}].content`}
+                      // {...register(`question[${q}].answer[${a}]`)}
+                      {...register(`question[${q}].answer[${a}]`)}
+                      // {...register(`${question.id}.answer.id`)}
+                      // name={`question[${q}].answer[${a}].content`}
                     />
                     <Styled.Points name={`question[${q}].answer[${a}].points`} type="number" defaultValue={0} />
                   </Styled.Answer>

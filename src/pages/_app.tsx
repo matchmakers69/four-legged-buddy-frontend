@@ -3,14 +3,12 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import Router from "next/router";
 import NProgress from "nprogress"; // nprogress module
-import { usePrevious } from "react-use";
 import { ThemeProvider } from "styled-components";
-import { logout } from "src/features/auth/actions";
+import AppLoader from "src/components/AppLoader";
 import { clearUser } from "src/features/auth/slice";
 import { setPathAndQuery } from "src/features/server/serverSlice";
 import wrapper from "src/features/store";
 import { useAppThunkDispatch } from "src/features/store";
-import { useAppSelector } from "src/HOOKS/useCustomReduxSelector";
 import { GlobalStyle } from "src/styles/Global";
 import { theme } from "src/theme/theme";
 import { parseCookies } from "src/utils/helpers";
@@ -18,8 +16,7 @@ import "nprogress/nprogress.css"; // styles of nprogress
 
 const MyApp = function ({ Component, pageProps }: AppProps) {
   const dispatch = useAppThunkDispatch();
-  const { user } = useAppSelector((state) => state.auth);
-  const prevState = usePrevious(user);
+
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -47,11 +44,11 @@ const MyApp = function ({ Component, pageProps }: AppProps) {
     }
   }, [dispatch, pageProps.isCookieToken]);
 
-  useEffect(() => {
-    if (prevState !== user && user === null) {
-      dispatch(logout());
-    }
-  }, [dispatch, prevState, user]);
+  // useEffect(() => {
+  //   if (prevState !== user && !user) {
+  //     dispatch(logout());
+  //   }
+  // }, [dispatch, prevState, user]);
 
   return (
     <>
@@ -65,7 +62,9 @@ const MyApp = function ({ Component, pageProps }: AppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Component {...pageProps} />
+        <AppLoader>
+          <Component {...pageProps} />
+        </AppLoader>
       </ThemeProvider>
     </>
   );

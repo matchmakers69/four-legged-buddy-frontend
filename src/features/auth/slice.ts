@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import LocalStorage, { LOCAL_STORAGE_KEYS } from "src/utils/localStorage";
 import { IUser } from "../interface/user";
 import { logout, login } from "./actions";
 
@@ -12,6 +13,9 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    loginUserToStore: (state, action) => {
+      state.user = action.payload;
+    },
     clearUser: (state) => {
       state.user = null;
       state.userLoading = false;
@@ -23,6 +27,7 @@ const userSlice = createSlice({
         state.userLoading = true;
       })
       .addCase(login.fulfilled, (state, action) => {
+        LocalStorage.saveItem(LOCAL_STORAGE_KEYS.auth, action.payload);
         state.user = action.payload;
         state.userError = null;
         state.userLoading = false;
@@ -36,6 +41,7 @@ const userSlice = createSlice({
         state.userLoading = true;
       })
       .addCase(logout.fulfilled, (state) => {
+        LocalStorage.saveItem(LOCAL_STORAGE_KEYS.auth, null);
         state.user = null;
         state.userLoading = false;
       })
@@ -43,5 +49,5 @@ const userSlice = createSlice({
         state.userLoading = false;
       }),
 });
-export const { clearUser } = userSlice.actions;
+export const { clearUser, loginUserToStore } = userSlice.actions;
 export default userSlice.reducer;

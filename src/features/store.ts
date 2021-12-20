@@ -28,9 +28,9 @@ const makeStore: MakeStore<State | any> = (context: Context) => {
      */
     throttle(() => {
       const { auth } = store.getState();
-      saveState({
-        auth,
-      });
+      // saveState({
+      //   auth,
+      // });
     }, 800)
   );
   return setupStore(context);

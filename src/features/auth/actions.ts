@@ -28,23 +28,6 @@ export const logout = createAsyncThunk("user/logout", async (_, { rejectWithValu
   }
 });
 
-// export const isLoggedIn = () => async (dispatch) => {
-//   try {
-//     const res = await fetch(`${NEXT_URL}/api/user`);
-//     console.log(res);
-//     const data = await res.json();
-//     if (res.ok) {
-//       console.log("jest user");
-//     } else {
-//       console.log("brak users");
-//     }
-//     // const res = await axios.get(`${NEXT_URL}/api/user`);
-//     // return res.data.user;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
 export const isLoggedIn = createAsyncThunk("user/isLoggedIn", async (_, { rejectWithValue }) => {
   try {
     // const res = await fetch(`${NEXT_URL}/api/user`);
