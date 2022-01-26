@@ -35,12 +35,10 @@ export const isLoggedIn = createAsyncThunk("user/isLoggedIn", async (_, { reject
     const data = await res.json();
     console.log(data, "data");
     if (res.ok) {
-      console.log("jest user");
+      console.log("user exists");
     } else {
-      console.log("brak user");
+      console.log("no user");
     }
-
-    // const res = await axios.get(`${NEXT_URL}/api/user`);
   } catch (err) {
     return rejectWithValue(err?.response?.data);
   }
