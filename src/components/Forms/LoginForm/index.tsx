@@ -54,7 +54,7 @@ const LoginForm: FC = function () {
         return router.push(DASHBOARD);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err, "Error from login");
       });
   };
 
@@ -91,7 +91,7 @@ const LoginForm: FC = function () {
           </Button>
         </FormGroup>
       </S.Form>
-      {userError && <ErrorSubmissionMessage>{userError}</ErrorSubmissionMessage>}
+      {userError && <ErrorSubmissionMessage>{userError?.message}</ErrorSubmissionMessage>}
     </div>
   );
 };
