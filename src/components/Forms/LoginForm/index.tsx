@@ -65,7 +65,7 @@ const LoginForm: FC = function () {
           <InputText
             id="email"
             type="text"
-            label="What's your username"
+            label="What's your username (email address)"
             register={register}
             placeholder="Type your username"
             name="email"
