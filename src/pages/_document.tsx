@@ -37,6 +37,7 @@ export default class MyDocument extends NextDocument {
         <body>
           <Main />
           <NextScript />
+          <div id="modal-root" />
         </body>
       </Html>
     );
