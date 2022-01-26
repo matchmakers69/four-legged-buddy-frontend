@@ -1,19 +1,15 @@
 import { FC, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import axios from "axios";
-import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import * as Yup from "yup";
 import Button from "src/components/common/Button";
 import FormGroup from "src/components/common/FormElement/FormGroup";
 import InputText from "src/components/common/FormElement/InputText";
 import { registerFormSchema } from "src/lib/validation/registerFormValidation";
 import * as S from "styles/components/Form";
 
-type RegisterFormSubmit = {
-  username: string;
-  email: string;
-  password: string;
-};
+type RegisterUserType = Pick<Yup.InferType<typeof registerFormSchema>, "username" | "email" | "password">;
 
 const RegisterForm: FC = function () {
   const [loading, setLoading] = useState(false);
@@ -22,14 +18,12 @@ const RegisterForm: FC = function () {
     handleSubmit,
     reset,
     formState: { errors, isValid },
-  } = useForm<RegisterFormSubmit>({
+  } = useForm<RegisterUserType>({
     mode: "onChange",
     resolver: yupResolver(registerFormSchema),
   });
 
-  const router = useRouter();
-
-  const onRegisterFormSubmit = async (data: RegisterFormSubmit): Promise<void> => {
+  const onRegisterFormSubmit = async (data: RegisterUserType): Promise<void> => {
     reset({
       username: "",
       email: "",
@@ -61,7 +55,7 @@ const RegisterForm: FC = function () {
     <div className="contact-form">
       <S.Form onSubmit={handleSubmit(onRegisterFormSubmit)}>
         <FormGroup>
-          <InputText
+          <InputText<RegisterUserType>
             id="username"
             type="text"
             label="What's your username"
@@ -73,7 +67,7 @@ const RegisterForm: FC = function () {
         </FormGroup>
 
         <FormGroup>
-          <InputText
+          <InputText<RegisterUserType>
             id="email"
             type="email"
             label="What's your email?"
@@ -85,7 +79,7 @@ const RegisterForm: FC = function () {
         </FormGroup>
 
         <FormGroup>
-          <InputText
+          <InputText<RegisterUserType>
             id="password"
             type="password"
             label="What's your password?"
