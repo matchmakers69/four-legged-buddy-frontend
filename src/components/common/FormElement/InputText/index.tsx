@@ -1,20 +1,28 @@
-import { VFC } from "react";
 import cx from "classnames";
-import { useForm } from "react-hook-form";
+import { DeepMap, FieldError, Path, UseFormRegister } from "react-hook-form";
 import InputErrorMessage from "src/components/common/InputErrorMessage";
 import * as S from "../common.styled";
 
-interface InputProps {
+export type FormInputTextProps<TFormValues> = {
+  name: Path<TFormValues>;
+  register: UseFormRegister<TFormValues>;
+  errors?: Partial<DeepMap<TFormValues, FieldError>>;
   id: string;
-  name: string;
   placeholder: string;
   label?: string;
   type: "text" | "email" | "number" | "password";
-  register: ReturnType<typeof useForm>["register"];
   error: any;
-}
+};
 
-const InputText: VFC<InputProps> = function ({ type, label = "", name, register, placeholder, id, error }) {
+const InputText = function <TFormValues extends Record<string, unknown>>({
+  type,
+  label = "",
+  name,
+  register,
+  placeholder,
+  id,
+  error,
+}: FormInputTextProps<TFormValues>) {
   return (
     <>
       {label && <S.Label htmlFor={name}>{label}</S.Label>}
@@ -27,7 +35,6 @@ const InputText: VFC<InputProps> = function ({ type, label = "", name, register,
         {...register(name)}
       />
       {error && <InputErrorMessage>{error?.message}</InputErrorMessage>}
-      {/* {error && <InputErrorMessage>{error?.[name]?.message}</InputErrorMessage>} */}
     </>
   );
 };
