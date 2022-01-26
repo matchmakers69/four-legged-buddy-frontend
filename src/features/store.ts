@@ -1,8 +1,7 @@
 import { Action, ThunkAction, configureStore, EnhancedStore, Store, ThunkDispatch } from "@reduxjs/toolkit";
-import throttle from "lodash/throttle";
 import { createWrapper, MakeStore, Context } from "next-redux-wrapper";
 import { useDispatch } from "react-redux";
-import { loadState, saveState } from "./browserStorage";
+import { loadState } from "./browserStorage";
 import { rootReducer, State } from "./rootReducer";
 
 export const store: Store = configureStore({
@@ -22,17 +21,6 @@ export const store: Store = configureStore({
 const setupStore = (context: any): EnhancedStore => store;
 
 const makeStore: MakeStore<State | any> = (context: Context) => {
-  store.subscribe(
-    /**
-     * @lodash throttle to save the state once each 800ms
-     */
-    throttle(() => {
-      const { auth } = store.getState();
-      // saveState({
-      //   auth,
-      // });
-    }, 800)
-  );
   return setupStore(context);
 };
 
