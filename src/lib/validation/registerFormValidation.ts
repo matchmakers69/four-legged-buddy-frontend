@@ -2,7 +2,7 @@ import * as yup from "yup";
 import { errorMessages } from "src/utils/errors/errorMessages";
 
 const PASSWORD_PATTERN = /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/;
-const MIN_USERNAME_LENGTH = 5;
+const MIN_USERNAME_LENGTH = 3;
 const USERNAME_NO_SPACES_PATTERN = /^\S{2,}$/;
 
 export const registerFormSchema = yup.object().shape({

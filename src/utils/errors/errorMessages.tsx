@@ -1,7 +1,7 @@
 export const errorMessages = {
   username: {
     required: "Username is required",
-    pattern: "Invalid field, make sure your username is at least five characters long",
+    pattern: "Invalid field, make sure your username is at least 3 characters long",
     spaces_error: "Username must not use spaces",
   },
   password: {
