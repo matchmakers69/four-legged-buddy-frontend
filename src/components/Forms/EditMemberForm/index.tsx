@@ -17,22 +17,22 @@ type IMemberProps = {
   member: IMember;
 };
 
-interface IEditFormInputProps {
+type IEditFormInputProps = {
   name: string;
   age: string;
   breed: string;
   location: string;
   intro: string;
-}
+};
 
-interface IEditFormProps {
+type EditFormFields = {
   name: string;
   age: string;
   breed: string;
   location: string;
   intro: string;
   details: IEditFormInputProps;
-}
+};
 
 const EditMemberForm: VFC<IMemberProps> = function ({ member }) {
   const [loading, setLoading] = useState(false);
@@ -42,7 +42,7 @@ const EditMemberForm: VFC<IMemberProps> = function ({ member }) {
     handleSubmit,
     formState: { errors, isValid },
     setValue,
-  } = useForm<IEditFormProps>({
+  } = useForm<EditFormFields>({
     mode: "onChange",
     resolver: yupResolver(editMemberValidationSchema),
   });
@@ -59,7 +59,7 @@ const EditMemberForm: VFC<IMemberProps> = function ({ member }) {
     }
   }, [member, setValue]);
 
-  const onEditMemberFormSubmit = async (data: IEditFormProps): Promise<void> => {
+  const onEditMemberFormSubmit = async (data: EditFormFields): Promise<void> => {
     const edidFormValues = data.details;
     setLoading(true);
     try {
@@ -87,76 +87,72 @@ const EditMemberForm: VFC<IMemberProps> = function ({ member }) {
   if (member) {
     return (
       <S.EditMemberFormContainer>
-        <FormGroup>
-          <InputText
-            id="name"
-            type="text"
-            label="What's your pet's name"
-            register={register}
-            placeholder="Pet's name"
-            name="details.name"
-            error={errors?.details?.name}
-          />
-        </FormGroup>
+        <form noValidate onSubmit={handleSubmit(onEditMemberFormSubmit)}>
+          <FormGroup>
+            <InputText
+              id="name"
+              type="text"
+              label="What's your pet's name"
+              register={register}
+              placeholder="Pet's name"
+              name="details.name"
+              error={errors?.details?.name}
+            />
+          </FormGroup>
 
-        <FormGroup>
-          <InputText
-            id="breed"
-            type="text"
-            label="What's your pet's breed"
-            register={register}
-            placeholder="Pet's breed"
-            name="details.breed"
-            error={errors?.details?.breed}
-          />
-        </FormGroup>
+          <FormGroup>
+            <InputText
+              id="breed"
+              type="text"
+              label="What's your pet's breed"
+              register={register}
+              placeholder="Pet's breed"
+              name="details.breed"
+              error={errors?.details?.breed}
+            />
+          </FormGroup>
 
-        <FormGroup>
-          <InputText
-            id="age"
-            type="text"
-            label="What's your pet's age"
-            register={register}
-            placeholder="Pet's age"
-            name="details.age"
-            error={errors?.details?.age}
-          />
-        </FormGroup>
-        <FormGroup>
-          <InputText
-            id="location"
-            type="text"
-            label="What's your location"
-            register={register}
-            placeholder="e.g Cheshire"
-            name="details.location"
-            error={errors?.details?.location}
-          />
-        </FormGroup>
+          <FormGroup>
+            <InputText
+              id="age"
+              type="text"
+              label="What's your pet's age"
+              register={register}
+              placeholder="Pet's age"
+              name="details.age"
+              error={errors?.details?.age}
+            />
+          </FormGroup>
+          <FormGroup>
+            <InputText
+              id="location"
+              type="text"
+              label="What's your location"
+              register={register}
+              placeholder="e.g Cheshire"
+              name="details.location"
+              error={errors?.details?.location}
+            />
+          </FormGroup>
 
-        <FormGroup>
-          <TextArea
-            id="intro"
-            label="Short about your pet"
-            register={register}
-            placeholder="Pet's description"
-            name="details.intro"
-            error={errors?.details?.intro}
-          />
-        </FormGroup>
+          <FormGroup>
+            <TextArea<EditFormFields>
+              id="intro"
+              label="Short about your pet"
+              register={register}
+              placeholder="Enter your's pet description"
+              name="details.intro"
+              error={errors?.details?.intro}
+            />
+          </FormGroup>
 
-        <FormGroup>
-          <Button
-            onClick={handleSubmit(onEditMemberFormSubmit)}
-            loading={loading}
-            disable={!isValid}
-            className="btn--submit"
-            type="submit"
-            variant="filled"
-          >
-            Update details
-          </Button>
-        </FormGroup>
+          <FormGroup>
+            <Button loading={loading} disable={!isValid} className="btn--submit" type="submit" variant="filled">
+              Update details
+            </Button>
+          </FormGroup>
+        </form>
+
         <ToastContainer />
       </S.EditMemberFormContainer>
     );

@@ -1,19 +1,27 @@
-import { VFC } from "react";
 import cx from "classnames";
-import { useForm } from "react-hook-form";
+import { UseFormRegister, Path } from "react-hook-form";
 import InputErrorMessage from "src/components/common/InputErrorMessage";
 import * as S from "../common.styled";
 
-interface TextAreaProps {
+type TextAreaProps<TFormValues> = {
   id: string;
-  name: string;
+  name: Path<TFormValues>;
   placeholder: string;
   label?: string;
-  register: ReturnType<typeof useForm>["register"];
+  register?: UseFormRegister<TFormValues>;
   error: any;
-}
+};
 
-const TextArea: VFC<TextAreaProps> = function ({ label = "", name, register, placeholder, id, error = {} }) {
+// const TextArea: VFC<TextAreaProps> = function ({ label = "", name, register, placeholder, id, error = {} }) {
+const TextArea = function <TFormValues extends Record<string, unknown>>({
+  label,
+  name,
+  register,
+  placeholder,
+  id,
+  error,
+  ...props
+}: TextAreaProps<TFormValues>) {
   return (
     <>
       {label && <S.Label htmlFor={name}>{label}</S.Label>}
@@ -22,7 +30,8 @@ const TextArea: VFC<TextAreaProps> = function ({ label = "", name, register, pla
         id={id}
         className={cx("form-control", error?.message && "is-invalid")}
         placeholder={placeholder}
-        {...register(name)}
+        {...props}
+        {...(register && register(name))}
       />
 
       {error && <InputErrorMessage>{error?.message}</InputErrorMessage>}

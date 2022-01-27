@@ -10,7 +10,7 @@ export type FormInputTextProps<TFormValues> = {
   id: string;
   placeholder: string;
   label?: string;
-  type: "text" | "email" | "number" | "password";
+  type: "text" | "email" | "number" | "password" | "file";
   error: any;
 };
 

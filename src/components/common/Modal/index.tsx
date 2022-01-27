@@ -1,5 +1,5 @@
-import { useState, useEffect, ReactNode } from "react";
-import { ReactDOM } from "react-dom";
+import React, { useState, useEffect, ReactNode } from "react";
+import { createPortal } from "react-dom";
 import * as S from "./Modal.styled";
 
 interface IModalProps {
@@ -15,7 +15,7 @@ const Modal = function ({ onClose, title, show, children }: IModalProps) {
     setIsBrowser(true);
   }, []);
 
-  const handleClose = (e) => {
+  const handleClose = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     onClose();
   };
@@ -33,7 +33,7 @@ const Modal = function ({ onClose, title, show, children }: IModalProps) {
   ) : null;
 
   if (isBrowser) {
-    return ReactDOM.createPortal(modalContent, document.getElementById("modal-root"));
+    return createPortal(modalContent, document.getElementById("modal-root"));
   }
   return null;
 };
