@@ -1,4 +1,3 @@
-import { VFC } from "react";
 import axios from "axios";
 import Layout from "src/components/Layout";
 import { API_URL } from "src/config";
@@ -7,18 +6,27 @@ import { H1 } from "src/styles/typography";
 import GridTemplate from "src/templatetes/GridTemplate";
 import { parseCookies } from "src/utils/helpers";
 
-interface IUser {
-  email: string;
-  username: string;
-}
-
-type Props = {
-  user: IUser;
+type IUserMember = {
+  id: string;
+  age: string;
+  breed: string;
+  intro: string;
+  name: string;
+  slug: string;
 };
 
-const Dashboard: VFC<Props> = function ({ user }) {
-  const { email, username } = user;
+type IUser = {
+  email: string;
+  username: string;
+};
 
+type IDashboardProps = {
+  user: IUser;
+  userMembers: IUserMember;
+};
+
+const Dashboard = function ({ user, userMembers }: IDashboardProps) {
+  console.log(userMembers, "userMembers");
   return (
     <Layout pageTitle="Dashboard">
       <GridTemplate>
@@ -26,8 +34,8 @@ const Dashboard: VFC<Props> = function ({ user }) {
           <H1 className="h1 bold m-30-bottom">
             <span className="title-paragraph">Dashboard</span>
           </H1>
-          <div>Username: {username}</div>
-          <div>Email: {email}</div>
+          <div>Username: {user?.username}</div>
+          <div>Email: {user?.email}</div>
         </Col>
       </GridTemplate>
     </Layout>
@@ -38,14 +46,24 @@ export const getServerSideProps = async (context) => {
   const { req } = context;
   const { token } = parseCookies(req);
   let user = null;
+  let userMembers = [];
   if (token) {
     try {
-      const { data } = await axios.get(`${API_URL}/users/me`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      user = data;
+      const [dataUser, dataUserMembers] = await Promise.all([
+        await axios.get(`${API_URL}/users/me`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }),
+        await axios.get(`${API_URL}/members/me`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }),
+      ]);
+
+      user = dataUser.data;
+      userMembers = dataUserMembers.data;
     } catch (err) {
       console.log(err);
     }
@@ -60,7 +78,7 @@ export const getServerSideProps = async (context) => {
     };
   }
   return {
-    props: { user },
+    props: { user, userMembers },
   };
 };
 

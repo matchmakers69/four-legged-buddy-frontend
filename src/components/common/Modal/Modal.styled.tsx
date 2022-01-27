@@ -8,6 +8,7 @@ export const Modal = styled.div`
   background-color: ${({ theme }) => theme.colors.powderWhite};
   padding: 20px;
   z-index: 100;
+  border-radius: 10px;
 `;
 
 export const ModalHeader = styled.header`
@@ -21,11 +22,13 @@ export const ModalBody = styled.div`
 `;
 
 export const ModalOverlay = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  min-height: 100vh;
+  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
