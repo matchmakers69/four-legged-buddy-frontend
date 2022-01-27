@@ -6,6 +6,7 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AppLink from "src/components/common/AppLink";
 import { Button } from "src/components/common/Button/Button.styled";
 import Layout from "src/components/Layout";
 import { API_URL } from "src/config";
@@ -49,6 +50,10 @@ const Member: VFC<IMemberProps> = function ({ member }) {
           <Button onClick={onDeleteMember} className="btn--danger" type="button">
             Remove member
           </Button>
+
+          <AppLink variant="link" href={`/members/edit/${member.id}`}>
+            Edit
+          </AppLink>
         </Col>
       </GridTemplate>
       <ToastContainer />

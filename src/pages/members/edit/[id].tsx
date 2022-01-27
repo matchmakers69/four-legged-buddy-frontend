@@ -2,7 +2,9 @@ import { FC, useState } from "react";
 import { GetServerSideProps } from "next";
 import Image from "next/image";
 import { Button } from "src/components/common/Button/Button.styled";
+import Modal from "src/components/common/Modal";
 import EditMemberForm from "src/components/Forms/EditMemberForm";
+import ImageUpload from "src/components/ImageUpload";
 import Layout from "src/components/Layout";
 import { API_URL } from "src/config";
 import withProtectedRoute from "src/HOC/withProtectedRoute";
@@ -17,6 +19,17 @@ type IEditMemberProps = {
 
 const EditMember: FC<IEditMemberProps> = function ({ member }) {
   const [imagePreview, setImagePreview] = useState(member?.image ? member?.image?.formats?.thumbnail?.url : null);
+  const [showModal, setShowModal] = useState(false);
+  const handleImageUploaded = async () => {
+    try {
+      const res = await fetch(`${API_URL}/members/${member.id}`);
+      const data = await res.json();
+      setImagePreview(data?.image?.formats?.thumbnail.url);
+      setShowModal(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <Layout pageTitle="Members - Edit member">
       <GridTemplate>
@@ -34,10 +47,13 @@ const EditMember: FC<IEditMemberProps> = function ({ member }) {
             </div>
           )}
           <div>
-            <Button type="button" className="btn--primary">
+            <Button onClick={() => setShowModal(true)} type="button" className="btn--primary">
               Set image
             </Button>
           </div>
+          <Modal show={showModal} onClose={() => setShowModal(false)}>
+            <ImageUpload memberId={member.id} imageUploaded={handleImageUploaded} />
+          </Modal>
         </Col>
       </GridTemplate>
     </Layout>
