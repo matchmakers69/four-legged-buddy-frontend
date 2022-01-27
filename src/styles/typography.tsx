@@ -69,14 +69,30 @@ const H2 = styled(({ ...rest }) => <Typography variant="h2" component="h2" {...r
   }
 `;
 
-const H4 = styled(({ ...rest }) => <Typography variant="h4" component="h4" {...rest} />)`
-  &.h4 {
+const H3 = styled(({ ...rest }) => <Typography variant="h3" component="h3" {...rest} />)`
+  &.h3 {
     font-size: 1.6rem;
     line-height: 1.25;
     color: ${({ theme }) => theme.colors.titleGreen};
 
     @media ${device.laptopM} {
       font-size: 1.8rem;
+    }
+  }
+
+  &.bold {
+    font-weight: ${({ theme }) => theme.weight.bold};
+  }
+`;
+
+const H4 = styled(({ ...rest }) => <Typography variant="h4" component="h4" {...rest} />)`
+  &.h4 {
+    font-size: 1.4rem;
+    line-height: 1.25;
+    color: ${({ theme }) => theme.colors.titleGreen};
+
+    @media ${device.laptopM} {
+      font-size: 1.6rem;
     }
   }
 
@@ -103,4 +119,4 @@ const Paragraph = styled(({ ...rest }) => <Typography component="p" {...rest} />
   }
 `;
 
-export { H1, Paragraph, H2, H4 };
+export { H1, Paragraph, H2, H3, H4 };

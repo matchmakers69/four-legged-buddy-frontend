@@ -31,7 +31,7 @@ export const TextField = styled(MuiTextField)`
 
     .MuiInputBase-input {
       height: 5rem;
-      border: 4px solid ${({ theme }) => theme.colors.titleGreen};
+      border: 3px solid ${({ theme }) => theme.colors.titleGreen};
       background-color: ${({ theme }) => theme.colors.powderWhite};
       padding: 1rem;
       box-sizing: border-box;
