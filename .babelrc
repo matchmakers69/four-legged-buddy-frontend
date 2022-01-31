@@ -15,7 +15,7 @@
     [
       "babel-plugin-import",
       {
-        "libraryName": "@material-ui/core",
+        "libraryName": "@mui/material",
         // Use ""libraryDirectory": ""," if your bundler does not support ES modules
         "libraryDirectory": "",
         "camel2DashComponentName": false
@@ -25,7 +25,7 @@
     [
       "babel-plugin-import",
       {
-        "libraryName": "@material-ui/icons",
+        "libraryName": "@mui/icons-material",
         // Use ""libraryDirectory": ""," if your bundler does not support ES modules
         "libraryDirectory": "",
         "camel2DashComponentName": false

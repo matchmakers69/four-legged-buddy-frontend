@@ -23,13 +23,13 @@
     "lint-staged": "lint-staged"
   },
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@hookform/resolvers": "^2.6.1",
-    "@material-ui/core": "^4.12.2",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.60",
-    "@material-ui/styles": "^4.11.4",
-    "@mui/material": "^5.0.0",
-    "@mui/styled-engine-sc": "^5.0.0",
+    "@mui/icons-material": "^5.3.1",
+    "@mui/material": "^5.3.1",
+    "@mui/styled-engine-sc": "^5.3.0",
+    "@mui/styles": "^5.3.0",
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/dom": "^8.2.0",
     "@types/classnames": "^2.3.1",
@@ -66,7 +66,7 @@
     "react-toastify": "^8.1.0",
     "react-use": "^17.3.1",
     "redux-persist": "^6.0.0",
-    "styled-components": "^5.3.1",
+    "styled-components": "^5.3.3",
     "swr": "^1.0.1",
     "uuid": "^8.3.2",
     "yup": "^0.32.9"
