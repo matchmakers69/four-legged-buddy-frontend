@@ -1,19 +1,12 @@
 import axios from "axios";
 import Layout from "src/components/Layout";
 import { API_URL } from "src/config";
+import UserMembersList from "src/features/Members/UserMembersList";
+import { IUserMember } from "src/interface/members";
 import { Col } from "src/styles/grid";
 import { H1 } from "src/styles/typography";
 import GridTemplate from "src/templatetes/GridTemplate";
 import { parseCookies } from "src/utils/helpers";
-
-type IUserMember = {
-  id: string;
-  age: string;
-  breed: string;
-  intro: string;
-  name: string;
-  slug: string;
-};
 
 type IUser = {
   email: string;
@@ -22,11 +15,13 @@ type IUser = {
 
 type IDashboardProps = {
   user: IUser;
-  userMembers: IUserMember;
+  userMembers: IUserMember[];
 };
 
 const Dashboard = function ({ user, userMembers }: IDashboardProps) {
-  console.log(userMembers, "userMembers");
+  const handleDeleteUserMember = (id: string) => {
+    console.log(id);
+  };
   return (
     <Layout pageTitle="Dashboard">
       <GridTemplate>
@@ -36,6 +31,9 @@ const Dashboard = function ({ user, userMembers }: IDashboardProps) {
           </H1>
           <div>Username: {user?.username}</div>
           <div>Email: {user?.email}</div>
+        </Col>
+        <Col data-testid="page-wrapper" xs={12}>
+          <UserMembersList members={userMembers} onDelete={handleDeleteUserMember} />
         </Col>
       </GridTemplate>
     </Layout>

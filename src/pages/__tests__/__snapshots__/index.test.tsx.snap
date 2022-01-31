@@ -21,7 +21,7 @@ exports[`<Home /> sholud create a snapshot 1`] = `
             data-testid="page-wrapper"
           >
             <h1
-              className="MuiTypography-root typography__H1-sc-xr9g5q-0 jAuTlg h1 bold m-30-bottom MuiTypography-h1"
+              className="MuiTypography-root MuiTypography-h1 typography__H1-sc-xr9g5q-0 jAuTlg h1 bold m-30-bottom css-o2w69a-MuiTypography-root"
             >
               <span
                 className="title-paragraph"
@@ -36,7 +36,7 @@ exports[`<Home /> sholud create a snapshot 1`] = `
               </span>
             </h1>
             <p
-              className="MuiTypography-root typography__Paragraph-sc-xr9g5q-4 cOiiYf p m-15-top bold MuiTypography-body1"
+              className="MuiTypography-root MuiTypography-body1 typography__Paragraph-sc-xr9g5q-4 cOiiYf p m-15-top bold css-ahj2mt-MuiTypography-root"
             >
               We try to connect dog owners with trusted local people who would love to look after their dog. We make it easy to arrange walks, playtime, overnight stays or holidays. Our aim is to help dog owners when they need it, give dogs more exercise and playtime and to allow people without a dog to spend quality time with one. We call it a win-win (or a woof-­woof) situation for everyone involved.
             </p>

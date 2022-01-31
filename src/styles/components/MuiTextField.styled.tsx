@@ -1,4 +1,4 @@
-import MuiTextField from "@material-ui/core/TextField";
+import { TextField as MuiTextField } from "@mui/material";
 import styled from "styled-components";
 
 export const TextField = styled(MuiTextField)`
@@ -31,7 +31,7 @@ export const TextField = styled(MuiTextField)`
 
     .MuiInputBase-input {
       height: 5rem;
-      border: 3px solid ${({ theme }) => theme.colors.titleGreen};
+      border: 4px solid ${({ theme }) => theme.colors.titleGreen};
       background-color: ${({ theme }) => theme.colors.powderWhite};
       padding: 1rem;
       box-sizing: border-box;

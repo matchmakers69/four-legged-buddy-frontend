@@ -1,4 +1,4 @@
-import Grid from "@material-ui/core/Grid";
+import Grid from "@mui/material/Grid";
 import styled from "styled-components";
 import { device } from "src/styles/breakpoints";
 
