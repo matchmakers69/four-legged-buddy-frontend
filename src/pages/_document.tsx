@@ -1,4 +1,4 @@
-import { ServerStyleSheets } from "@material-ui/styles";
+import { ServerStyleSheets } from "@mui/styles";
 import NextDocument, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 

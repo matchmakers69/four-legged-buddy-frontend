@@ -26,6 +26,19 @@ export interface IMember {
   location: string;
 }
 
+export interface IUserMember {
+  id: string;
+  age: string;
+  breed: string;
+  intro: string;
+  name: string;
+  slug: string;
+}
+
+export interface IUserMembers {
+  members: IUserMember;
+}
+
 export interface IMembers {
   members: IMember[];
 }
