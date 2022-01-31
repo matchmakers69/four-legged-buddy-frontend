@@ -29,19 +29,19 @@ export const Button = styled.button`
   &.btn--submit {
     background-color: ${({ theme }) => theme.colors.titleGreen};
     color: ${({ theme }) => theme.colors.powderWhite};
-    border: 3px solid ${({ theme }) => theme.colors.titleGreen};
+    border: 4px solid ${({ theme }) => theme.colors.titleGreen};
   }
 
   &.btn--logout {
     background-color: ${({ theme }) => theme.colors.titleGreen};
     color: ${({ theme }) => theme.colors.powderWhite};
-    border: 3px solid ${({ theme }) => theme.colors.titleGreen};
+    border: 4px solid ${({ theme }) => theme.colors.titleGreen};
   }
 
   &.btn--login {
     background-color: ${({ theme }) => theme.colors.powderWhite};
     color: ${({ theme }) => theme.colors.titleGreen};
-    border: 3px solid ${({ theme }) => theme.colors.titleGreen};
+    border: 4px solid ${({ theme }) => theme.colors.titleGreen};
   }
 
   &.w-full {
@@ -53,25 +53,25 @@ export const Button = styled.button`
     background-color: transparent;
     color: ${({ theme }) => theme.colors.titleGreen};
     padding: 0;
-    border: 3px solid ${({ theme }) => theme.colors.titleGreen};
+    border: 4px solid ${({ theme }) => theme.colors.titleGreen};
   }
 
   &.btn--danger {
     background-color: ${({ theme }) => theme.colors.red};
     color: ${({ theme }) => theme.colors.powderWhite};
-    border: 3px solid ${({ theme }) => theme.colors.red};
+    border: 4px solid ${({ theme }) => theme.colors.red};
   }
 
   &.btn--primary {
     background-color: transparent;
     color: ${({ theme }) => theme.colors.titleGreen};
-    border: 3px solid ${({ theme }) => theme.colors.titleGreen};
+    border: 4px solid ${({ theme }) => theme.colors.titleGreen};
   }
 
   &.btn--button {
     background-color: transparent;
     color: ${({ theme }) => theme.colors.titleGreen};
-    border: 3px solid ${({ theme }) => theme.colors.titleGreen};
+    border: 4px solid ${({ theme }) => theme.colors.titleGreen};
     position: relative;
     overflow: hidden;
     transition: color 0.3s cubic-bezier(1, 0, 0, 1);

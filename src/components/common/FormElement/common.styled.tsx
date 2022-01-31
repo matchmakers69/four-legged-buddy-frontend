@@ -4,7 +4,7 @@ const commonInputStyles = css`
   background-color: ${({ theme }) => theme.colors.powderWhite};
   border-radius: 0;
   height: 5rem;
-  border: 3px solid ${({ theme }) => theme.colors.titleGreen};
+  border: 4px solid ${({ theme }) => theme.colors.titleGreen};
   padding: 1rem;
   color: ${({ theme }) => theme.colors.titleGreen};
   font-size: ${({ theme }) => theme.fontSizes.xs};
