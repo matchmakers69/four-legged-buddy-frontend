@@ -1,4 +1,6 @@
 import axios from "axios";
+import { useRouter } from "next/router";
+import { toast, ToastContainer } from "react-toastify";
 import Layout from "src/components/Layout";
 import { API_URL } from "src/config";
 import UserMembersList from "src/features/Members/UserMembersList";
@@ -16,11 +18,28 @@ type IUser = {
 type IDashboardProps = {
   user: IUser;
   userMembers: IUserMember[];
+  token: string;
 };
 
-const Dashboard = function ({ user, userMembers }: IDashboardProps) {
-  const handleDeleteUserMember = (id: string) => {
-    console.log(id);
+const Dashboard = function ({ user, userMembers, token }: IDashboardProps) {
+  const router = useRouter();
+
+  const handleDeleteUserMember = async (id: string) => {
+    try {
+      const res = await axios.delete(`${API_URL}/members/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (res.status === 200) {
+        router.push("/members");
+      } else {
+        toast.error("Something went wrong!");
+      }
+    } catch (err) {
+      console.log(err);
+      toast.error("Something went wrong!");
+    }
   };
   return (
     <Layout pageTitle="Dashboard">
@@ -76,7 +95,7 @@ export const getServerSideProps = async (context) => {
     };
   }
   return {
-    props: { user, userMembers },
+    props: { user, userMembers, token },
   };
 };
 
