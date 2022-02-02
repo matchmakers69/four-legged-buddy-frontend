@@ -15,6 +15,8 @@ import * as S from "./EditMemberForm.styled";
 
 type IMemberProps = {
   member: IMember;
+  isCookieToken: boolean;
+  userToken: string;
 };
 
 type IEditFormInputProps = {
@@ -34,9 +36,10 @@ type EditFormFields = {
   details: IEditFormInputProps;
 };
 
-const EditMemberForm: VFC<IMemberProps> = function ({ member }) {
+const EditMemberForm: VFC<IMemberProps> = function ({ member, isCookieToken, userToken }) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -60,6 +63,9 @@ const EditMemberForm: VFC<IMemberProps> = function ({ member }) {
   }, [member, setValue]);
 
   const onEditMemberFormSubmit = async (data: EditFormFields): Promise<void> => {
+    if (!isCookieToken) {
+      return;
+    }
     const edidFormValues = data.details;
     setLoading(true);
     try {
@@ -68,13 +74,19 @@ const EditMemberForm: VFC<IMemberProps> = function ({ member }) {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
         },
         body: JSON.stringify(edidFormValues),
       });
       if (!res.ok) {
+        if (res.status === 403 || res.status === 401) {
+          toast.error("User unauthorized");
+          return;
+        }
         toast.error("Something went wrong");
       } else {
-        router.push("/members");
+        const memberUser = await res.json();
+        router.push(`/members/${memberUser.slug}`);
       }
       setLoading(false);
     } catch (err) {

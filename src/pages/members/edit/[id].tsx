@@ -15,9 +15,11 @@ import GridTemplate from "src/templatetes/GridTemplate";
 
 type IEditMemberProps = {
   member: IMember;
+  isCookieToken: boolean;
+  userToken: string;
 };
 
-const EditMember: FC<IEditMemberProps> = function ({ member }) {
+const EditMember: FC<IEditMemberProps> = function ({ member, isCookieToken, userToken }) {
   const [imagePreview, setImagePreview] = useState(member?.image ? member?.image?.formats?.thumbnail?.url : null);
   const [showModal, setShowModal] = useState(false);
   const handleImageUploaded = async () => {
@@ -37,7 +39,7 @@ const EditMember: FC<IEditMemberProps> = function ({ member }) {
           <H1 className="h1 bold m-30-bottom">
             <span className="title-paragraph">Edit details</span>
           </H1>
-          <EditMemberForm member={member} />
+          <EditMemberForm member={member} isCookieToken={isCookieToken} userToken={userToken} />
           <H3 className="h3 m-30-bottom">Member image</H3>
           {imagePreview ? (
             <Image src={imagePreview} width={140} height={150} />
@@ -60,14 +62,18 @@ const EditMember: FC<IEditMemberProps> = function ({ member }) {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = withProtectedRoute(async ({ params: { id } }) => {
-  const res = await fetch(`${API_URL}/members/${id}`);
-  const member = await res.json();
-  return {
-    props: {
-      member,
-    },
-  };
-});
+export const getServerSideProps: GetServerSideProps = withProtectedRoute(
+  async ({ isCookieToken, userToken, params: { id } }) => {
+    const res = await fetch(`${API_URL}/members/${id}`);
+    const member = await res.json();
+    return {
+      props: {
+        member,
+        isCookieToken,
+        userToken,
+      },
+    };
+  }
+);
 
 export default EditMember;

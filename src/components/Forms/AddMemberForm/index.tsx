@@ -22,11 +22,11 @@ type AddMemberFormType = {
 };
 
 type IAddMemberFormProps = {
-  token: string;
+  isCookieToken: boolean;
   userToken: string;
 };
 
-const AddMemberForm = function ({ token, userToken }: IAddMemberFormProps) {
+const AddMemberForm = function ({ isCookieToken, userToken }: IAddMemberFormProps) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const {
@@ -40,7 +40,7 @@ const AddMemberForm = function ({ token, userToken }: IAddMemberFormProps) {
   });
 
   const onAddMemberSubmit = async (data: AddMemberFormType): Promise<void> => {
-    if (!token) {
+    if (!isCookieToken) {
       return;
     }
     setTimeout(() => {
@@ -70,7 +70,8 @@ const AddMemberForm = function ({ token, userToken }: IAddMemberFormProps) {
         }
         toast.error("Something went wrong");
       } else {
-        router.push("/members");
+        const member = await res.json();
+        router.push(`/members/${member.slug}`);
       }
       setLoading(false);
     } catch (err) {

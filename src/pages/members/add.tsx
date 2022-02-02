@@ -8,7 +8,7 @@ import { H1 } from "src/styles/typography";
 import GridTemplate from "src/templatetes/GridTemplate";
 
 type IAddMemberProps = {
-  isCookieToken: string;
+  isCookieToken: boolean;
   userToken: string;
 };
 
@@ -20,7 +20,7 @@ const AddMember = function ({ isCookieToken, userToken }: IAddMemberProps) {
           <H1 className="h1 bold m-30-bottom">
             <span className="title-paragraph">Add member</span>
           </H1>
-          <AddMemberForm token={isCookieToken} userToken={userToken} />
+          <AddMemberForm isCookieToken={isCookieToken} userToken={userToken} />
         </Col>
       </GridTemplate>
     </Layout>

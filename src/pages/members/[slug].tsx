@@ -10,14 +10,17 @@ import AppLink from "src/components/common/AppLink";
 import { Button } from "src/components/common/Button/Button.styled";
 import Layout from "src/components/Layout";
 import { API_URL } from "src/config";
+import constants from "src/constants";
 import withProtectedRoute from "src/HOC/withProtectedRoute";
 import { IMember } from "src/interface/members";
 import { Col } from "src/styles/grid";
 import { H1 } from "src/styles/typography";
 import GridTemplate from "src/templatetes/GridTemplate";
 
+const { HOME } = constants.routes;
+
 type IMemberProps = {
-  member: IMember;
+  member: IMember | null;
 };
 
 interface IParams extends ParsedUrlQuery {
@@ -28,7 +31,7 @@ const Member: VFC<IMemberProps> = function ({ member }) {
   const router = useRouter();
   const onDeleteMember = async () => {
     try {
-      const res = await axios.delete(`${API_URL}/members/${member.id}`);
+      const res = await axios.delete(`${API_URL}/members/${member?.id}`);
       if (res.status === 200) {
         router.push("/members");
       } else {
@@ -51,7 +54,7 @@ const Member: VFC<IMemberProps> = function ({ member }) {
             Remove member
           </Button>
 
-          <AppLink variant="link" href={`/members/edit/${member.id}`}>
+          <AppLink variant="link" href={`/members/edit/${member?.id}`}>
             Edit
           </AppLink>
         </Col>
@@ -63,14 +66,33 @@ const Member: VFC<IMemberProps> = function ({ member }) {
 
 export const getServerSideProps: GetServerSideProps = withProtectedRoute(async (context) => {
   const { slug } = context.params as IParams;
-  const res = await fetch(`${API_URL}/members?slug=${slug}`);
-  const members = await res.json();
 
-  return {
-    props: {
-      member: members[0],
-    },
-  };
+  try {
+    const res = await fetch(`${API_URL}/members?slug=${slug}`);
+    const members = await res.json();
+
+    if (!members) {
+      return {
+        redirect: {
+          destination: HOME,
+          permanent: false,
+        },
+      };
+    }
+
+    return {
+      props: {
+        member: members?.[0] || null,
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        destination: "/connection-api",
+        permanent: false,
+      },
+    };
+  }
 });
 
 export default Member;
