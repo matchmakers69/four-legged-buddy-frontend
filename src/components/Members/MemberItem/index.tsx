@@ -13,6 +13,7 @@ type IMemberItemProps = {
 };
 
 const MemberItem: VFC<IMemberItemProps> = function ({ member }) {
+  const src = member?.image?.formats?.medium?.url ?? "/media/images/default-dog.jpg";
   return (
     <Col data-testid="page-wrapper" xs={4}>
       <S.GridItem>
@@ -20,11 +21,7 @@ const MemberItem: VFC<IMemberItemProps> = function ({ member }) {
           <S.ImageFrame>
             <S.ImageOuter className="image-outer">
               <S.ImageContainer>
-                <Image
-                  src={member.image ? member.image?.formats?.medium?.url : "/media/images/default-dog.jpg"}
-                  layout="fill"
-                  className="image-grid"
-                />
+                <Image src={src} layout="fill" className="image-grid" />
               </S.ImageContainer>
             </S.ImageOuter>
             <S.FrameFront />

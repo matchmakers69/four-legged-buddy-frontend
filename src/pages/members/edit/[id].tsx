@@ -20,7 +20,9 @@ type IEditMemberProps = {
 };
 
 const EditMember: FC<IEditMemberProps> = function ({ member, isCookieToken, userToken }) {
-  const [imagePreview, setImagePreview] = useState(member?.image ? member?.image?.formats?.thumbnail?.url : null);
+  const [imagePreview, setImagePreview] = useState(
+    member?.image ? member?.image?.formats?.thumbnail?.url : "/media/images/default-dog.jpg"
+  );
   const [showModal, setShowModal] = useState(false);
   const handleImageUploaded = async () => {
     try {
@@ -54,7 +56,7 @@ const EditMember: FC<IEditMemberProps> = function ({ member, isCookieToken, user
             </Button>
           </div>
           <Modal show={showModal} onClose={() => setShowModal(false)}>
-            <ImageUpload memberId={member.id} imageUploaded={handleImageUploaded} />
+            <ImageUpload userToken={userToken} memberId={member.id} imageUploaded={handleImageUploaded} />
           </Modal>
         </Col>
       </GridTemplate>

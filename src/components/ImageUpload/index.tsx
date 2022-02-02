@@ -6,13 +6,14 @@ import { API_URL } from "src/config";
 type IImageUploadProps = {
   memberId: string;
   imageUploaded: () => void;
+  userToken: string;
 };
 
-const ImageUpload = function ({ memberId, imageUploaded }: IImageUploadProps) {
+const ImageUpload = function ({ memberId, imageUploaded, userToken }: IImageUploadProps) {
   const [image, setImage] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleUploadImageChange = (e: React.ChangeEvent) => {
+  const handleUploadImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];
     setImage(file);
@@ -27,6 +28,9 @@ const ImageUpload = function ({ memberId, imageUploaded }: IImageUploadProps) {
     formData.append("field", "image");
     const response = await fetch(`${API_URL}/upload`, {
       method: "POST",
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
       body: formData,
     });
     if (response.ok) {
