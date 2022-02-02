@@ -1,4 +1,4 @@
-import { VFC, useState } from "react";
+import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -21,7 +21,12 @@ type AddMemberFormType = {
   intro: string;
 };
 
-const AddMemberForm: VFC = function () {
+type IAddMemberFormProps = {
+  token: string;
+  userToken: string;
+};
+
+const AddMemberForm = function ({ token, userToken }: IAddMemberFormProps) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const {
@@ -35,6 +40,9 @@ const AddMemberForm: VFC = function () {
   });
 
   const onAddMemberSubmit = async (data: AddMemberFormType): Promise<void> => {
+    if (!token) {
+      return;
+    }
     setTimeout(() => {
       reset({
         name: "",
@@ -51,10 +59,15 @@ const AddMemberForm: VFC = function () {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
         },
         body: JSON.stringify(data),
       });
       if (!res.ok) {
+        if (res.status === 403 || res.status === 401) {
+          toast.error("No token included");
+          return;
+        }
         toast.error("Something went wrong");
       } else {
         router.push("/members");
