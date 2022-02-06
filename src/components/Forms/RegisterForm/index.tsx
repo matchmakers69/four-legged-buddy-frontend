@@ -7,7 +7,7 @@ import Button from "src/components/common/Button";
 import FormGroup from "src/components/common/FormElement/FormGroup";
 import InputText from "src/components/common/FormElement/InputText";
 import { registerFormSchema } from "src/lib/validation/registerFormValidation";
-import * as S from "styles/components/Form";
+import * as S from "src/styles/components/Form.styled";
 
 type RegisterUserType = Pick<Yup.InferType<typeof registerFormSchema>, "username" | "email" | "password">;
 

@@ -6,7 +6,7 @@ import FormGroup from "src/components/common/FormElement/FormGroup";
 import InputText from "src/components/common/FormElement/InputText";
 import TextArea from "src/components/common/FormElement/TextArea";
 import { contactFormValidationSchema } from "src/lib/validation/contactFormValidation";
-import * as S from "styles/components/Form";
+import * as S from "src/styles/components/Form.styled";
 
 type ContactFormSubmit = {
   fullName: string;
