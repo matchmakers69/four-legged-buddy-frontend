@@ -1,20 +1,32 @@
 import styled, { css } from "styled-components";
+import { device } from "src/styles/breakpoints";
 
 const commonInputStyles = css`
   background-color: ${({ theme }) => theme.colors.powderWhite};
   border-radius: 0;
-  height: 5rem;
+  height: 6rem;
   border: 4px solid ${({ theme }) => theme.colors.titleGreen};
   padding: 1rem;
   color: ${({ theme }) => theme.colors.titleGreen};
   font-size: ${({ theme }) => theme.fontSizes.xs};
+  font-family: ${({ theme }) => theme.fontFamily.primary};
+  font-weight: 700;
+  @media ${device.laptop} {
+    font-size: ${({ theme }) => theme.fontSizes.sm};
+  }
 `;
 
 export const Label = styled.label`
-  color: ${({ theme }) => theme.colors.titleGreen};
-  font-size: ${({ theme }) => theme.fontSizes.xs};
+  color: ${({ theme }) => theme.colors.mustardLabel};
+  font-family: ${({ theme }) => theme.fontFamily.primary};
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
+  @media ${device.laptop} {
+    font-size: ${({ theme }) => theme.fontSizes.xs};
+  }
 `;
 
 export const Input = styled.input`
@@ -28,12 +40,19 @@ export const Input = styled.input`
 
   ::placeholder,
   ::-webkit-input-placeholder {
-    color: rgba(69, 43, 120, 0.3);
+    color: ${({ theme }) => theme.colors.fadeGreen};
     font-size: ${({ theme }) => theme.fontSizes.xs};
+    @media ${device.laptop} {
+      font-size: ${({ theme }) => theme.fontSizes.sm};
+    }
   }
   :-ms-input-placeholder {
     color: rgba(69, 43, 120, 0.3);
     font-size: ${({ theme }) => theme.fontSizes.xs};
+    color: ${({ theme }) => theme.colors.fadeGreen};
+    @media ${device.laptop} {
+      font-size: ${({ theme }) => theme.fontSizes.sm};
+    }
   }
 `;
 
@@ -51,11 +70,17 @@ export const TextArea = styled.textarea`
 
   ::placeholder,
   ::-webkit-input-placeholder {
-    color: rgba(69, 43, 120, 0.3);
     font-size: ${({ theme }) => theme.fontSizes.xs};
+    color: ${({ theme }) => theme.colors.fadeGreen};
+    @media ${device.laptop} {
+      font-size: ${({ theme }) => theme.fontSizes.sm};
+    }
   }
   :-ms-input-placeholder {
-    color: rgba(69, 43, 120, 0.3);
     font-size: ${({ theme }) => theme.fontSizes.xs};
+    color: ${({ theme }) => theme.colors.fadeGreen};
+    @media ${device.laptop} {
+      font-size: ${({ theme }) => theme.fontSizes.sm};
+    }
   }
 `;

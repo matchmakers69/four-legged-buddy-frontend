@@ -18,6 +18,8 @@ export const theme: DefaultTheme = {
     mustard: "#bb8918",
     darkMustard: "#ba8d0f",
     titleGreen: "#2b331f",
+    fadeGreen: "#afb3aa",
+    mustardLabel: "#af7f0d",
     lightBlue: "#2193a2",
     transparent: "transparent",
   },

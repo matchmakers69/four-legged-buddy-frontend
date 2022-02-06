@@ -18,6 +18,8 @@ declare module "styled-components" {
       mustard: string;
       shapeColor: string;
       titleGreen: string;
+      fadeGreen: string;
+      mustardLabel: string;
       lightBlue: string;
       transparent: string;
       darkMustard: string;
