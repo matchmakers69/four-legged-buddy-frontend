@@ -10,7 +10,7 @@ import InputText from "src/components/common/FormElement/InputText";
 import TextArea from "src/components/common/FormElement/TextArea";
 import { API_URL } from "src/config";
 import { addMemberValidationSchema } from "src/lib/validation/addMemberValidation";
-import * as S from "styles/components/Form";
+import * as S from "src/styles/components/Form.styled";
 import { AddMemberFormContainer } from "./AddMemberForm.styled";
 
 type AddMemberFormType = {

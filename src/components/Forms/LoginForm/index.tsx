@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
 import { unwrapResult } from "@reduxjs/toolkit";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import Button from "src/components/common/Button";
@@ -12,11 +13,12 @@ import { login } from "src/features/auth/actions";
 import { useAppThunkDispatch } from "src/features/store";
 import { useAppSelector } from "src/HOOKS/useCustomReduxSelector";
 import { loginSchema } from "src/lib/validation/loginFormValidation";
-import * as S from "styles/components/Form";
+import * as S from "src/styles/components/Form.styled";
+import { Row, Col } from "styles/grid";
 
-const { DASHBOARD } = constants.routes;
+const { DASHBOARD, REGISTER, FORGOT_PASSWORD } = constants.routes;
 
-type LoginFormSubmit = {
+type LoginFormValues = {
   email: string;
   password: string;
 };
@@ -30,14 +32,14 @@ const LoginForm: FC = function () {
     handleSubmit,
     reset,
     formState: { errors, isValid },
-  } = useForm<LoginFormSubmit>({
+  } = useForm<LoginFormValues>({
     mode: "onChange",
     resolver: yupResolver(loginSchema),
   });
 
   const router = useRouter();
 
-  const onLoginSubmit = (data: LoginFormSubmit) => {
+  const onLoginSubmit = (data: LoginFormValues) => {
     setTimeout(() => {
       reset({
         email: "",
@@ -59,7 +61,24 @@ const LoginForm: FC = function () {
   };
 
   return (
-    <div className="contact-form">
+    <S.FormWrapperSkew>
+      <S.HeaderForm>
+        <Row className="row">
+          <Col xs={12} sm={5}>
+            <S.HeaderColLeft>
+              <span className="formHeaderTitle">Sign in to continue</span>
+            </S.HeaderColLeft>
+          </Col>
+          <Col xs={12} sm={7}>
+            <S.HeaderColRight>
+              <S.FormHeaderSubtitle>Not a member yet?</S.FormHeaderSubtitle>
+              <Link href={REGISTER}>
+                <a className="formHeaderLink">Register now</a>
+              </Link>
+            </S.HeaderColRight>
+          </Col>
+        </Row>
+      </S.HeaderForm>
       <S.Form onSubmit={handleSubmit(onLoginSubmit)}>
         <FormGroup>
           <InputText
@@ -67,7 +86,7 @@ const LoginForm: FC = function () {
             type="text"
             label="What's your username (email address)"
             register={register}
-            placeholder="Type your username"
+            placeholder="Username or email"
             name="email"
             error={errors?.email}
           />
@@ -79,7 +98,7 @@ const LoginForm: FC = function () {
             type="password"
             label="What's your password?"
             register={register}
-            placeholder="Type your password"
+            placeholder="Password"
             name="password"
             error={errors?.password}
           />
@@ -92,7 +111,12 @@ const LoginForm: FC = function () {
         </FormGroup>
       </S.Form>
       {userError && <ErrorSubmissionMessage>{userError?.message}</ErrorSubmissionMessage>}
-    </div>
+      <S.FormFooter>
+        <Link href={FORGOT_PASSWORD}>
+          <a className="footerLink">Forgot password</a>
+        </Link>
+      </S.FormFooter>
+    </S.FormWrapperSkew>
   );
 };
 
