@@ -1,20 +1,20 @@
 import { VFC } from "react";
-import LoginForm from "src/components/Forms/LoginForm";
+import ForgotPasswordForm from "src/components/Forms/ForgotPasswordForm";
 import Layout from "src/components/Layout";
 import { Col } from "src/styles/grid";
 import { H1 } from "src/styles/typography";
 import GridTemplate from "src/templatetes/GridTemplate";
 
-const Login: VFC = function () {
+const PasswordReset: VFC = function () {
   return (
-    <Layout pageTitle="Login">
+    <Layout pageTitle="ResetPassword">
       <GridTemplate>
         <Col data-testid="page-wrapper" xs={12}>
-          <LoginForm />
+          <ForgotPasswordForm />
         </Col>
       </GridTemplate>
     </Layout>
   );
 };
 
-export default Login;
+export default PasswordReset;
